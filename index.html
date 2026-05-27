@@ -290,6 +290,43 @@
     .services, .pricing { padding: 4rem 1.5rem; }
     .contact { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 2rem; }
   }
+
+  /* ── Voucher Section ── */
+  .voucher-section { padding: 6rem 2rem; background: var(--bg-light, #f5f2ec); }
+  .voucher-wrap { max-width: 860px; margin: 0 auto; }
+  .voucher-wrap h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 2.6rem); color: var(--dark, #1a2e18); line-height: 1.15; margin-bottom: 1rem; }
+  .voucher-wrap h2 em { font-style: italic; color: var(--green); }
+  .voucher-intro { font-size: 1rem; color: var(--text-muted); line-height: 1.75; max-width: 540px; margin-bottom: 3rem; }
+  .voucher-card { background: #fff; border-radius: 20px; border: 1px solid rgba(45,90,39,0.14); overflow: hidden; }
+  .voucher-card-top { background: var(--green); padding: 2.5rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem; flex-wrap: wrap; }
+  .voucher-for { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 0.5rem; }
+  .voucher-title { font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; line-height: 1.2; }
+  .voucher-tagline { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.55; max-width: 440px; }
+  .voucher-price-badge { background: var(--brown, #8b6914); color: #fff; border-radius: 12px; padding: 0.75rem 1.25rem; text-align: center; flex-shrink: 0; }
+  .voucher-price-amount { display: block; font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; line-height: 1; }
+  .voucher-price-label { display: block; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.8; margin-top: 4px; }
+  .voucher-card-body { padding: 2rem 2.5rem; }
+  .voucher-highlight { display: inline-flex; align-items: center; gap: 6px; background: #eef4ed; color: #1a4a17; font-size: 0.85rem; font-weight: 600; padding: 6px 16px; border-radius: 100px; margin-bottom: 1.25rem; border: 1px solid rgba(45,90,39,0.2); }
+  .voucher-desc { font-size: 0.95rem; color: #444; line-height: 1.75; margin-bottom: 1.75rem; }
+  .voucher-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.75rem; }
+  .voucher-col-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brown, #8b6914); margin-bottom: 0.75rem; }
+  .voucher-list { list-style: none; }
+  .voucher-list li { font-size: 0.875rem; color: #444; padding: 6px 0; border-bottom: 0.5px solid #eee; padding-left: 14px; position: relative; line-height: 1.5; }
+  .voucher-list li:last-child { border-bottom: none; }
+  .voucher-list li::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+  .voucher-info-row { background: #eef4ed; border-radius: 12px; padding: 1.1rem 1.25rem; display: flex; gap: 1.25rem; flex-wrap: wrap; margin-bottom: 1.75rem; }
+  .voucher-info-item { display: flex; gap: 8px; align-items: flex-start; }
+  .voucher-info-item span { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+  .voucher-info-item div { font-size: 0.8rem; color: #3a5a36; line-height: 1.4; }
+  .voucher-info-item strong { display: block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #1a2e18; margin-bottom: 2px; }
+  .voucher-cta-row { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+  .voucher-note { font-size: 0.8rem; color: #999; }
+  @media (max-width: 600px) {
+    .voucher-card-top { flex-direction: column; }
+    .voucher-cols { grid-template-columns: 1fr; }
+    .voucher-card-body { padding: 1.5rem; }
+    .voucher-card-top { padding: 1.75rem; }
+  }
 </style>
 </head>
 <body>
@@ -417,6 +454,72 @@
   <p class="pricing-note">Masz pytania o cennik? Zadzwoń: <a href="tel:510655432">510 655 432</a></p>
 </section>
 
+
+
+<section id="voucher" class="voucher-section">
+  <div class="voucher-wrap">
+    <p class="section-label">Prezent</p>
+    <h2>Podaruj komuś bliskiemu<br><em>pierwsze uderzenie w życiu</em></h2>
+    <p class="voucher-intro">Lekcje golfa to wyjątkowy prezent — aktywny, elegancki i niezapomniany. Idealny dla taty, mamy, partnera lub przyjaciela. Każdy może zacząć, bez względu na wiek i kondycję fizyczną.</p>
+
+    <div class="voucher-card">
+      <div class="voucher-card-top">
+        <div>
+          <p class="voucher-for">Voucher podarunkowy</p>
+          <h3 class="voucher-title">Lekcja Pierwszego Kontaktu</h3>
+          <p class="voucher-tagline">Golf od podstaw — 3 godziny z certyfikowanym instruktorem PGA Polska na prawdziwym polu golfowym</p>
+        </div>
+        <div class="voucher-price-badge">
+          <span class="voucher-price-amount">500 zł</span>
+          <span class="voucher-price-label">voucher</span>
+        </div>
+      </div>
+
+      <div class="voucher-card-body">
+        <div class="voucher-highlight">⛳ Prawdziwa gra na polu — 3 do 5 dołków</div>
+
+        <p class="voucher-desc">Pierwszy krok w świat golfa to moment, który warto przeżyć z profesjonalnym wsparciem. Pod okiem certyfikowanego Asystenta Instruktora PGA Polska uczestnik odkryje, że golf to nie tylko sport — to sztuka precyzji, cierpliwości i koncentracji. Zajęcia kończą się prawdziwą grą na polu golfowym od 3 do 5 dołków.</p>
+
+        <div class="voucher-cols">
+          <div>
+            <p class="voucher-col-title">Czego się nauczysz</p>
+            <ul class="voucher-list">
+              <li>Pełny zamach — full swing</li>
+              <li>Chippowanie i pitching</li>
+              <li>Puttowanie na greenie</li>
+              <li>Zasady i etykieta golfowa</li>
+              <li>Ustawienie do piłki i grip</li>
+            </ul>
+          </div>
+          <div>
+            <p class="voucher-col-title">Co zawiera oferta</p>
+            <ul class="voucher-list">
+              <li>3 godziny z instruktorem</li>
+              <li>Sprzęt sportowy w cenie</li>
+              <li>Piłki treningowe i rangowe</li>
+              <li>Pierwsza gra na polu — 3–5 dołków</li>
+              <li>Driving range + putting green</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="voucher-info-row">
+          <div class="voucher-info-item"><span>📍</span><div><strong>Lokalizacja</strong>Krakow Valley G&amp;CC · Royal Kraków G&amp;CC</div></div>
+          <div class="voucher-info-item"><span>📅</span><div><strong>Sezon</strong>Kwiecień – Październik</div></div>
+          <div class="voucher-info-item"><span>👥</span><div><strong>Dla kogo</strong>1–2 osoby</div></div>
+          <div class="voucher-info-item"><span>⏳</span><div><strong>Ważność</strong>12 miesięcy</div></div>
+          <div class="voucher-info-item"><span>👕</span><div><strong>Strój</strong>Wygodne ubranie</div></div>
+        </div>
+
+        <div class="voucher-cta-row">
+          <a href="https://wa.me/48510655432?text=Cze%C5%9B%C4%87%20Jakub%2C%20chcia%C5%82bym%20zam%C3%B3wi%C4%87%20voucher%20Lekcja%20Pierwszego%20Kontaktu%20(500%20z%C5%82)" target="_blank" rel="noopener noreferrer" class="btn-primary">Zamów voucher — WhatsApp</a>
+          <a href="tel:510655432" class="btn-secondary">Zadzwoń: 510 655 432</a>
+          <span class="voucher-note">Termin ustalamy po zakupie</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section style="padding:5rem 2rem; max-width:800px; margin:0 auto;" id="faq">
   <p class="section-label">FAQ</p>
