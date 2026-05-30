@@ -355,15 +355,15 @@
   /* ── Mobile bottom bar ── */
   .mobile-bar {
     display: none;
-    position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
     background: rgba(247,244,239,0.97); backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(45,90,39,0.15);
+    border-bottom: 1px solid rgba(45,90,39,0.15);
     padding: 0.65rem 1.25rem;
     align-items: center; justify-content: space-between; gap: 0.75rem;
   }
   .mobile-bar-logo { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--green); }
   .mobile-bar-actions { display: flex; gap: 0.6rem; align-items: center; }
-  .mobile-bar-tel { color: var(--green); text-decoration: none; font-size: 0.8rem; font-weight: 500; border: 1px solid rgba(45,90,39,0.3); padding: 0.45rem 0.9rem; border-radius: 100px; }
+  .mobile-bar-tel { color: var(--green); text-decoration: none; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(45,90,39,0.3); padding: 0.5rem; border-radius: 100px; width: 36px; height: 36px; }
   .mobile-bar-voucher { background: var(--green); color: #fff; border: none; font-size: 0.82rem; font-weight: 600; padding: 0.5rem 1.1rem; border-radius: 100px; cursor: pointer; font-family: inherit; }
 
   /* ── Popup Dzień Ojca ── */
@@ -391,7 +391,7 @@
 
   @media (max-width: 900px) {
     .mobile-bar { display: flex; }
-    body { padding-bottom: 64px; }
+    body { padding-top: 56px; }
   }
 </style>
 </head>
@@ -755,8 +755,10 @@
 <div class="mobile-bar" id="mobile-bar">
   <span class="mobile-bar-logo">Jakub Kulig · Golf</span>
   <div class="mobile-bar-actions">
-    <a href="tel:510655432" class="mobile-bar-tel">510 655 432</a>
-    <button class="mobile-bar-voucher" onclick="document.getElementById('vf-modal-overlay').style.display='flex'">⛳ Voucher</button>
+    <a href="tel:510655432" class="mobile-bar-tel" aria-label="Zadzwoń">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.93 1.18 2 2 0 012.93 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+    </a>
+    <button class="mobile-bar-voucher" onclick="document.getElementById('voucher').scrollIntoView({behavior:'smooth'})">🎁 Voucher</button>
   </div>
 </div>
 
@@ -768,7 +770,7 @@
     <h2 class="dj-title">Podaruj tacie<br><em>pierwsze uderzenie</em></h2>
     <p class="dj-sub">Voucher na lekcje golfa z certyfikowanym trenerem PGA — prezent, który tata zapamięta na długo.</p>
     <div class="dj-countdown" id="dj-countdown"></div>
-    <button class="dj-cta" onclick="closeDjPopup(); setTimeout(()=>{ document.getElementById('vf-modal-overlay').style.display='flex'; document.getElementById('voucher').scrollIntoView({behavior:'smooth'}); }, 300)">
+    <button class="dj-cta" onclick="closeDjPopup(); setTimeout(()=>{ document.getElementById('voucher').scrollIntoView({behavior:'smooth'}); }, 300)">
       Zobacz voucher — 500 zł ⛳
     </button>
     <button class="dj-skip" onclick="closeDjPopup()">Nie teraz</button>
@@ -778,7 +780,8 @@
 <script>
 function closeDjPopup() {
   document.getElementById('dj-overlay').style.display = 'none';
-  sessionStorage.setItem('dj_seen', '1');
+  var c = parseInt(sessionStorage.getItem('dj_count') || '0');
+  sessionStorage.setItem('dj_count', c + 1);
 }
 
 // Odliczanie do 22 czerwca 2026
@@ -801,8 +804,9 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 60000);
 
-// Pokaż popup po 2.5s, raz na sesję
-if (!sessionStorage.getItem('dj_seen')) {
+// Pokaż popup po 2.5s, maks 5x na sesję
+var djCount = parseInt(sessionStorage.getItem('dj_count') || '0');
+if (djCount < 5) {
   setTimeout(function() {
     document.getElementById('dj-overlay').style.display = 'flex';
   }, 2500);
