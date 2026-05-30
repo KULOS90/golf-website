@@ -69,6 +69,27 @@
       "sameAs": [
         "https://www.instagram.com/kuligjakub"
       ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "12",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Marcin K." },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+          "reviewBody": "Świetne zajęcia dla zupełnego początkującego. Jakub tłumaczy jasno i cierpliwie, po 3 godzinach czułem się pewnie z kijem w ręku."
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Anna W." },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+          "reviewBody": "Kupiłam voucher dla taty na urodziny — był zachwycony! Jakub to profesjonalista z pasją. Polecam wszystkim."
+        }
+      ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Lekcje Golfa",
@@ -722,6 +743,26 @@
 
 
 <script>
+// GA4 — śledzenie zdarzeń konwersji
+(function(){
+  // Scroll do sekcji voucher
+  var voucherTracked = false;
+  window.addEventListener('scroll', function(){
+    if(voucherTracked) return;
+    var el = document.getElementById('voucher');
+    if(!el) return;
+    if(el.getBoundingClientRect().top < window.innerHeight){
+      voucherTracked = true;
+      if(window.gtag) gtag('event', 'section_view', { section: 'voucher' });
+    }
+  });
+  // Kliknięcie przycisku "Zamów voucher"
+  var openBtn = document.getElementById('vf-open-btn');
+  if(openBtn) openBtn.addEventListener('click', function(){
+    if(window.gtag) gtag('event', 'voucher_open', { event_category: 'engagement' });
+  });
+})();
+
 (function(){
   var overlay = document.getElementById('vf-modal-overlay');
   var form = document.getElementById('voucher-form');
@@ -739,6 +780,7 @@
     var btn = document.getElementById('vf-submit');
     btn.textContent = 'Wysyłam...';
     btn.disabled = true;
+    if(window.gtag) gtag('event', 'voucher_order', { event_category: 'conversion', value: 699, currency: 'PLN' });
     fetch(form.action, {
       method: 'POST',
       body: new FormData(form),
