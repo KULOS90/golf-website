@@ -328,6 +328,19 @@
   .voucher-info-item strong { display: block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #1a2e18; margin-bottom: 2px; }
   .voucher-cta-row { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
   .voucher-note { font-size: 0.8rem; color: #999; }
+
+  .voucher-form-wrap { margin-top: 0.5rem; }
+  .voucher-form-title { font-size: 0.95rem; font-weight: 600; color: var(--dark, #1a2e18); margin-bottom: 1rem; }
+  .voucher-form { display: flex; flex-direction: column; gap: 0.85rem; }
+  .vf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+  .vf-field { display: flex; flex-direction: column; gap: 0.3rem; }
+  .vf-field label { font-size: 0.75rem; font-weight: 600; color: #3a5a36; letter-spacing: 0.03em; text-transform: uppercase; }
+  .vf-field input, .vf-field textarea { padding: 0.7rem 1rem; border: 1px solid rgba(45,90,39,0.25); border-radius: 8px; font-size: 0.9rem; font-family: inherit; color: #1a2e18; background: #fafaf8; transition: border-color 0.2s; outline: none; }
+  .vf-field input:focus, .vf-field textarea:focus { border-color: var(--green); background: #fff; }
+  .vf-field textarea { resize: vertical; }
+  .vf-footer { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 0.25rem; }
+  .vf-success-msg { background: #eef4ed; color: #1a4a17; border: 1px solid rgba(45,90,39,0.2); border-radius: 10px; padding: 1rem 1.25rem; font-size: 0.9rem; font-weight: 500; }
+  @media (max-width: 600px) { .vf-row { grid-template-columns: 1fr; } .vf-footer { flex-direction: column; align-items: flex-start; } }
   @media (max-width: 600px) {
     .voucher-card-top { flex-direction: column; }
     .voucher-cols { grid-template-columns: 1fr; }
@@ -514,10 +527,43 @@
           <div class="voucher-info-item"><span>👕</span><div><strong>Strój</strong>Wygodne ubranie</div></div>
         </div>
 
-        <div class="voucher-cta-row">
-          <a href="https://wa.me/48510655432?text=Cze%C5%9B%C4%87%20Jakub%2C%20chcia%C5%82bym%20zam%C3%B3wi%C4%87%20voucher%20Lekcja%20Pierwszego%20Kontaktu%20(500%20z%C5%82)" target="_blank" rel="noopener noreferrer" class="btn-primary">Zamów voucher — WhatsApp</a>
-          <a href="tel:510655432" class="btn-secondary">Zadzwoń: 510 655 432</a>
-          <span class="voucher-note">Termin ustalamy po zakupie</span>
+        <div class="voucher-form-wrap">
+          <p class="voucher-form-title">Zamów voucher — wyślemy potwierdzenie na email</p>
+          <form action="https://formspree.io/f/xwvzzwld" method="POST" class="voucher-form" id="voucher-form">
+            <input type="hidden" name="_subject" value="Nowe zamówienie vouchera golfowego — jakubkulig.pl">
+            <input type="hidden" name="_next" value="https://www.jakubkulig.pl/#voucher">
+            <div class="vf-row">
+              <div class="vf-field">
+                <label for="vf-name">Twoje imię i nazwisko *</label>
+                <input type="text" id="vf-name" name="imie_nazwisko" required placeholder="np. Anna Kowalska">
+              </div>
+              <div class="vf-field">
+                <label for="vf-email">E-mail *</label>
+                <input type="email" id="vf-email" name="email" required placeholder="twoj@email.pl">
+              </div>
+            </div>
+            <div class="vf-row">
+              <div class="vf-field">
+                <label for="vf-phone">Telefon</label>
+                <input type="tel" id="vf-phone" name="telefon" placeholder="np. 600 123 456">
+              </div>
+              <div class="vf-field">
+                <label for="vf-for">Dla kogo voucher?</label>
+                <input type="text" id="vf-for" name="dla_kogo" placeholder="np. dla taty, dla Piotra...">
+              </div>
+            </div>
+            <div class="vf-field">
+              <label for="vf-msg">Dodatkowe informacje (opcjonalnie)</label>
+              <textarea id="vf-msg" name="wiadomosc" rows="2" placeholder="np. czy potrzebny wydruk vouchera, preferowany termin..."></textarea>
+            </div>
+            <div class="vf-footer">
+              <button type="submit" class="btn-primary" id="vf-submit">Zamów voucher — 500 zł</button>
+              <span class="voucher-note">Odpiszę w ciągu kilku godzin z danymi do płatności</span>
+            </div>
+            <div id="vf-success" style="display:none;" class="vf-success-msg">
+              Dziękuję! Otrzymałem Twoje zamówienie — odezwę się wkrótce na podany email.
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -607,5 +653,34 @@
   <p>© 2026 Jakub Kulig · Asystent Instruktora Golfa · PGA Polska</p>
 </footer>
 
+
+<script>
+(function(){
+  var form = document.getElementById('voucher-form');
+  if(!form) return;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = document.getElementById('vf-submit');
+    btn.textContent = 'Wysyłam...';
+    btn.disabled = true;
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r){
+      if(r.ok){
+        form.style.display = 'none';
+        document.getElementById('vf-success').style.display = 'block';
+      } else {
+        btn.textContent = 'Błąd — spróbuj ponownie';
+        btn.disabled = false;
+      }
+    }).catch(function(){
+      btn.textContent = 'Błąd — spróbuj ponownie';
+      btn.disabled = false;
+    });
+  });
+})();
+</script>
 </body>
 </html>
