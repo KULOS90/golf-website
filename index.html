@@ -351,6 +351,48 @@
     .voucher-card-body { padding: 1.5rem; }
     .voucher-card-top { padding: 1.75rem; }
   }
+
+  /* ── Mobile bottom bar ── */
+  .mobile-bar {
+    display: none;
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+    background: rgba(247,244,239,0.97); backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(45,90,39,0.15);
+    padding: 0.65rem 1.25rem;
+    align-items: center; justify-content: space-between; gap: 0.75rem;
+  }
+  .mobile-bar-logo { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--green); }
+  .mobile-bar-actions { display: flex; gap: 0.6rem; align-items: center; }
+  .mobile-bar-tel { color: var(--green); text-decoration: none; font-size: 0.8rem; font-weight: 500; border: 1px solid rgba(45,90,39,0.3); padding: 0.45rem 0.9rem; border-radius: 100px; }
+  .mobile-bar-voucher { background: var(--green); color: #fff; border: none; font-size: 0.82rem; font-weight: 600; padding: 0.5rem 1.1rem; border-radius: 100px; cursor: pointer; font-family: inherit; }
+
+  /* ── Popup Dzień Ojca ── */
+  .dj-overlay {
+    display: none; position: fixed; inset: 0; z-index: 500;
+    background: rgba(0,0,0,0.6); align-items: center; justify-content: center; padding: 1rem;
+  }
+  .dj-popup {
+    background: var(--cream); border-radius: 20px; max-width: 420px; width: 100%;
+    padding: 2rem 1.75rem 1.75rem; position: relative; text-align: center;
+  }
+  .dj-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.1rem; cursor: pointer; color: #999; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .dj-close:hover { background: #eee; color: #333; }
+  .dj-badge { display: inline-block; background: var(--brown); color: #fff; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.3rem 0.85rem; border-radius: 100px; margin-bottom: 1rem; }
+  .dj-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #1a2e18; line-height: 1.2; margin-bottom: 0.5rem; }
+  .dj-title em { color: var(--green); font-style: italic; }
+  .dj-sub { font-size: 0.88rem; color: #666; line-height: 1.6; margin-bottom: 1.5rem; }
+  .dj-cta { display: block; background: var(--green); color: #fff; border: none; font-family: inherit; font-size: 0.95rem; font-weight: 600; padding: 0.9rem 1.5rem; border-radius: 100px; cursor: pointer; width: 100%; margin-bottom: 0.65rem; }
+  .dj-skip { font-size: 0.78rem; color: #999; cursor: pointer; background: none; border: none; font-family: inherit; }
+  .dj-countdown { display: flex; justify-content: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+  .dj-count-box { text-align: center; }
+  .dj-count-num { display: block; font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--green); font-weight: 700; line-height: 1; }
+  .dj-count-label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; color: #999; }
+  .dj-count-sep { font-size: 1.2rem; color: var(--green); align-self: flex-start; padding-top: 2px; }
+
+  @media (max-width: 900px) {
+    .mobile-bar { display: flex; }
+    body { padding-bottom: 64px; }
+  }
 </style>
 </head>
 <body>
@@ -707,6 +749,69 @@
     });
   });
 })();
+</script>
+
+<!-- Mobile bottom bar -->
+<div class="mobile-bar" id="mobile-bar">
+  <span class="mobile-bar-logo">Jakub Kulig · Golf</span>
+  <div class="mobile-bar-actions">
+    <a href="tel:510655432" class="mobile-bar-tel">510 655 432</a>
+    <button class="mobile-bar-voucher" onclick="document.getElementById('vf-modal-overlay').style.display='flex'">⛳ Voucher</button>
+  </div>
+</div>
+
+<!-- Popup Dzień Ojca -->
+<div class="dj-overlay" id="dj-overlay">
+  <div class="dj-popup">
+    <button class="dj-close" onclick="closeDjPopup()" aria-label="Zamknij">✕</button>
+    <div class="dj-badge">🎁 Dzień Ojca · 22 czerwca</div>
+    <h2 class="dj-title">Podaruj tacie<br><em>pierwsze uderzenie</em></h2>
+    <p class="dj-sub">Voucher na lekcje golfa z certyfikowanym trenerem PGA — prezent, który tata zapamięta na długo.</p>
+    <div class="dj-countdown" id="dj-countdown"></div>
+    <button class="dj-cta" onclick="closeDjPopup(); setTimeout(()=>{ document.getElementById('vf-modal-overlay').style.display='flex'; document.getElementById('voucher').scrollIntoView({behavior:'smooth'}); }, 300)">
+      Zobacz voucher — 500 zł ⛳
+    </button>
+    <button class="dj-skip" onclick="closeDjPopup()">Nie teraz</button>
+  </div>
+</div>
+
+<script>
+function closeDjPopup() {
+  document.getElementById('dj-overlay').style.display = 'none';
+  sessionStorage.setItem('dj_seen', '1');
+}
+
+// Odliczanie do 22 czerwca 2026
+function updateCountdown() {
+  var target = new Date('2026-06-22T00:00:00');
+  var now = new Date();
+  var diff = target - now;
+  if (diff <= 0) return;
+  var days = Math.floor(diff / 86400000);
+  var hours = Math.floor((diff % 86400000) / 3600000);
+  var mins = Math.floor((diff % 3600000) / 60000);
+  var el = document.getElementById('dj-countdown');
+  if (el) el.innerHTML =
+    '<div class="dj-count-box"><span class="dj-count-num">' + days + '</span><span class="dj-count-label">dni</span></div>' +
+    '<span class="dj-count-sep">:</span>' +
+    '<div class="dj-count-box"><span class="dj-count-num">' + String(hours).padStart(2,'0') + '</span><span class="dj-count-label">godz</span></div>' +
+    '<span class="dj-count-sep">:</span>' +
+    '<div class="dj-count-box"><span class="dj-count-num">' + String(mins).padStart(2,'0') + '</span><span class="dj-count-label">min</span></div>';
+}
+updateCountdown();
+setInterval(updateCountdown, 60000);
+
+// Pokaż popup po 2.5s, raz na sesję
+if (!sessionStorage.getItem('dj_seen')) {
+  setTimeout(function() {
+    document.getElementById('dj-overlay').style.display = 'flex';
+  }, 2500);
+}
+
+// Zamknij kliknięcie poza popup
+document.getElementById('dj-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeDjPopup();
+});
 </script>
 </body>
 </html>
