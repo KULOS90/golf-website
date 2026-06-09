@@ -13,7 +13,7 @@
 
 <!-- Google Analytics GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-L93LYYJ1L0"></script>
-<script>
+<script
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -570,7 +570,7 @@
           <p class="voucher-tagline">Golf od podstaw — 3 godziny z certyfikowanym instruktorem PGA Polska na prawdziwym polu golfowym</p>
         </div>
         <div class="voucher-price-badge">
-          <span class="voucher-price-amount">699 zł</span>
+          <span class="voucher-price-amount">499 zł</span>
           <span class="voucher-price-label">voucher</span>
         </div>
       </div>
@@ -612,7 +612,7 @@
         </div>
 
         <div class="voucher-cta-row">
-          <button class="btn-primary" id="vf-open-btn" onclick="document.getElementById('vf-modal-overlay').style.display='flex'">Zamów voucher — 699 zł</button>
+          <button class="btn-primary" id="vf-open-btn" onclick="document.getElementById('vf-modal-overlay').style.display='flex'">Zamów voucher — 499 zł</button>
           <a href="tel:510655432" class="btn-secondary">Zadzwoń: 510 655 432</a>
           <span class="voucher-note">Odpiszę w ciągu kilku godzin z danymi do płatności</span>
         </div>
@@ -627,7 +627,7 @@
               <button class="vf-close" onclick="document.getElementById('vf-modal-overlay').style.display='none'" aria-label="Zamknij">✕</button>
             </div>
             <form action="https://formspree.io/f/xwvzzwld" method="POST" class="voucher-form" id="voucher-form">
-              <input type="hidden" name="_subject" value="Nowe zamówienie vouchera golfowego 699 zł — jakubkulig.pl">
+              <input type="hidden" name="_subject" value="Nowe zamówienie vouchera golfowego 499 zł — jakubkulig.pl">
               <div class="vf-row">
                 <div class="vf-field">
                   <label for="vf-name">Imię i nazwisko *</label>
@@ -653,7 +653,7 @@
                 <textarea id="vf-msg" name="wiadomosc" rows="2" placeholder="np. preferowany termin, czy potrzebny wydruk vouchera..."></textarea>
               </div>
               <div class="vf-footer">
-                <button type="submit" class="btn-primary" id="vf-submit">Zamów — 699 zł</button>
+                <button type="submit" class="btn-primary" id="vf-submit">Zamów — 499 zł</button>
                 <span class="voucher-note">Odpiszę z danymi do płatności</span>
               </div>
               <div id="vf-success" style="display:none;" class="vf-success-msg">
@@ -789,7 +789,7 @@
     var btn = document.getElementById('vf-submit');
     btn.textContent = 'Wysyłam...';
     btn.disabled = true;
-    if(window.gtag) gtag('event', 'voucher_order', { event_category: 'conversion', value: 699, currency: 'PLN' });
+    if(window.gtag) gtag('event', 'voucher_order', { event_category: 'conversion', value: 499, currency: 'PLN' });
     fetch(form.action, {
       method: 'POST',
       body: new FormData(form),
@@ -830,7 +830,7 @@
     <p class="dj-sub">Voucher na lekcje golfa z certyfikowanym trenerem PGA — prezent, który tata zapamięta na długo.</p>
     <div class="dj-countdown" id="dj-countdown"></div>
     <button class="dj-cta" onclick="closeDjPopup(); setTimeout(()=>{ document.getElementById('voucher').scrollIntoView({behavior:'smooth'}); }, 300)">
-      Zobacz voucher — 699 zł ⛳
+      Zobacz voucher — 499 zł ⛳
     </button>
     <button class="dj-skip" onclick="closeDjPopup()">Nie teraz</button>
   </div>
