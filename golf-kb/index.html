@@ -8,6 +8,292 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Golf Knowledge Base — Jakub Kulig</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#f7f5f0;min-height:100vh}
+a{text-decoration:none}
+.header{background:#111;padding:28px 40px 0;border-bottom:1px solid #222}
+.header-top{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:20px}
+.logo{font-family:'Playfair Display',Georgia,serif;font-size:26px;font-weight:700;color:#fff;letter-spacing:-0.01em}
+.logo-sub{font-size:13px;color:#666;margin-top:4px}
+.stats{display:flex;gap:24px}
+.stat-item{text-align:center}
+.stat-val{font-size:22px;font-weight:700;color:#fff}
+.stat-val.green{color:#4ade80}
+.stat-label{font-size:11px;color:#666;margin-top:2px}
+.btn-add{background:#fff;color:#111;border:none;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif}
+.btn-add:hover{background:#e5e5e5}
+.search-wrap{position:relative;margin-bottom:0}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:16px;color:#555}
+.search-input{width:100%;background:#1e1e1e;border:1px solid #333;border-radius:10px;padding:10px 14px 10px 40px;font-size:14px;color:#fff;outline:none;font-family:'DM Sans',sans-serif;margin-bottom:20px}
+.search-input::placeholder{color:#555}
+.tabs{display:flex;gap:0;overflow-x:auto;padding:0;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{background:none;border:none;cursor:pointer;padding:14px 16px;font-size:13px;font-weight:600;color:#666;border-bottom:2px solid transparent;display:flex;align-items:center;gap:6px;white-space:nowrap;transition:color 0.15s;font-family:'DM Sans',sans-serif}
+.tab.active{color:#fff;border-bottom:2px solid #fff}
+.tab:hover:not(.active){color:#aaa}
+.tab-badge{font-size:11px;background:#333;color:#888;border-radius:20px;padding:1px 7px;font-weight:700}
+.tab.active .tab-badge{background:#fff;color:#111}
+.content{max-width:900px;margin:0 auto;padding:28px 40px 60px}
+.cards{display:flex;flex-direction:column;gap:12px}
+.card{background:#fff;border:1px solid #e8e8e8;border-radius:14px;padding:16px 20px;transition:box-shadow 0.2s,transform 0.2s;position:relative}
+.card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.10);transform:translateY(-2px)}
+.card.done{background:linear-gradient(135deg,#f0fdf4 0%,#fff 100%);border-color:#86efac}
+.card.user-added{border-left:3px solid #f59e0b}
+.done-badge{position:absolute;top:14px;right:16px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:2px 10px;border-radius:20px}
+.user-badge{position:absolute;top:14px;right:16px;font-size:11px;font-weight:700;color:#92400e;background:#fef3c7;padding:2px 10px;border-radius:20px}
+.card-top{display:flex;gap:14px}
+.thumb-wrap{position:relative;width:88px;height:54px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#111;display:block}
+.thumb-wrap img{width:100%;height:100%;object-fit:cover;opacity:0.9}
+.thumb-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.thumb-play span{width:24px;height:24px;background:rgba(0,0,0,0.55);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;padding-left:2px}
+.card-body{flex:1;min-width:0}
+.card-title{font-family:'Playfair Display',Georgia,serif;font-size:14px;font-weight:700;color:#111;line-height:1.4;margin-bottom:4px;padding-right:110px}
+.card-title.nb{padding-right:0}
+.card-author{font-size:12px;color:#888;margin-bottom:8px}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{font-size:11px;padding:2px 9px;border-radius:20px;font-weight:600;white-space:nowrap}
+.card-notes{border-top:1px solid #fef3c7;margin-top:12px;padding:10px 12px;font-size:12px;color:#374151;line-height:1.6;background:#fffbeb;border-radius:8px}
+.card-notes.green{border-top-color:#e8f5e9;background:#f9fefb}
+.nl{font-weight:700;margin-right:6px}
+.nl.green{color:#16a34a}
+.nl.amber{color:#d97706}
+.card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.yt-btn{font-size:12px;color:#dc2626;font-weight:600}
+.del-btn{font-size:11px;color:#aaa;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;padding:2px 6px;border-radius:4px}
+.del-btn:hover{color:#dc2626;background:#fee2e2}
+.empty{text-align:center;padding:60px 0;color:#aaa;font-size:15px}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px}
+.overlay.hidden{display:none}
+.modal{background:#fff;border-radius:16px;padding:28px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto}
+.modal-title{font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:700;color:#111;margin-bottom:6px}
+.modal-sub{font-size:13px;color:#888;margin-bottom:24px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:12px;font-weight:700;color:#555;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em}
+.field input,.field textarea,.field select{width:100%;border:1px solid #ddd;border-radius:8px;padding:10px 12px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;color:#111;background:#fff}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:#111}
+.field textarea{resize:vertical;min-height:80px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.thumb-preview{width:100%;height:120px;border-radius:8px;object-fit:cover;margin-top:8px;display:none}
+.url-row{display:flex}
+.url-row input{flex:1;border-radius:8px 0 0 8px}
+.url-row .fetch-btn{border-radius:0 8px 8px 0;padding:10px 14px;font-size:13px;background:#111;color:#fff;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600}
+.modal-actions{display:flex;gap:10px;margin-top:24px}
+.btn-save{flex:1;background:#111;color:#fff;border:none;border-radius:8px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif}
+.btn-cancel{background:#f5f5f5;color:#555;border:none;border-radius:8px;padding:12px 20px;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif}
+.status-msg{font-size:12px;margin-top:6px;min-height:18px}
+.status-msg.ok{color:#16a34a}
+.status-msg.err{color:#dc2626}
+@media(max-width:600px){.header{padding:20px 20px 0}.content{padding:20px 20px 40px}.card-title{padding-right:0}.done-badge,.user-badge{position:static;display:inline-block;margin-bottom:6px}.field-row{grid-template-columns:1fr}}
+</style></head>
+<body>
+<div class="header">
+  <div class="header-top">
+    <div><div class="logo">Golf Knowledge Base</div><div class="logo-sub">Jakub Kulig — prywatna baza wiedzy</div></div>
+    <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+      <div class="stats">
+        <div class="stat-item"><div class="stat-val" id="s1">0</div><div class="stat-label">Filmów</div></div>
+        <div class="stat-item"><div class="stat-val green" id="s2">0</div><div class="stat-label">Opracowanych</div></div>
+        <div class="stat-item"><div class="stat-val" id="s3">0</div><div class="stat-label">Do zrobienia</div></div>
+      </div>
+      <button class="btn-add" onclick="openModal()">+ Dodaj film</button>
+    </div>
+  </div>
+  <div class="search-wrap"><span class="search-icon">⊕</span><input class="search-input" type="text" id="sq" placeholder="Szukaj..."></div>
+  <div class="tabs" id="tb"></div>
+</div>
+<div class="content"><div class="cards" id="ca"></div><div class="empty" id="em" style="display:none">Brak wyników</div></div>
+<div class="overlay hidden" id="overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-title">Dodaj nowy film</div>
+    <div class="modal-sub">Wklej link YouTube — tytuł zaproponuje się automatycznie</div>
+    <div class="field"><label>Link YouTube</label><div class="url-row"><input type="text" id="f-url" placeholder="https://www.youtube.com/watch?v=..."><button class="fetch-btn" onclick="fetchTitle()">Zaciągnij ▶</button></div><div class="status-msg" id="fst"></div><img class="thumb-preview" id="tp" alt=""></div>
+    <div class="field"><label>Tytuł</label><input type="text" id="f-title" placeholder="Tytuł (edytuj jeśli chcesz)"></div>
+    <div class="field-row">
+      <div class="field"><label>Kategoria</label><select id="f-cat"><option value="driver">Driver</option><option value="wedges">Wedges &amp; irons</option><option value="short">Short game</option><option value="putting">Putting</option><option value="cm">Course management</option></select></div>
+      <div class="field"><label>Tag</label><input type="text" id="f-tag" placeholder="np. Rotacja"></div>
+    </div>
+    <div class="field"><label>Notatki / kluczowe punkty</label><textarea id="f-notes" placeholder="Co jest najważniejsze? Dryle, zasady, liczby..."></textarea></div>
+    <div class="modal-actions"><button class="btn-cancel" onclick="closeModal()">Anuluj</button><button class="btn-save" onclick="saveVideo()">Zapisz →</button></div>
+  </div>
+</div>
+<script>
+const BASE=[{id:"g4XIKVhR31U",c:"driver",t:"The key to bombing driver — Cameron McCormick",a:"The Golfer's Journal",g:["Dystans"],d:0},{id:"HQNKUS_BSGY",c:"driver",t:"World #1 coach — hit driver & irons pure",a:"Rick Shiels",g:["Kontakt"],d:0},{id:"VIjwmKgtiyA",c:"driver",t:"World #1 coach — hit driver & irons straight",a:"Rick Shiels",g:["Kierunek"],d:0},{id:"ezf7XjbETD0",c:"driver",t:"3 tips to fix driver slice for good",a:"Lista odtwarzania",g:["Slice fix"],d:0},{id:"I0JPDxRTWQ0",c:"driver",t:"Why 99% of amateurs don't rotate correctly",a:"Lista odtwarzania",g:["Rotacja"],d:0},{id:"sGZpFaCftcA",c:"driver",t:"Simple hip move that transformed his driver forever",a:"Lista odtwarzania",g:["Biodra"],d:0},{id:"O0THbv6om4U",c:"driver",t:"The life changer: Mike's left foot",a:"Lista odtwarzania",g:["Weight transfer"],d:0},{id:"wWCvecJ_82w",c:"driver",t:"What nobody tells you about footwork in the golf swing",a:"Padraig Harrington",g:["Footwork"],d:0},{id:"YveiDPsw0RA",c:"wedges",t:"This top coach might have solved golf's #1 problem — Chris Mayson",a:"GolfStrongHitBombs",g:["Driver + iron"],d:0},{id:"gc5la3yss-8",c:"wedges",t:"Lesson with world no. 1 coach — Chris Mayson",a:"Fredrik and Hannah",g:["Wedge"],d:0},{id:"y0wqoVov6QQ",c:"wedges",t:"Secret to a reliable 100-yard shot — Cameron McCormick",a:"The Golfer's Journal",g:["Wedge 100y"],d:1,n:"Dynamic Loft, kontakt, dryl Laneway, żółty tik. Trackman: LA 22–26°, club 72–78mph, ball 95–105mph, smash 1.33+"},{id:"J6sVKT799Tg",c:"wedges",t:"How to flight your irons — Cameron McCormick",a:"The Golfer's Journal",g:["Trajektoria"],d:0},{id:"wyU_SC7reXw",c:"wedges",t:"Can a top 50 instructor fix my swing?",a:"MrShortGame Golf",g:["Swing/wedge"],d:0},{id:"U_aUoF3H9jY",c:"wedges",t:"The SECRET tour pros use for perfect wedge shots",a:"MrShortGame Golf",g:["Technika"],d:0},{id:"dnzTRbfIIjo",c:"wedges",t:"#1 inside 100 yards — Russell Henley's wedge tips",a:"Me and My Golf",g:["Sub-100y"],d:0},{id:"xS0yGmRts-8",c:"wedges",t:"Best wedge lesson of your life",a:"Porzak Golf",g:["Kompletny"],d:0},{id:"pkv5TS32G78",c:"wedges",t:"The setup and swing for perfect pitch shots",a:"Dan Grieve",g:["Pitching"],d:0},{id:"RGw4PHEXVJ8",c:"wedges",t:"Iron/driver hook fix — Chris Mayson",a:"최진욱프로",g:["Hook fix"],d:0},{id:"Z9w2uDTRheg",c:"wedges",t:"Ryan Hager's favorite range game to learn club face control",a:"The Golfer's Journal",g:["Face control"],d:0},{id:"2wmy5x1j048",c:"wedges",t:"Ryan Hager: focus on the big 3 ball striking keys",a:"The Golfer's Journal",g:["Ball striking"],d:0},{id:"PfazIIVfEVI",c:"wedges",t:"Ryan Hager: checklist to hit low, medium and high irons",a:"The Golfer's Journal",g:["Trajektoria"],d:0},{id:"UPfrm0fz-VE",c:"short",t:"World #1 coach finally fixes my chipping — 2 simple shots",a:"Rick Shiels",g:["Chipping"],d:0},{id:"FR7StwjY4Cw",c:"short",t:"The simple short game move pros use — film study",a:"Golf Digest",g:["Film study"],d:0},{id:"SfaxE8Ec-hk",c:"short",t:"The 3 releases: simplicity when chipping",a:"Dan Grieve",g:["Release"],d:0},{id:"dCQYomGMq7g",c:"short",t:"Hired world #1 coach for one day — lessons learned",a:"Rick Shiels",g:["Ogólny"],d:0},{id:"JaJJVTUgzDg",c:"putting",t:"The only putting lesson that will improve you instantly",a:"Jerome Rufin",g:["7 tipów"],d:0},{id:"HJiyaAa5qXI",c:"cm",t:"The 3 driver strategies pros use to avoid stupid mistakes",a:"Golf Digest",g:["Driver strategy"],d:0},{id:"P3crhrkbp3g",c:"cm",t:"This simple strategy eliminates double bogeys forever",a:"Cordie Walker GolfWell",g:["Bogey avoid"],d:0},{id:"XdU-nWPznbs",c:"cm",t:"This simple strategy lowers scores (even when you hit it bad)",a:"Cordie Walker GolfWell",g:["Score"],d:0},{id:"b5Qh9QHv1d0",c:"cm",t:"5 strategies pros use to avoid double bogeys — the game plan",a:"Golf Digest",g:["Game plan"],d:0}];
+const TC={"Dystans":"#2d6a4f","Kontakt":"#1d3a6e","Kierunek":"#1d3a6e","Slice fix":"#7b2d00","Rotacja":"#4a1a6b","Biodra":"#4a1a6b","Weight transfer":"#4a1a6b","Footwork":"#4a1a6b","Driver + iron":"#1d3a6e","Wedge":"#1d3a6e","Wedge 100y":"#1d3a6e","Trajektoria":"#1d3a6e","Swing/wedge":"#1d3a6e","Technika":"#1d3a6e","Sub-100y":"#1d3a6e","Kompletny":"#2d6a4f","Pitching":"#1d3a6e","Hook fix":"#7b2d00","Face control":"#1d3a6e","Ball striking":"#2d6a4f","Chipping":"#7b3a00","Film study":"#7b3a00","Release":"#7b3a00","Ogólny":"#7b3a00","7 tipów":"#0a4a3a","Driver strategy":"#3a1a6b","Bogey avoid":"#3a1a6b","Score":"#3a1a6b","Game plan":"#3a1a6b"};
+const TABS=[{id:"all",l:"Wszystkie",i:"⬡"},{id:"driver",l:"Driver",i:"▲"},{id:"wedges",l:"Wedges & irons",i:"◈"},{id:"short",l:"Short game",i:"◉"},{id:"putting",l:"Putting",i:"○"},{id:"cm",l:"Course management",i:"◇"}];
+let aT="all",sV="";
+function gUV(){try{return JSON.parse(localStorage.getItem("gkb_videos")||"[]");}catch(e){return[];}}
+function sUV(a){localStorage.setItem("gkb_videos",JSON.stringify(a));}
+function gAV(){return[...BASE,...gUV()];}
+function rs(){const a=gAV(),d=a.filter(v=>v.d).length;document.getElementById("s1").textContent=a.length;document.getElementById("s2").textContent=d;document.getElementById("s3").textContent=a.length-d;}
+function rT(){const a=gAV(),c={all:a.length};TABS.slice(1).forEach(t=>{c[t.id]=a.filter(v=>v.c===t.id).length;});document.getElementById("tb").innerHTML=TABS.map(t=>'<button class="tab '+(aT===t.id?"active":"")+'" onclick="sT(\''+t.id+'\')">'+t.i+" "+t.l+' <span class="tab-badge">'+c[t.id]+"</span></button>").join("");}
+function rC(){const a=gAV(),ui=new Set(gUV().map(v=>v.id));let l=aT==="all"?a:a.filter(v=>v.c===aT);if(sV.trim()){const q=sV.toLowerCase();l=l.filter(v=>v.t.toLowerCase().includes(q)||(v.a||"").toLowerCase().includes(q)||(v.g||[]).some(x=>x.toLowerCase().includes(q)));}
+const el=document.getElementById("ca"),em=document.getElementById("em");if(!l.length){el.innerHTML="";em.style.display="block";return;}em.style.display="none";
+el.innerHTML=l.map(v=>{const u="https://www.youtube.com/watch?v="+v.id,tg=(v.g||[]).map(x=>{const c=TC[x]||"#555";return'<span class="tag" style="background:'+c+'18;color:'+c+';border:1px solid '+c+'30">'+x+"</span>";}).join(""),isu=ui.has(v.id),badge=v.d?'<span class="done-badge">OPRACOWANY</span>':(isu?'<span class="user-badge">MOJE NOTATKI</span>':""),db=isu?'<button class="del-btn" onclick="dV(\''+v.id+'\')">&#x2715; usuń</button>':"<span></span>";
+return'<div class="card '+(v.d?"done":"")+" "+(isu?"user-added":"")+'">'+badge+'<div class="card-top"><a class="thumb-wrap" href="'+u+'" target="_blank"><img src="https://img.youtube.com/vi/'+v.id+'/mqdefault.jpg" alt="" onerror="this.style.display=\'none\'"><div class="thumb-play"><span>▶</span></div></a><div class="card-body"><div class="card-title '+(v.d||isu?"":"nb")+'">'+v.t+'</div><div class="card-author">'+(v.a||"")+'</div><div class="tags">'+tg+"</div></div></div>"+(v.n?'<div class="card-notes '+(v.d?"green":'')+'"><span class="nl '+(v.d?"green":"amber")+'">Notatki:</span>'+v.n+"</div>":"")+'<div class="card-footer">'+db+'<a class="yt-btn" href="'+u+'" target="_blank">▶ Otwórz na YouTube</a></div></div>';}).join("");}
+function render(){rs();rT();rC();}
+function sT(id){aT=id;render();}
+document.getElementById("sq").addEventListener("input",e=>{sV=e.target.value;rC();});
+function openModal(){document.getElementById("overlay").classList.remove("hidden");document.getElementById("f-url").focus();}
+function closeModal(){document.getElementById("overlay").classList.add("hidden");["f-url","f-title","f-tag","f-notes"].forEach(id=>{document.getElementById(id).value="";});document.getElementById("fst").textContent="";document.getElementById("tp").style.display="none";}
+function gVid(url){const m=url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);return m?m[1]:null;}
+async function fetchTitle(){const url=document.getElementById("f-url").value.trim(),vid=gVid(url),st=document.getElementById("fst"),tp=document.getElementById("tp");if(!vid){st.textContent="Niepoprawny link";st.className="status-msg err";return;}st.textContent="Pobieranie...";st.className="status-msg";try{const r=await fetch("https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v="+vid+"&format=json"),d=await r.json();document.getElementById("f-title").value=d.title;tp.src="https://img.youtube.com/vi/"+vid+"/mqdefault.jpg";tp.style.display="block";st.textContent="✓ "+d.author_name;st.className="status-msg ok";}catch(e){st.textContent="Nie udało się — wpisz ręcznie";st.className="status-msg err";}}
+function saveVideo(){const url=document.getElementById("f-url").value.trim(),vid=gVid(url),title=document.getElementById("f-title").value.trim(),cat=document.getElementById("f-cat").value,tag=document.getElementById("f-tag").value.trim(),notes=document.getElementById("f-notes").value.trim();if(!vid||!title){alert("Podaj link i tytuł");return;}const ex=gUV();if([...BASE,...ex].find(v=>v.id===vid)){alert("Ten film już jest w bazie!");return;}sUV([...ex,{id:vid,c:cat,t:title,a:"",g:tag?[tag]:[],d:0,n:notes}]);closeModal();render();}
+function dV(id){if(!confirm("Usunąć?"))return;sUV(gUV().filter(v=>v.id!==id));render();}
+render();
+</script>
+</body>
+</html>body{font-family:'DM Sans',sans-serif;background:#f7f5f0;min-height:100vh}
+a{text-decoration:none}
+.header{background:#111;padding:28px 40px 0;border-bottom:1px solid #222}
+.header-top{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:20px}
+.logo{font-family:'Playfair Display',Georgia,serif;font-size:26px;font-weight:700;color:#fff;letter-spacing:-0.01em}
+.logo-sub{font-size:13px;color:#666;margin-top:4px}
+.stats{display:flex;gap:24px}
+.stat-item{text-align:center}
+.stat-val{font-size:22px;font-weight:700;color:#fff}
+.stat-val.green{color:#4ade80}
+.stat-label{font-size:11px;color:#666;margin-top:2px}
+.btn-add{background:#fff;color:#111;border:none;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif}
+.btn-add:hover{background:#e5e5e5}
+.search-wrap{position:relative;margin-bottom:0}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:16px;color:#555}
+.search-input{width:100%;background:#1e1e1e;border:1px solid #333;border-radius:10px;padding:10px 14px 10px 40px;font-size:14px;color:#fff;outline:none;font-family:'DM Sans',sans-serif;margin-bottom:20px}
+.search-input::placeholder{color:#555}
+.tabs{display:flex;gap:0;overflow-x:auto;padding:0;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{background:none;border:none;cursor:pointer;padding:14px 16px;font-size:13px;font-weight:600;color:#666;border-bottom:2px solid transparent;display:flex;align-items:center;gap:6px;white-space:nowrap;transition:color 0.15s;font-family:'DM Sans',sans-serif}
+.tab.active{color:#fff;border-bottom:2px solid #fff}
+.tab:hover:not(.active){color:#aaa}
+.tab-badge{font-size:11px;background:#333;color:#888;border-radius:20px;padding:1px 7px;font-weight:700}
+.tab.active .tab-badge{background:#fff;color:#111}
+.content{max-width:900px;margin:0 auto;padding:28px 40px 60px}
+.cards{display:flex;flex-direction:column;gap:12px}
+.card{background:#fff;border:1px solid #e8e8e8;border-radius:14px;padding:16px 20px;transition:box-shadow 0.2s,transform 0.2s;position:relative}
+.card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.10);transform:translateY(-2px)}
+.card.done{background:linear-gradient(135deg,#f0fdf4 0%,#fff 100%);border-color:#86efac}
+.card.user-added{border-left:3px solid #f59e0b}
+.done-badge{position:absolute;top:14px;right:16px;font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:2px 10px;border-radius:20px}
+.user-badge{position:absolute;top:14px;right:16px;font-size:11px;font-weight:700;color:#92400e;background:#fef3c7;padding:2px 10px;border-radius:20px}
+.card-top{display:flex;gap:14px}
+.thumb-wrap{position:relative;width:88px;height:54px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#111;display:block}
+.thumb-wrap img{width:100%;height:100%;object-fit:cover;opacity:0.9}
+.thumb-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.thumb-play span{width:24px;height:24px;background:rgba(0,0,0,0.55);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;padding-left:2px}
+.card-body{flex:1;min-width:0}
+.card-title{font-family:'Playfair Display',Georgia,serif;font-size:14px;font-weight:700;color:#111;line-height:1.4;margin-bottom:4px;padding-right:110px}
+.card-title.nb{padding-right:0}
+.card-author{font-size:12px;color:#888;margin-bottom:8px}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{font-size:11px;padding:2px 9px;border-radius:20px;font-weight:600;white-space:nowrap}
+.card-notes{border-top:1px solid #fef3c7;margin-top:12px;padding:10px 12px;font-size:12px;color:#374151;line-height:1.6;background:#fffbeb;border-radius:8px}
+.card-notes.green{border-top-color:#e8f5e9;background:#f9fefb}
+.nl{font-weight:700;margin-right:6px}
+.nl.green{color:#16a34a}
+.nl.amber{color:#d97706}
+.card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.yt-btn{font-size:12px;color:#dc2626;font-weight:600}
+.del-btn{font-size:11px;color:#aaa;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;padding:2px 6px;border-radius:4px}
+.del-btn:hover{color:#dc2626;background:#fee2e2}
+.empty{text-align:center;padding:60px 0;color:#aaa;font-size:15px}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px}
+.overlay.hidden{display:none}
+.modal{background:#fff;border-radius:16px;padding:28px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto}
+.modal-title{font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:700;color:#111;margin-bottom:6px}
+.modal-sub{font-size:13px;color:#888;margin-bottom:24px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:12px;font-weight:700;color:#555;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em}
+.field input,.field textarea,.field select{width:100%;border:1px solid #ddd;border-radius:8px;padding:10px 12px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;color:#111;background:#fff}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:#111}
+.field textarea{resize:vertical;min-height:80px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.thumb-preview{width:100%;height:120px;border-radius:8px;object-fit:cover;margin-top:8px;display:none}
+.url-row{display:flex}
+.url-row input{flex:1;border-radius:8px 0 0 8px}
+.url-row .fetch-btn{border-radius:0 8px 8px 0;padding:10px 14px;font-size:13px;background:#111;color:#fff;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600}
+.modal-actions{display:flex;gap:10px;margin-top:24px}
+.btn-save{flex:1;background:#111;color:#fff;border:none;border-radius:8px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif}
+.btn-cancel{background:#f5f5f5;color:#555;border:none;border-radius:8px;padding:12px 20px;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif}
+.status-msg{font-size:12px;margin-top:6px;min-height:18px}
+.status-msg.ok{color:#16a34a}
+.status-msg.err{color:#dc2626}
+@media(max-width:600px){.header{padding:20px 20px 0}.content{padding:20px 20px 40px}.card-title{padding-right:0}.done-badge,.user-badge{position:static;display:inline-block;margin-bottom:6px}.field-row{grid-template-columns:1fr}}
+</style></head>
+<body>
+<div class="header">
+  <div class="header-top">
+    <div><div class="logo">Golf Knowledge Base</div><div class="logo-sub">Jakub Kulig — prywatna baza wiedzy</div></div>
+    <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+      <div class="stats">
+        <div class="stat-item"><div class="stat-val" id="s1">0</div><div class="stat-label">Filmów</div></div>
+        <div class="stat-item"><div class="stat-val green" id="s2">0</div><div class="stat-label">Opracowanych</div></div>
+        <div class="stat-item"><div class="stat-val" id="s3">0</div><div class="stat-label">Do zrobienia</div></div>
+      </div>
+      <button class="btn-add" onclick="openModal()">+ Dodaj film</button>
+    </div>
+  </div>
+  <div class="search-wrap"><span class="search-icon">⊕</span><input class="search-input" type="text" id="sq" placeholder="Szukaj..."></div>
+  <div class="tabs" id="tb"></div>
+</div>
+<div class="content"><div class="cards" id="ca"></div><div class="empty" id="em" style="display:none">Brak wyników</div></div>
+<div class="overlay hidden" id="overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-title">Dodaj nowy film</div>
+    <div class="modal-sub">Wklej link YouTube — tytuł zaproponuje się automatycznie</div>
+    <div class="field"><label>Link YouTube</label><div class="url-row"><input type="text" id="f-url" placeholder="https://www.youtube.com/watch?v=..."><button class="fetch-btn" onclick="fetchTitle()">Zaciągnij ▶</button></div><div class="status-msg" id="fst"></div><img class="thumb-preview" id="tp" alt=""></div>
+    <div class="field"><label>Tytuł</label><input type="text" id="f-title" placeholder="Tytuł (edytuj jeśli chcesz)"></div>
+    <div class="field-row">
+      <div class="field"><label>Kategoria</label><select id="f-cat"><option value="driver">Driver</option><option value="wedges">Wedges &amp; irons</option><option value="short">Short game</option><option value="putting">Putting</option><option value="cm">Course management</option></select></div>
+      <div class="field"><label>Tag</label><input type="text" id="f-tag" placeholder="np. Rotacja"></div>
+    </div>
+    <div class="field"><label>Notatki / kluczowe punkty</label><textarea id="f-notes" placeholder="Co jest najważniejsze? Dryle, zasady, liczby..."></textarea></div>
+    <div class="modal-actions"><button class="btn-cancel" onclick="closeModal()">Anuluj</button><button class="btn-save" onclick="saveVideo()">Zapisz →</button></div>
+  </div>
+</div>
+<script>
+const BASE=[{id:"g4XIKVhR31U",c:"driver",t:"The key to bombing driver — Cameron McCormick",a:"The Golfer's Journal",g:["Dystans"],d:0},{id:"HQNKUS_BSGY",c:"driver",t:"World #1 coach — hit driver & irons pure",a:"Rick Shiels",g:["Kontakt"],d:0},{id:"VIjwmKgtiyA",c:"driver",t:"World #1 coach — hit driver & irons straight",a:"Rick Shiels",g:["Kierunek"],d:0},{id:"ezf7XjbETD0",c:"driver",t:"3 tips to fix driver slice for good",a:"Lista odtwarzania",g:["Slice fix"],d:0},{id:"I0JPDxRTWQ0",c:"driver",t:"Why 99% of amateurs don't rotate correctly",a:"Lista odtwarzania",g:["Rotacja"],d:0},{id:"sGZpFaCftcA",c:"driver",t:"Simple hip move that transformed his driver forever",a:"Lista odtwarzania",g:["Biodra"],d:0},{id:"O0THbv6om4U",c:"driver",t:"The life changer: Mike's left foot",a:"Lista odtwarzania",g:["Weight transfer"],d:0},{id:"wWCvecJ_82w",c:"driver",t:"What nobody tells you about footwork in the golf swing",a:"Padraig Harrington",g:["Footwork"],d:0},{id:"YveiDPsw0RA",c:"wedges",t:"This top coach might have solved golf's #1 problem — Chris Mayson",a:"GolfStrongHitBombs",g:["Driver + iron"],d:0},{id:"gc5la3yss-8",c:"wedges",t:"Lesson with world no. 1 coach — Chris Mayson",a:"Fredrik and Hannah",g:["Wedge"],d:0},{id:"y0wqoVov6QQ",c:"wedges",t:"Secret to a reliable 100-yard shot — Cameron McCormick",a:"The Golfer's Journal",g:["Wedge 100y"],d:1,n:"Dynamic Loft, kontakt, dryl Laneway, żółty tik. Trackman: LA 22–26°, club 72–78mph, ball 95–105mph, smash 1.33+"},{id:"J6sVKT799Tg",c:"wedges",t:"How to flight your irons — Cameron McCormick",a:"The Golfer's Journal",g:["Trajektoria"],d:0},{id:"wyU_SC7reXw",c:"wedges",t:"Can a top 50 instructor fix my swing?",a:"MrShortGame Golf",g:["Swing/wedge"],d:0},{id:"U_aUoF3H9jY",c:"wedges",t:"The SECRET tour pros use for perfect wedge shots",a:"MrShortGame Golf",g:["Technika"],d:0},{id:"dnzTRbfIIjo",c:"wedges",t:"#1 inside 100 yards — Russell Henley's wedge tips",a:"Me and My Golf",g:["Sub-100y"],d:0},{id:"xS0yGmRts-8",c:"wedges",t:"Best wedge lesson of your life",a:"Porzak Golf",g:["Kompletny"],d:0},{id:"pkv5TS32G78",c:"wedges",t:"The setup and swing for perfect pitch shots",a:"Dan Grieve",g:["Pitching"],d:0},{id:"RGw4PHEXVJ8",c:"wedges",t:"Iron/driver hook fix — Chris Mayson",a:"최진욱프로",g:["Hook fix"],d:0},{id:"Z9w2uDTRheg",c:"wedges",t:"Ryan Hager's favorite range game to learn club face control",a:"The Golfer's Journal",g:["Face control"],d:0},{id:"2wmy5x1j048",c:"wedges",t:"Ryan Hager: focus on the big 3 ball striking keys",a:"The Golfer's Journal",g:["Ball striking"],d:0},{id:"PfazIIVfEVI",c:"wedges",t:"Ryan Hager: checklist to hit low, medium and high irons",a:"The Golfer's Journal",g:["Trajektoria"],d:0},{id:"UPfrm0fz-VE",c:"short",t:"World #1 coach finally fixes my chipping — 2 simple shots",a:"Rick Shiels",g:["Chipping"],d:0},{id:"FR7StwjY4Cw",c:"short",t:"The simple short game move pros use — film study",a:"Golf Digest",g:["Film study"],d:0},{id:"SfaxE8Ec-hk",c:"short",t:"The 3 releases: simplicity when chipping",a:"Dan Grieve",g:["Release"],d:0},{id:"dCQYomGMq7g",c:"short",t:"Hired world #1 coach for one day — lessons learned",a:"Rick Shiels",g:["Ogólny"],d:0},{id:"JaJJVTUgzDg",c:"putting",t:"The only putting lesson that will improve you instantly",a:"Jerome Rufin",g:["7 tipów"],d:0},{id:"HJiyaAa5qXI",c:"cm",t:"The 3 driver strategies pros use to avoid stupid mistakes",a:"Golf Digest",g:["Driver strategy"],d:0},{id:"P3crhrkbp3g",c:"cm",t:"This simple strategy eliminates double bogeys forever",a:"Cordie Walker GolfWell",g:["Bogey avoid"],d:0},{id:"XdU-nWPznbs",c:"cm",t:"This simple strategy lowers scores (even when you hit it bad)",a:"Cordie Walker GolfWell",g:["Score"],d:0},{id:"b5Qh9QHv1d0",c:"cm",t:"5 strategies pros use to avoid double bogeys — the game plan",a:"Golf Digest",g:["Game plan"],d:0}];
+const TC={"Dystans":"#2d6a4f","Kontakt":"#1d3a6e","Kierunek":"#1d3a6e","Slice fix":"#7b2d00","Rotacja":"#4a1a6b","Biodra":"#4a1a6b","Weight transfer":"#4a1a6b","Footwork":"#4a1a6b","Driver + iron":"#1d3a6e","Wedge":"#1d3a6e","Wedge 100y":"#1d3a6e","Trajektoria":"#1d3a6e","Swing/wedge":"#1d3a6e","Technika":"#1d3a6e","Sub-100y":"#1d3a6e","Kompletny":"#2d6a4f","Pitching":"#1d3a6e","Hook fix":"#7b2d00","Face control":"#1d3a6e","Ball striking":"#2d6a4f","Chipping":"#7b3a00","Film study":"#7b3a00","Release":"#7b3a00","Ogólny":"#7b3a00","7 tipów":"#0a4a3a","Driver strategy":"#3a1a6b","Bogey avoid":"#3a1a6b","Score":"#3a1a6b","Game plan":"#3a1a6b"};
+const TABS=[{id:"all",l:"Wszystkie",i:"⬡"},{id:"driver",l:"Driver",i:"▲"},{id:"wedges",l:"Wedges & irons",i:"◈"},{id:"short",l:"Short game",i:"◉"},{id:"putting",l:"Putting",i:"○"},{id:"cm",l:"Course management",i:"◇"}];
+let aT="all",sV="";
+function gUV(){try{return JSON.parse(localStorage.getItem("gkb_videos")||"[]");}catch(e){return[];}}
+function sUV(a){localStorage.setItem("gkb_videos",JSON.stringify(a));}
+function gAV(){return[...BASE,...gUV()];}
+function rs(){const a=gAV(),d=a.filter(v=>v.d).length;document.getElementById("s1").textContent=a.length;document.getElementById("s2").textContent=d;document.getElementById("s3").textContent=a.length-d;}
+function rT(){const a=gAV(),c={all:a.length};TABS.slice(1).forEach(t=>{c[t.id]=a.filter(v=>v.c===t.id).length;});document.getElementById("tb").innerHTML=TABS.map(t=>'<button class="tab '+(aT===t.id?"active":"")+'" onclick="sT(\''+t.id+'\')">'+t.i+" "+t.l+' <span class="tab-badge">'+c[t.id]+"</span></button>").join("");}
+function rC(){const a=gAV(),ui=new Set(gUV().map(v=>v.id));let l=aT==="all"?a:a.filter(v=>v.c===aT);if(sV.trim()){const q=sV.toLowerCase();l=l.filter(v=>v.t.toLowerCase().includes(q)||(v.a||"").toLowerCase().includes(q)||(v.g||[]).some(x=>x.toLowerCase().includes(q)));}
+const el=document.getElementById("ca"),em=document.getElementById("em");if(!l.length){el.innerHTML="";em.style.display="block";return;}em.style.display="none";
+el.innerHTML=l.map(v=>{const u="https://www.youtube.com/watch?v="+v.id,tg=(v.g||[]).map(x=>{const c=TC[x]||"#555";return'<span class="tag" style="background:'+c+'18;color:'+c+';border:1px solid '+c+'30">'+x+"</span>";}).join(""),isu=ui.has(v.id),badge=v.d?'<span class="done-badge">OPRACOWANY</span>':(isu?'<span class="user-badge">MOJE NOTATKI</span>':""),db=isu?'<button class="del-btn" onclick="dV(\''+v.id+'\')">&#x2715; usuń</button>':"<span></span>";
+return'<div class="card '+(v.d?"done":"")+" "+(isu?"user-added":"")+'">'+badge+'<div class="card-top"><a class="thumb-wrap" href="'+u+'" target="_blank"><img src="https://img.youtube.com/vi/'+v.id+'/mqdefault.jpg" alt="" onerror="this.style.display=\'none\'"><div class="thumb-play"><span>▶</span></div></a><div class="card-body"><div class="card-title '+(v.d||isu?"":"nb")+'">'+v.t+'</div><div class="card-author">'+(v.a||"")+'</div><div class="tags">'+tg+"</div></div></div>"+(v.n?'<div class="card-notes '+(v.d?"green":'')+'"><span class="nl '+(v.d?"green":"amber")+'">Notatki:</span>'+v.n+"</div>":"")+'<div class="card-footer">'+db+'<a class="yt-btn" href="'+u+'" target="_blank">▶ Otwórz na YouTube</a></div></div>';}).join("");}
+function render(){rs();rT();rC();}
+function sT(id){aT=id;render();}
+document.getElementById("sq").addEventListener("input",e=>{sV=e.target.value;rC();});
+function openModal(){document.getElementById("overlay").classList.remove("hidden");document.getElementById("f-url").focus();}
+function closeModal(){document.getElementById("overlay").classList.add("hidden");["f-url","f-title","f-tag","f-notes"].forEach(id=>{document.getElementById(id).value="";});document.getElementById("fst").textContent="";document.getElementById("tp").style.display="none";}
+function gVid(url){const m=url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);return m?m[1]:null;}
+async function fetchTitle(){const url=document.getElementById("f-url").value.trim(),vid=gVid(url),st=document.getElementById("fst"),tp=document.getElementById("tp");if(!vid){st.textContent="Niepoprawny link";st.className="status-msg err";return;}st.textContent="Pobieranie...";st.className="status-msg";try{const r=await fetch("https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v="+vid+"&format=json"),d=await r.json();document.getElementById("f-title").value=d.title;tp.src="https://img.youtube.com/vi/"+vid+"/mqdefault.jpg";tp.style.display="block";st.textContent="✓ "+d.author_name;st.className="status-msg ok";}catch(e){st.textContent="Nie udało się — wpisz ręcznie";st.className="status-msg err";}}
+function saveVideo(){const url=document.getElementById("f-url").value.trim(),vid=gVid(url),title=document.getElementById("f-title").value.trim(),cat=document.getElementById("f-cat").value,tag=document.getElementById("f-tag").value.trim(),notes=document.getElementById("f-notes").value.trim();if(!vid||!title){alert("Podaj link i tytuł");return;}const ex=gUV();if([...BASE,...ex].find(v=>v.id===vid)){alert("Ten film już jest w bazie!");return;}sUV([...ex,{id:vid,c:cat,t:title,a:"",g:tag?[tag]:[],d:0,n:notes}]);closeModal();render();}
+function dV(id){if(!confirm("Usunąć?"))return;sUV(gUV().filter(v=>v.id!==id));render();}
+render();
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Golf Knowledge Base — Jakub Kulig</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',sans-serif;background:#f7f5f0;min-height:100vh}
 a{text-decoration:none}
 .header{background:#111;padding:28px 40px 0;border-bottom:1px solid #222}
