@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impreza Urodzinowa na Polu Golfowym · Kraków</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green-deep: #0d1f16;
+  --green-dark: #1A3C2E;
+  --green-mid: #2D6A4F;
+  --green-sage: #52796F;
+  --gold: #C9A84C;
+  --gold-light: #e0c06a;
+  --cream: #F5F2EC;
+  --cream-dim: rgba(245,242,236,0.55);
+  --cream-faint: rgba(245,242,236,0.25);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--green-dark); color: var(--cream); overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1rem 2rem;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(13,31,22,0.85); backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(201,168,76,0.12);
+}
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--gold); letter-spacing: 0.02em; }
+.nav-links { display: flex; gap: 1.5rem; align-items: center; }
+.nav-links a { color: var(--cream-dim); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+.nav-links a:hover { color: var(--cream); }
+.nav-cta {
+  background: var(--gold); color: var(--green-dark) !important; font-weight: 600;
+  padding: 0.5rem 1.25rem; border-radius: 100px; font-size: 0.82rem !important;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--gold-light) !important; }
+
+/* HERO */
+.hero {
+  min-height: 100svh; padding-top: 72px;
+  background: linear-gradient(155deg, var(--green-deep) 0%, var(--green-dark) 55%, var(--green-mid) 100%);
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(45,106,79,0.25) 0%, transparent 70%);
+}
+.hero-inner { max-width: 780px; margin: 0 auto; padding: 4rem 2rem; position: relative; z-index: 1; }
+.hero-tag {
+  display: inline-block; font-size: 0.68rem; font-weight: 600; letter-spacing: 3px;
+  text-transform: uppercase; color: rgba(201,168,76,0.75);
+  border: 1px solid rgba(201,168,76,0.25); padding: 5px 14px; border-radius: 2px;
+  margin-bottom: 1.75rem;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.6rem, 6vw, 4rem);
+  line-height: 1.08; color: var(--cream); margin-bottom: 1rem;
+}
+.hero h1 em { color: var(--gold); font-style: italic; }
+.hero-sub {
+  font-size: 1.05rem; color: var(--cream-dim); line-height: 1.75;
+  max-width: 560px; margin-bottom: 2.5rem;
+}
+.hero-stats {
+  display: flex; gap: 0; margin-bottom: 2.5rem;
+  border: 1px solid rgba(201,168,76,0.15); border-radius: 10px; overflow: hidden;
+  width: fit-content;
+}
+.stat {
+  padding: 1rem 1.75rem;
+  border-right: 1px solid rgba(201,168,76,0.12);
+  text-align: center;
+}
+.stat:last-child { border-right: none; }
+.stat-num { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: var(--gold); line-height: 1; margin-bottom: 0.3rem; }
+.stat-label { font-size: 0.72rem; color: var(--cream-faint); letter-spacing: 0.5px; line-height: 1.4; }
+.hero-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 2.5rem; }
+.chip {
+  font-size: 0.75rem; color: var(--cream-dim);
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  padding: 5px 12px; border-radius: 100px;
+}
+.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-gold {
+  background: var(--gold); color: var(--green-dark); font-weight: 700;
+  padding: 0.85rem 2rem; border-radius: 100px; text-decoration: none;
+  font-size: 0.95rem; transition: background 0.2s, transform 0.15s; display: inline-flex; align-items: center; gap: 0.4rem;
+}
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-outline {
+  border: 1px solid rgba(201,168,76,0.35); color: var(--gold);
+  padding: 0.85rem 1.75rem; border-radius: 100px; text-decoration: none;
+  font-size: 0.95rem; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.4rem;
+}
+.btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+
+/* SECTIONS */
+.section { padding: 5rem 2rem; }
+.section-inner { max-width: 780px; margin: 0 auto; }
+.section-label {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.75rem; opacity: 0.8;
+}
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 4vw, 2.2rem); line-height: 1.2; margin-bottom: 1rem; color: var(--cream); }
+.section-sub { font-size: 1rem; color: var(--cream-dim); line-height: 1.75; }
+.divider { height: 1px; background: rgba(201,168,76,0.1); margin: 2.5rem 0; }
+
+/* PROGRAM */
+.program-section { background: linear-gradient(180deg, var(--green-dark) 0%, var(--green-deep) 100%); }
+.timeline { margin-top: 2rem; display: flex; flex-direction: column; gap: 0; }
+.tl-item {
+  display: flex; gap: 1.25rem; position: relative;
+  padding-bottom: 1.5rem;
+}
+.tl-item:last-child { padding-bottom: 0; }
+.tl-item:last-child .tl-connector { display: none; }
+.tl-left { display: flex; flex-direction: column; align-items: center; min-width: 16px; }
+.tl-time { display: none; }
+.tl-dot-wrap { display: flex; flex-direction: column; align-items: center; flex: 1; }
+.tl-dot {
+  width: 10px; height: 10px; border-radius: 50%; background: var(--gold);
+  border: 2px solid var(--green-dark); box-shadow: 0 0 0 2px rgba(201,168,76,0.25);
+  flex-shrink: 0;
+}
+.tl-connector { width: 1px; background: rgba(201,168,76,0.2); flex: 1; min-height: 20px; }
+.tl-body {
+  flex: 1; background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(201,168,76,0.12); border-radius: 10px;
+  padding: 1rem 1.25rem;
+}
+.tl-body-title { font-size: 1rem; font-weight: 600; color: var(--cream); margin-bottom: 0.25rem; }
+.tl-body-desc { font-size: 0.85rem; color: var(--cream-dim); line-height: 1.6; }
+
+/* CO W CENIE */
+.included-section { background: rgba(0,0,0,0.2); }
+.included-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-top: 2rem;
+}
+.inc-item {
+  display: flex; gap: 0.85rem; align-items: flex-start;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.1);
+  border-radius: 10px; padding: 1rem 1.1rem;
+}
+.inc-icon {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.2);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.inc-icon::after {
+  content: ''; display: block;
+  width: 8px; height: 5px; border-left: 2px solid var(--gold); border-bottom: 2px solid var(--gold);
+  transform: rotate(-45deg) translateY(-1px);
+}
+.inc-text-wrap {}
+.inc-title { font-size: 0.88rem; font-weight: 600; color: var(--cream); margin-bottom: 2px; }
+.inc-sub { font-size: 0.78rem; color: var(--cream-faint); line-height: 1.4; }
+
+/* CENA */
+.price-section { background: linear-gradient(155deg, var(--green-deep), var(--green-mid)); }
+.price-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 16px; padding: 2.5rem;
+  display: flex; justify-content: space-between; align-items: center; gap: 2rem;
+  flex-wrap: wrap; margin-top: 2rem;
+}
+.price-left {}
+.price-amount { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--gold); line-height: 1; margin-bottom: 0.25rem; }
+.price-unit { font-size: 0.82rem; color: var(--cream-faint); margin-bottom: 1rem; }
+.price-note { font-size: 0.85rem; color: var(--cream-dim); line-height: 1.6; max-width: 300px; }
+.price-right { display: flex; flex-direction: column; gap: 0.75rem; }
+.price-cta-tel {
+  display: flex; align-items: center; gap: 0.6rem;
+  background: var(--gold); color: var(--green-dark); font-weight: 700;
+  padding: 0.9rem 1.75rem; border-radius: 100px; text-decoration: none;
+  font-size: 1rem; transition: background 0.2s;
+}
+.price-cta-tel:hover { background: var(--gold-light); }
+.price-cta-wa {
+  display: flex; align-items: center; gap: 0.6rem; justify-content: center;
+  border: 1px solid rgba(201,168,76,0.3); color: var(--gold);
+  padding: 0.75rem 1.5rem; border-radius: 100px; text-decoration: none;
+  font-size: 0.9rem; transition: all 0.2s;
+}
+.price-cta-wa:hover { background: rgba(201,168,76,0.08); border-color: var(--gold); }
+
+/* TEAM */
+.team-section { background: rgba(0,0,0,0.15); }
+.team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+.team-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.12);
+  border-radius: 12px; padding: 1.5rem; display: flex; align-items: center; gap: 1rem;
+}
+.team-avatar {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: rgba(201,168,76,0.12); border: 2px solid rgba(201,168,76,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; font-weight: 700; color: var(--gold); flex-shrink: 0;
+  font-family: 'Playfair Display', serif;
+}
+.team-name { font-size: 1rem; font-weight: 600; color: var(--cream); margin-bottom: 3px; }
+.team-role { font-size: 0.72rem; color: rgba(201,168,76,0.65); letter-spacing: 1px; text-transform: uppercase; }
+
+/* CONTACT */
+.contact-section { background: linear-gradient(180deg, var(--green-dark) 0%, var(--green-deep) 100%); }
+.contact-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 2rem; }
+.contact-item {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.12);
+  border-radius: 12px; padding: 1.5rem; text-align: center;
+}
+.contact-item-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); opacity: 0.7; margin-bottom: 0.5rem; }
+.contact-item-value { font-size: 1rem; font-weight: 600; color: var(--cream); }
+.contact-item-value a { color: var(--cream); text-decoration: none; }
+.contact-item-value a:hover { color: var(--gold); }
+
+/* FOOTER */
+footer {
+  background: var(--green-deep); border-top: 1px solid rgba(201,168,76,0.08);
+  padding: 1.5rem 2rem; text-align: center;
+  font-size: 0.78rem; color: rgba(245,242,236,0.25);
+}
+
+/* MOBILE NAV BAR */
+.mobile-bar {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(13,31,22,0.97); backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(201,168,76,0.15);
+  padding: 0.75rem 1.25rem; gap: 0.75rem;
+}
+.mobile-bar-tel {
+  flex: 1; background: var(--gold); color: var(--green-dark); font-weight: 700;
+  border: none; border-radius: 100px; padding: 0.8rem; font-size: 0.9rem;
+  text-decoration: none; text-align: center; display: block;
+}
+.mobile-bar-wa {
+  flex: 1; border: 1px solid rgba(201,168,76,0.35); color: var(--gold);
+  border-radius: 100px; padding: 0.8rem; font-size: 0.9rem;
+  text-decoration: none; text-align: center; display: block;
+}
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.hero-inner > * { animation: fadeUp 0.6s ease both; }
+.hero-inner > *:nth-child(1) { animation-delay: 0.05s; }
+.hero-inner > *:nth-child(2) { animation-delay: 0.15s; }
+.hero-inner > *:nth-child(3) { animation-delay: 0.25s; }
+.hero-inner > *:nth-child(4) { animation-delay: 0.32s; }
+.hero-inner > *:nth-child(5) { animation-delay: 0.38s; }
+.hero-inner > *:nth-child(6) { animation-delay: 0.44s; }
+
+@media (max-width: 640px) {
+  nav { padding: 0.85rem 1.25rem; }
+  .nav-links { display: none; }
+  .hero-inner { padding: 3rem 1.25rem; }
+  .hero-stats { flex-direction: column; width: 100%; border: none; gap: 0.5rem; }
+  .stat { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.1); padding: 0.75rem 0; text-align: left; display: flex; align-items: center; gap: 1rem; }
+  .stat:last-child { border-bottom: none; }
+  .stat-num { font-size: 1.5rem; min-width: 60px; }
+  .included-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .price-card { flex-direction: column; }
+  .mobile-bar { display: flex; }
+  body { padding-bottom: 72px; }
+  .section { padding: 3.5rem 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Jakub Kulig · Golf Events</div>
+  <div class="nav-links">
+    <a href="#program">Program</a>
+    <a href="#cena">Cena</a>
+    <a href="#kontakt">Kontakt</a>
+    <a href="tel:510655432" class="nav-cta">📞 510 655 432</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">Oferta eventowa · Kraków 2026</span>
+    <h1>Impreza Urodzinowa<br><em>na polu golfowym.</em></h1>
+    <p class="hero-sub">Wyjątkowy sposób na urodziny — 3 godziny golfa, śmiechów i rywalizacji na krakowskich polach golfowych dla Ciebie i Twoich gości. Bez doświadczenia. Bez wymaganej kondycji. Tylko niezapomniana zabawa.</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">3h</div>
+        <div class="stat-label">program od A do Z</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">250 zł</div>
+        <div class="stat-label">os. · wszystko w cenie</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">PGA</div>
+        <div class="stat-label">certyfikowany instruktor</div>
+      </div>
+    </div>
+    <div class="hero-ctas">
+      <a href="tel:510655432" class="btn-gold">📞 Zadzwoń: 510 655 432</a>
+      <a href="#program" class="btn-outline">Zobacz program ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section class="section program-section" id="program">
+  <div class="section-inner">
+    <p class="section-label">Program eventu</p>
+    <h2 class="section-title">3 godziny, które wszyscy zapamiętają</h2>
+    <p class="section-sub">Nikt nie musi znać się na golfie — nasz instruktor PGA przeprowadzi wszystkich gości od pierwszego uderzenia aż po prawdziwą grę na polu.</p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-left">
+          <span class="tl-time">00:00</span>
+          <div class="tl-dot-wrap">
+            <div class="tl-dot"></div>
+            <div class="tl-connector"></div>
+          </div>
+        </div>
+        <div class="tl-body">
+          <p class="tl-body-title">Powitanie i wprowadzenie do golfa</p>
+          <p class="tl-body-desc">Zasady bezpieczeństwa na polu, podstawy etykiety golfowej, jak trzymać kij i jak się ustawić. Lekko, bez presji — każdy zaczyna od zera.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left">
+          <span class="tl-time">00:20</span>
+          <div class="tl-dot-wrap">
+            <div class="tl-dot"></div>
+            <div class="tl-connector"></div>
+          </div>
+        </div>
+        <div class="tl-body">
+          <p class="tl-body-title">Driving range z instruktorem PGA</p>
+          <p class="tl-body-desc">Pierwsze uderzenia na strzelnicy pod okiem instruktora. Każdy bije — poprawiamy technikę i śmiejemy się z tych, co za bardzo się starają. Sprzęt i piłki w cenie.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left">
+          <span class="tl-time">01:15</span>
+          <div class="tl-dot-wrap">
+            <div class="tl-dot"></div>
+            <div class="tl-connector"></div>
+          </div>
+        </div>
+        <div class="tl-body">
+          <p class="tl-body-title">Putting green — konkurs celności</p>
+          <p class="tl-body-desc">Rywalizacja na krótkich dystansach. Kto wpakuje piłkę do dołka najkrótszym putem? Tu doświadczenie nie gra roli — liczy się skupienie i trochę szczęścia.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left">
+          <span class="tl-time">01:50</span>
+          <div class="tl-dot-wrap">
+            <div class="tl-dot"></div>
+            <div class="tl-connector"></div>
+          </div>
+        </div>
+        <div class="tl-body">
+          <p class="tl-body-title">Gra na polu golfowym — 2 lub 3 dołki</p>
+          <p class="tl-body-desc">Prawdziwa gra na prawdziwym polu. Pod opieką instruktora przechodzimy przez pierwsze dołki — tu pojawia się prawdziwa rywalizacja i emocje.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left">
+          <span class="tl-time">02:40</span>
+          <div class="tl-dot-wrap">
+            <div class="tl-dot"></div>
+          </div>
+        </div>
+        <div class="tl-body">
+          <p class="tl-body-title">Konkurs "Longest Drive" + nagrody i wspólne zdjęcia</p>
+          <p class="tl-body-desc">Kto uderzy najdalej? Finałowy konkurs dla całego zespołu, wspólne zdjęcia i nagrody dla zwycięzcy. Pamiątkowe piłki golfowe dla solenizanta.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CO W CENIE -->
+<section class="section included-section" id="cena">
+  <div class="section-inner">
+    <p class="section-label">Co zawiera cena</p>
+    <h2 class="section-title">Wszystko w jednej cenie — żadnych ukrytych opłat</h2>
+    <p class="section-sub">Przyjeżdżacie z niczym — wyjeżdżacie z uśmiechem. Cena 250 zł/os. zawiera wszystko.</p>
+    <div class="included-grid">
+      <div class="inc-item">
+        <div class="inc-icon"></div>
+        <div class="inc-text-wrap">
+          <p class="inc-title">Sprzęt golfowy</p>
+          <p class="inc-sub">Kije i torby gotowe na miejscu, bez potrzeby własnego sprzętu</p>
+        </div>
+      </div>
+      <div class="inc-item">
+        <div class="inc-icon"></div>
+        <div class="inc-text-wrap">
+          <p class="inc-title">Piłki treningowe</p>
+          <p class="inc-sub">Na driving range bez limitu — ćwiczycie tyle, ile chcecie</p>
+        </div>
+      </div>
+      <div class="inc-item">
+        <div class="inc-icon"></div>
+        <div class="inc-text-wrap">
+          <p class="inc-title">Green fee (wejście na pole)</p>
+          <p class="inc-sub">Prawdziwa gra na prawdziwym polu golfowym — bez dopłat</p>
+        </div>
+      </div>
+      <div class="inc-item">
+        <div class="inc-icon"></div>
+        <div class="inc-text-wrap">
+          <p class="inc-title">Instruktor PGA przez cały czas</p>
+          <p class="inc-sub">Certyfikowany instruktor prowadzi grupę od początku do końca</p>
+        </div>
+      </div>
+      <div class="inc-item">
+        <div class="inc-icon"></div>
+        <div class="inc-text-wrap">
+          <p class="inc-title">Konkursy z nagrodami</p>
+          <p class="inc-sub">Longest drive, celność puttowania — rywalizacja dla całej ekipy</p>
+        </div>
+      </div>
+      <div class="inc-item">
+        <div class="inc-icon"></div>
+        <div class="inc-text-wrap">
+          <p class="inc-title">Pamiątkowe piłki dla solenizanta</p>
+          <p class="inc-sub">Mały upominek z okazji urodzin dla solenizanta</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CENA -->
+<section class="section price-section">
+  <div class="section-inner">
+    <p class="section-label">Cena</p>
+    <h2 class="section-title">Prosta cena, zero niespodzianek</h2>
+    <div class="price-card">
+      <div class="price-left">
+        <div class="price-amount">250 zł</div>
+        <div class="price-unit">za osobę · wszystko w cenie</div>
+        <p class="price-note">Cena obejmuje sprzęt, piłki, green fee i instruktora PGA przez 3 godziny. Bez limitu osób — im więcej, tym więcej zabawy. Opcja cateringowa dostępna za dodatkową opłatą.</p>
+      </div>
+      <div class="price-right">
+        <a href="tel:510655432" class="price-cta-tel">📞 Zadzwoń: 510 655 432</a>
+        <a href="https://wa.me/48510655432" class="price-cta-wa">💬 WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section team-section" id="team">
+  <div class="section-inner">
+    <p class="section-label">Nasz zespół</p>
+    <h2 class="section-title">Certyfikowani instruktorzy PGA Polska</h2>
+    <p class="section-sub">Jesteśmy w dobrych rękach — dosłownie. Razem poprowadziliśmy dziesiątki eventów na krakowskich polach golfowych.</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">JK</div>
+        <div>
+          <p class="team-name">Jakub Kulig</p>
+          <p class="team-role">Asystent Instruktora PGA Polska</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">WK</div>
+        <div>
+          <p class="team-name">Wiesław Klima</p>
+          <p class="team-role">Instruktor PGA Polska</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="section contact-section" id="kontakt">
+  <div class="section-inner">
+    <p class="section-label">Kontakt</p>
+    <h2 class="section-title">Zarezerwuj urodzinowy termin</h2>
+    <p class="section-sub">Bezpłatna wycena bez zobowiązań. Odpowiadamy w ciągu 24h.</p>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <p class="contact-item-label">Telefon / WhatsApp</p>
+        <p class="contact-item-value"><a href="tel:510655432">510 655 432</a></p>
+      </div>
+      <div class="contact-item">
+        <p class="contact-item-label">Strona</p>
+        <p class="contact-item-value"><a href="https://jakubkulig.pl/firma" target="_blank">jakubkulig.pl/firma</a></p>
+      </div>
+      <div class="contact-item">
+        <p class="contact-item-label">Instagram</p>
+        <p class="contact-item-value"><a href="https://instagram.com/kuligjakub" target="_blank">@kuligjakub</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Jakub Kulig · Golf Events · Krakow Valley G&CC / Royal Kraków G&CC · <a href="/firma" style="color:inherit;text-decoration:none;">jakubkulig.pl/firma</a></p>
+</footer>
+
+<div class="mobile-bar">
+  <a href="tel:510655432" class="mobile-bar-tel">📞 510 655 432</a>
+  <a href="https://wa.me/48510655432" class="mobile-bar-wa">💬 WhatsApp</a>
+</div>
+
+</body>
+</html>
