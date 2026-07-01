@@ -64,7 +64,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem
 .lang-active { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green); }
 .lang-sep { color: rgba(45,90,39,0.2); font-size: 10px; }
 
-.hero { height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 72px; }
+.hero { height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 108px; }
 .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 4rem 3rem 4rem 5rem; }
 .hero-tag { display: inline-block; background: var(--green-pale); color: var(--green); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 100px; margin-bottom: 1.75rem; border: 1px solid rgba(45,90,39,0.2); width: fit-content; }
 .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 3.8vw, 3.6rem); line-height: 1.12; margin-bottom: 1.5rem; }
@@ -199,8 +199,10 @@ footer { background: #1a1a1a; color: rgba(255,255,255,0.5); text-align: center; 
 .hero-left > *:nth-child(4) { animation-delay: 0.4s; }
 
 @media (max-width: 900px) {
-nav { padding: 1rem 1.5rem; }
+#top-bar { display: none !important; }
+nav { padding: 1rem 1.5rem; top: 0 !important; }
 .nav-links { display: none; }
+.hero { padding-top: 72px !important; }
 .hero { grid-template-columns: 1fr; height: auto; }
 .hero-left { padding: 4rem 1.5rem 2rem; }
 .hero-right { height: 360px; }
@@ -223,7 +225,12 @@ body { padding-top: 56px; }
 </head>
 <body>
 
-<nav>
+<div id="top-bar" style="background:#1A3C2E;border-bottom:1px solid rgba(201,168,76,0.2);padding:0.5rem 2rem;display:flex;align-items:center;justify-content:center;gap:1.25rem;position:fixed;top:0;left:0;right:0;z-index:101;">
+  <span style="font-size:0.75rem;color:rgba(245,242,236,0.65);letter-spacing:0.3px;">🏌️ Organizujemy imprezy firmowe, urodziny i wieczory kawalerskie na polu golfowym</span>
+  <a href="/firma" style="font-size:0.72rem;font-weight:700;color:#C9A84C;text-decoration:none;border:1px solid rgba(201,168,76,0.35);padding:3px 12px;border-radius:100px;white-space:nowrap;transition:background 0.2s;">Zobacz eventy →</a>
+</div>
+
+<nav style="top:36px;">
   <div class="nav-logo">Jakub Kulig · Golf</div>
   <div class="nav-links">
     <a href="#zajecia">Zajęcia</a>
