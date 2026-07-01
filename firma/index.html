@@ -1,503 +1,532 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Golf Events — Imprezy Firmowe</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eventy Golfowe Kraków – Jakub Kulig Golf Academy</title>
+  <meta name="description" content="Organizujemy imprezy firmowe, urodziny, wieczory kawalerskie i turnieje golfowe w Krakowie. Dwa pola golfowe i symulatory." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green-deep: #1A3C2E;
+      --green-mid:  #2D6A4F;
+      --green-sage: #52796F;
+      --gold:       #C9A84C;
+      --cream:      #F5F2EC;
+      --white:      #FFFFFF;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--green-deep); line-height: 1.6; }
 
-  :root {
-    --green-deep: #1A3C2E;
-    --green-mid:  #2D6A4F;
-    --green-sage: #52796F;
-    --green-light: #84A98C;
-    --cream:      #F5F2EC;
-    --cream-warm: #EDE8DF;
-    --gold:       #C9A84C;
-    --white:      #FFFFFF;
-    --text-dark:  #1A1A1A;
-    --text-mid:   #4A4A4A;
-    --text-light: #7A7A7A;
-  }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(15,36,25,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+      padding: 0 24px; display: flex; align-items: center;
+      justify-content: space-between; height: 58px;
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--cream); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(245,242,236,0.65); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { background: var(--gold); color: var(--green-deep) !important; padding: 7px 16px; border-radius: 3px; font-weight: 600 !important; }
+    .lang-switch { display: flex; align-items: center; gap: 6px; margin-left: 8px; border-left: 1px solid rgba(201,168,76,0.2); padding-left: 16px; }
+    .lang-switch a, .lang-active { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+    .lang-switch a { color: rgba(245,242,236,0.4); text-decoration: none; transition: color 0.2s; }
+    .lang-switch a:hover { color: var(--gold); }
+    .lang-active { color: var(--gold); }
+    .lang-sep { color: rgba(245,242,236,0.2); font-size: 10px; }
 
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text-dark); overflow-x: hidden; }
+    .hero {
+      min-height: 100vh; background: linear-gradient(145deg, #0a1f12 0%, #1A3C2E 55%, #2D6A4F 100%);
+      display: flex; align-items: center; padding: 100px 24px 60px; position: relative; overflow: hidden;
+    }
+    .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 65%); pointer-events: none; }
+    .hero-inner { max-width: 720px; position: relative; z-index: 1; }
+    .eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 3.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+    .eyebrow::after { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); opacity: 0.5; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 6vw, 52px); font-weight: 500; color: var(--cream); line-height: 1.15; margin-bottom: 18px; }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero-sub { font-size: 15px; color: rgba(245,242,236,0.78); line-height: 1.7; margin-bottom: 8px; max-width: 540px; }
+    .hero-sub strong { color: var(--cream); font-weight: 500; }
+    .hero-loc { font-size: 13px; color: rgba(245,242,236,0.48); margin-bottom: 36px; }
+    .hero-loc b { color: rgba(201,168,76,0.75); font-weight: 400; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+    .btn-gold { background: var(--gold); color: var(--green-deep); border: none; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 14px 28px; border-radius: 3px; cursor: pointer; text-decoration: none; display: inline-block; transition: opacity 0.2s; }
+    .btn-gold:hover { opacity: 0.88; }
+    .btn-outline { background: transparent; color: var(--cream); border: 1px solid rgba(245,242,236,0.3); font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; border-radius: 3px; cursor: pointer; text-decoration: none; display: inline-block; transition: border-color 0.2s; }
+    .btn-outline:hover { border-color: rgba(201,168,76,0.5); }
+    .hero-tags { border-top: 1px solid rgba(201,168,76,0.18); padding-top: 28px; }
+    .tags-label { font-size: 9px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(201,168,76,0.5); margin-bottom: 10px; }
+    .tags-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+    .tag-service { font-size: 11px; color: rgba(245,242,236,0.7); background: rgba(201,168,76,0.09); border: 1px solid rgba(201,168,76,0.18); padding: 6px 13px; border-radius: 3px; }
+    .tag-loc { font-size: 11.5px; color: rgba(245,242,236,0.82); background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.25); padding: 6px 14px; border-radius: 3px; display: flex; align-items: center; gap: 6px; }
+    .tag-loc svg { width: 12px; height: 12px; color: var(--gold); flex-shrink: 0; }
 
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(26,60,46,0.97); backdrop-filter: blur(8px);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 48px; height: 68px;
-  }
-  .nav-logo { font-family: 'Playfair Display', serif; color: var(--cream); font-size: 1.05rem; letter-spacing: .04em; }
-  .nav-logo span { color: var(--gold); }
-  .nav-links { display: flex; gap: 36px; list-style: none; }
-  .nav-links a { color: rgba(245,242,236,.7); font-size: .82rem; letter-spacing: .09em; text-transform: uppercase; text-decoration: none; transition: color .2s; }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-cta { background: var(--gold); color: var(--green-deep); font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 10px 24px; border-radius: 2px; text-decoration: none; transition: opacity .2s; }
-  .nav-cta:hover { opacity: .85; }
+    .section { padding: 72px 24px; }
+    .section-inner { max-width: 1000px; margin: 0 auto; }
+    .section-eyebrow { font-size: 9px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(22px, 4vw, 32px); font-weight: 500; color: var(--green-deep); margin-bottom: 36px; }
 
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    background: linear-gradient(155deg, var(--green-deep) 0%, #0F2419 55%, #080F0B 100%);
-    display: flex; align-items: center;
-    padding: 120px 48px 80px;
-    position: relative; overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2352796F' fill-opacity='0.07'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    pointer-events: none;
-  }
-  .hero-orb {
-    position: absolute; right: -80px; top: 50%; transform: translateY(-50%);
-    width: 580px; height: 580px; border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, #2D6A4F 0%, #0A1A10 70%);
-    opacity: .3;
-  }
-  .hero-line { position: absolute; left: 0; bottom: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--gold) 40%, var(--gold) 60%, transparent); opacity: .5; }
-  .hero-content { position: relative; max-width: 720px; }
-  .hero-eyebrow {
-    display: inline-flex; align-items: center; gap: 10px;
-    font-size: .7rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 26px;
-  }
-  .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.6rem, 5vw, 4.8rem);
-    font-weight: 900; line-height: 1.06;
-    color: var(--cream); margin-bottom: 26px;
-  }
-  .hero h1 em { color: var(--gold); font-style: normal; }
-  .hero-sub { font-size: 1.05rem; color: rgba(245,242,236,.62); line-height: 1.75; max-width: 540px; margin-bottom: 20px; }
-  .hero-locations {
-    display: flex; flex-wrap: wrap; gap: 10px;
-    margin-bottom: 44px;
-  }
-  .hero-loc-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: .75rem; font-weight: 500; color: rgba(245,242,236,.55);
-    border: 1px solid rgba(201,168,76,.2); border-radius: 2px;
-    padding: 6px 14px;
-  }
-  .hero-loc-badge span { color: var(--gold); }
-  .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
-  .btn-primary { background: var(--gold); color: var(--green-deep); font-weight: 700; font-size: .88rem; letter-spacing: .06em; text-transform: uppercase; padding: 16px 36px; border-radius: 2px; text-decoration: none; transition: all .2s; display: inline-block; }
-  .btn-primary:hover { background: #D4B460; transform: translateY(-1px); }
-  .btn-outline { border: 1px solid rgba(245,242,236,.25); color: var(--cream); font-size: .88rem; letter-spacing: .06em; text-transform: uppercase; padding: 16px 36px; border-radius: 2px; text-decoration: none; transition: all .2s; display: inline-block; }
-  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .card { background: var(--white); border: 0.5px solid rgba(26,60,46,0.1); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; transition: box-shadow 0.25s, transform 0.25s; }
+    .card:hover { box-shadow: 0 8px 32px rgba(26,60,46,0.1); transform: translateY(-2px); }
+    .card-head { padding: 18px 18px 14px; border-bottom: 0.5px solid rgba(26,60,46,0.07); }
+    .card-icon-row { display: flex; align-items: flex-start; gap: 12px; }
+    .card-icon { width: 38px; height: 38px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+    .card-title { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 500; color: var(--green-deep); margin-bottom: 3px; line-height: 1.3; }
+    .card-tagline { font-size: 11px; color: var(--green-sage); line-height: 1.5; }
+    .card-body { padding: 16px 18px; flex: 1; display: flex; flex-direction: column; }
+    .program-label { font-size: 8.5px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(82,121,111,0.55); margin-bottom: 10px; }
+    .program { list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px; }
+    .program li { display: flex; align-items: flex-start; gap: 9px; font-size: 12px; color: var(--green-deep); line-height: 1.45; }
+    .program li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); margin-top: 5px; flex-shrink: 0; }
+    .card-desc { font-size: 12.5px; color: var(--green-sage); line-height: 1.65; margin-bottom: 14px; }
+    .catering-note { font-size: 10.5px; color: var(--gold); background: rgba(201,168,76,0.07); border: 0.5px solid rgba(201,168,76,0.2); border-radius: 3px; padding: 6px 10px; margin-bottom: 14px; }
+    .card-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; margin-top: auto; }
+    .chip { font-size: 10px; color: var(--green-sage); background: var(--cream); border: 0.5px solid rgba(82,121,111,0.18); padding: 4px 9px; border-radius: 2px; }
+    .card-footer { display: flex; align-items: center; justify-content: space-between; border-top: 0.5px solid rgba(26,60,46,0.07); padding: 12px 18px; }
+    .card-price { font-size: 13px; color: var(--green-deep); font-weight: 600; }
+    .card-price em { font-style: normal; font-size: 11px; color: var(--green-sage); font-weight: 400; }
+    .card-pdf { font-size: 11px; color: var(--gold); font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+    .card-pdf:hover { opacity: 0.75; }
+    .c1 { background: rgba(201,168,76,.12); color: #C9A84C; }
+    .c2 { background: rgba(45,106,79,.12);  color: #2D6A4F; }
+    .c3 { background: rgba(199,94,86,.1);   color: #c75e56; }
+    .c4 { background: rgba(77,139,207,.1);  color: #4d8bcf; }
+    .c5 { background: rgba(130,92,173,.1);  color: #825cad; }
+    .c6 { background: rgba(46,139,87,.1);   color: #2e8b57; }
 
-  /* Stats bar */
-  .stats-bar { background: var(--green-deep); display: flex; justify-content: center; border-top: 1px solid rgba(201,168,76,.2); }
-  .stat-item { flex: 1; max-width: 220px; text-align: center; padding: 30px 20px; border-right: 1px solid rgba(201,168,76,.1); }
-  .stat-item:last-child { border-right: none; }
-  .stat-number { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; color: var(--gold); line-height: 1; }
-  .stat-label { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(245,242,236,.45); margin-top: 6px; }
+    .team-section { background: var(--green-deep); padding: 72px 24px; }
+    .team-inner { max-width: 1000px; margin: 0 auto; }
+    .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
+    .team-card { background: rgba(255,255,255,0.06); border: 0.5px solid rgba(201,168,76,0.15); border-radius: 10px; padding: 24px; }
+    .team-avatar { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #2D6A4F, #1A3C2E); border: 2px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; color: var(--gold); margin-bottom: 14px; font-family: 'Playfair Display', serif; }
+    .team-name { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 500; color: var(--cream); margin-bottom: 3px; }
+    .team-role { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(201,168,76,0.7); margin-bottom: 10px; }
+    .team-bio { font-size: 12px; color: rgba(245,242,236,0.5); line-height: 1.6; }
 
-  /* ── SECTIONS ── */
-  section { padding: 96px 48px; }
-  .section-eyebrow { font-size: .7rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--green-mid); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
-  .section-eyebrow::after { content: ''; display: block; width: 32px; height: 1px; background: var(--green-mid); }
-  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 3.2vw, 2.8rem); font-weight: 700; color: var(--green-deep); line-height: 1.15; margin-bottom: 18px; }
-  .section-lead { font-size: 1rem; color: var(--text-mid); line-height: 1.78; max-width: 600px; margin-bottom: 52px; }
+    .form-section { background: var(--cream); padding: 72px 24px; }
+    .form-inner { max-width: 640px; margin: 0 auto; }
+    .form-box { background: var(--white); border-radius: 12px; padding: 32px; border: 0.5px solid rgba(26,60,46,0.1); box-shadow: 0 4px 24px rgba(26,60,46,0.06); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+    .form-field label { font-size: 9.5px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green-sage); }
+    .form-field input, .form-field select, .form-field textarea { border: 0.5px solid rgba(26,60,46,0.2); border-radius: 5px; padding: 10px 13px; font-size: 13px; font-family: 'Inter', sans-serif; color: var(--green-deep); background: var(--cream); outline: none; resize: none; transition: border-color 0.2s; appearance: none; }
+    .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--gold); }
+    .form-field textarea { height: 90px; }
+    .form-submit { background: var(--gold); color: var(--green-deep); border: none; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 14px 28px; border-radius: 3px; cursor: pointer; width: 100%; font-family: 'Inter', sans-serif; transition: opacity 0.2s; }
+    .form-submit:hover { opacity: 0.88; }
+    .form-success { display: none; text-align: center; padding: 20px; color: var(--green-mid); font-size: 14px; }
 
-  /* ── MAIN SERVICES (imprezy firmowe — hero of page) ── */
-  .main-services { background: var(--white); }
+    footer { background: #0a1f12; padding: 32px 24px; text-align: center; border-top: 1px solid rgba(201,168,76,0.1); }
+    footer p { font-size: 11px; color: rgba(245,242,236,0.35); }
+    footer a { color: rgba(201,168,76,0.6); text-decoration: none; }
 
-  /* Big feature card for "Imprezy Firmowe" */
-  .feature-card {
-    background: var(--green-deep);
-    border-radius: 4px; overflow: hidden;
-    display: grid; grid-template-columns: 1fr 1fr;
-    margin-bottom: 3px;
-    min-height: 340px;
-  }
-  .feature-card-content { padding: 56px 56px; display: flex; flex-direction: column; justify-content: center; }
-  .feature-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
-    color: var(--gold); background: rgba(201,168,76,.12);
-    padding: 6px 14px; border-radius: 2px; margin-bottom: 24px;
-    width: fit-content;
-  }
-  .feature-card-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--cream); line-height: 1.15; margin-bottom: 18px; }
-  .feature-card-desc { font-size: .95rem; color: rgba(245,242,236,.65); line-height: 1.75; margin-bottom: 30px; }
-  .feature-bullets { list-style: none; }
-  .feature-bullets li { font-size: .88rem; color: rgba(245,242,236,.7); padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,.06); display: flex; gap: 10px; align-items: flex-start; }
-  .feature-bullets li::before { content: '—'; color: var(--gold); flex-shrink: 0; }
-  .feature-card-visual {
-    background: linear-gradient(135deg, #0F2419 0%, #1A3C2E 50%, #2D6A4F 100%);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 7rem; position: relative; overflow: hidden;
-  }
-  .feature-card-visual::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.06'%3E%3Ccircle cx='20' cy='20' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-  .feature-card-visual .big-icon { position: relative; z-index: 1; filter: drop-shadow(0 8px 32px rgba(0,0,0,.4)); }
+    /* ── MOBILE ── */
+    @media (max-width: 640px) {
+      /* Nav */
+      .nav-links a:not(.nav-cta):not(.lang-switch a) { display: none; }
+      .nav-links > a:not(.nav-cta) { display: none; }
+      .nav-cta { font-size: 10px; padding: 6px 13px; }
+      .lang-switch { border-left: none; padding-left: 0; margin-left: 4px; }
 
-  /* Secondary 3-card grid */
-  .secondary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
-  .service-card {
-    background: var(--cream); padding: 44px 36px;
-    position: relative; overflow: hidden;
-    transition: background .25s; cursor: default;
-  }
-  .service-card:hover { background: var(--green-deep); }
-  .service-card:hover .service-title,
-  .service-card:hover .service-desc { color: var(--cream); }
-  .service-card:hover .service-icon { background: rgba(201,168,76,.15); color: var(--gold); }
-  .service-icon { width: 52px; height: 52px; border-radius: 50%; background: rgba(45,106,79,.1); color: var(--green-mid); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 24px; transition: all .25s; }
-  .service-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--green-deep); margin-bottom: 12px; transition: color .25s; }
-  .service-desc { font-size: .88rem; color: var(--text-mid); line-height: 1.7; transition: color .25s; }
-  .service-card::after { content: ''; position: absolute; bottom: 0; left: 36px; right: 36px; height: 2px; background: var(--gold); transform: scaleX(0); transition: transform .25s; transform-origin: left; }
-  .service-card:hover::after { transform: scaleX(1); }
+      /* Hero */
+      .hero {
+        min-height: 100svh;
+        padding: 80px 20px 48px;
+        align-items: flex-start;
+      }
+      .hero h1 { font-size: 30px; }
+      .hero-sub { font-size: 14px; }
+      .hero-sub br { display: none; }
+      .hero-loc { font-size: 12px; margin-bottom: 28px; }
+      .hero-btns { flex-direction: column; gap: 10px; margin-bottom: 32px; }
+      .btn-gold, .btn-outline { text-align: center; padding: 15px 20px; font-size: 11px; }
+      .tags-row { gap: 6px; }
+      .tag-service, .tag-loc { font-size: 10.5px; padding: 5px 10px; }
 
-  /* Formats strip */
-  .formats-strip {
-    background: var(--cream-warm);
-    padding: 40px 48px;
-    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-  }
-  .formats-label { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--green-sage); margin-right: 8px; flex-shrink: 0; }
-  .format-chip { font-size: .82rem; font-weight: 500; color: var(--green-deep); background: var(--white); border: 1px solid rgba(45,106,79,.15); padding: 8px 18px; border-radius: 2px; }
+      /* Services */
+      .section { padding: 48px 16px; }
+      .cards { grid-template-columns: 1fr; gap: 12px; }
+      .card-title { font-size: 15px; }
+      .program li { font-size: 13px; }
 
-  /* ── TEAM ── */
-  .team { background: var(--green-deep); }
-  .team .section-eyebrow { color: var(--gold); }
-  .team .section-eyebrow::after { background: var(--gold); }
-  .team .section-title { color: var(--cream); }
-  .team .section-lead { color: rgba(245,242,236,.6); }
-  .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-  .team-card { background: rgba(255,255,255,.04); border: 1px solid rgba(201,168,76,.15); border-radius: 4px; padding: 44px; }
-  .team-avatar { width: 80px; height: 80px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 2rem; border: 2px solid var(--gold); margin-bottom: 20px; }
-  .team-avatar.wk { background: linear-gradient(135deg, #0A1A10, #1A3C2E); }
-  .team-avatar.jk { background: linear-gradient(135deg, #2D6A4F, #52796F); }
-  .team-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--cream); margin-bottom: 4px; }
-  .team-role { font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
-  .team-bio { font-size: .9rem; color: rgba(245,242,236,.65); line-height: 1.75; }
-  .team-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-  .team-tag { font-size: .7rem; font-weight: 600; letter-spacing: .05em; background: rgba(201,168,76,.1); color: var(--gold); padding: 5px 12px; border-radius: 2px; }
+      /* Team */
+      .team-section { padding: 48px 16px; }
+      .team-grid { grid-template-columns: 1fr; gap: 12px; margin-top: 24px; }
+      .team-card { padding: 20px; }
 
-  .offer-download {
-    display: flex; align-items: center; gap: 16px;
-    background: var(--white); border: 1px solid rgba(26,60,46,.12);
-    border-left: 3px solid var(--gold);
-    border-radius: 4px; padding: 20px 24px;
-    margin-bottom: 32px;
-  }
-  .offer-download-icon { font-size: 2rem; flex-shrink: 0; }
-  .offer-download-text { flex: 1; }
-  .offer-download-title { font-weight: 700; font-size: .95rem; color: var(--green-deep); }
-  .offer-download-sub { font-size: .8rem; color: var(--text-light); margin-top: 3px; }
-  .offer-download-btn {
-    background: var(--green-deep); color: var(--cream);
-    font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-    padding: 10px 18px; border-radius: 2px; text-decoration: none;
-    white-space: nowrap; transition: background .2s; flex-shrink: 0;
-  }
-  .offer-download-btn:hover { background: var(--green-mid); }
+      /* Form */
+      .form-section { padding: 48px 16px; }
+      .form-box { padding: 20px 16px; }
+      .form-row { grid-template-columns: 1fr; }
+      /* Prevent iOS zoom on input focus */
+      .form-field input,
+      .form-field select,
+      .form-field textarea { font-size: 16px; }
 
-  /* ── CONTACT ── */
-  .contact { background: var(--cream-warm); }
-  .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
-  .contact-bullets { list-style: none; margin-top: 28px; }
-  .contact-bullets li { display: flex; gap: 14px; align-items: flex-start; font-size: .9rem; color: var(--text-mid); line-height: 1.6; padding: 13px 0; border-bottom: 1px solid rgba(26,60,46,.08); }
-  .contact-bullets li .icon { font-size: 1.05rem; flex-shrink: 0; margin-top: 1px; }
-  .contact-form { background: var(--white); padding: 44px; border-radius: 4px; box-shadow: 0 4px 40px rgba(26,60,46,.09); }
-  .form-title { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: var(--green-deep); margin-bottom: 26px; }
-  .form-row { margin-bottom: 16px; }
-  .form-row label { display: block; font-size: .72rem; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--green-sage); margin-bottom: 7px; }
-  .form-row input, .form-row select, .form-row textarea { width: 100%; padding: 12px 15px; border: 1px solid rgba(26,60,46,.14); border-radius: 2px; font-family: 'Inter', sans-serif; font-size: .88rem; color: var(--text-dark); background: var(--cream); outline: none; transition: border-color .2s; appearance: none; }
-  .form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--green-mid); background: var(--white); }
-  .form-row textarea { resize: vertical; min-height: 100px; }
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .form-submit { width: 100%; background: var(--green-deep); color: var(--cream); font-family: 'Inter', sans-serif; font-size: .88rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 15px; border: none; border-radius: 2px; cursor: pointer; transition: background .2s; margin-top: 4px; }
-  .form-submit:hover { background: var(--green-mid); }
-  .form-note { font-size: .73rem; color: var(--text-light); text-align: center; margin-top: 10px; }
+      /* Sticky bottom CTA */
+      .mobile-cta {
+        display: flex !important;
+        position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+        background: var(--green-deep);
+        border-top: 1px solid rgba(201,168,76,0.2);
+        padding: 12px 16px;
+        gap: 10px;
+        align-items: center;
+      }
+      .mobile-cta a { flex: 1; text-align: center; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; padding: 12px 8px; border-radius: 3px; }
+      .mobile-cta .m-btn-gold { background: var(--gold); color: var(--green-deep); }
+      .mobile-cta .m-btn-ghost { color: rgba(245,242,236,0.6); border: 1px solid rgba(245,242,236,0.18); }
 
-  /* ── FOOTER ── */
-  footer { background: #080F0B; padding: 44px 48px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(201,168,76,.12); }
-  .footer-logo { font-family: 'Playfair Display', serif; font-size: .95rem; color: var(--cream); }
-  .footer-logo span { color: var(--gold); }
-  .footer-copy { font-size: .75rem; color: rgba(245,242,236,.28); }
-  .footer-links { display: flex; gap: 22px; }
-  .footer-links a { font-size: .75rem; color: rgba(245,242,236,.35); text-decoration: none; transition: color .2s; }
-  .footer-links a:hover { color: var(--gold); }
+      /* Extra bottom padding so content isn't hidden under sticky CTA */
+      footer { padding-bottom: 80px; }
+    }
 
-  .gold-divider { height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: .3; }
-
-  @media (max-width: 900px) {
-    nav { padding: 0 20px; }
-    .nav-links { display: none; }
-    section { padding: 64px 20px; }
-    .hero { padding: 96px 20px 60px; }
-    .feature-card { grid-template-columns: 1fr; }
-    .feature-card-visual { height: 180px; }
-    .secondary-grid { grid-template-columns: 1fr; }
-    .team-grid { grid-template-columns: 1fr; }
-    .contact-wrap { grid-template-columns: 1fr; gap: 36px; }
-    footer { flex-direction: column; gap: 16px; text-align: center; }
-    .stats-bar { flex-wrap: wrap; }
-    .form-grid { grid-template-columns: 1fr; }
-    .formats-strip { padding: 28px 20px; }
-  }
-</style>
+    /* Hide mobile CTA on desktop */
+    .mobile-cta { display: none; }
+  </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <div class="nav-logo"><span>Golf Events</span></div>
-  <ul class="nav-links">
-    <li><a href="#uslugi">Imprezy firmowe</a></li>
-    <li><a href="#zespol">Zespół</a></li>
-    <li><a href="#kontakt">Kontakt</a></li>
-  </ul>
-  <a href="#kontakt" class="nav-cta">Pobierz ofertę</a>
+  <a class="nav-logo" href="/">Jakub Kulig <span>Golf Academy</span></a>
+  <div class="nav-links">
+    <a href="/">Strona główna</a>
+    <a href="/lekcje">Lekcje</a>
+    <a href="#kontakt" class="nav-cta">Zapytaj o event</a>
+    <div class="lang-switch">
+      <span class="lang-active">PL</span>
+      <span class="lang-sep">|</span>
+      <a href="en/">EN</a>
+    </div>
+  </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-orb"></div>
-  <div class="hero-line"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">Imprezy Firmowe · Golf Events</div>
-    <h1>Twoja firma.<br>Wyjątkowy <em>event</em><br>golfowy.</h1>
-    <p class="hero-sub">
-      Organizujemy imprezy firmowe na najwyższym poziomie — turnieje, dni integracyjne, wyjazdy golfowe i wydarzenia na symulatorach. Kraków, cała Polska, Europa.
-    </p>
-    <div class="hero-locations">
-      <div class="hero-loc-badge"><span>⛳</span> Krakow Valley GCC</div>
-      <div class="hero-loc-badge"><span>👑</span> Royal Kraków GCC</div>
-      <div class="hero-loc-badge"><span>🎮</span> Symulatory golfowe</div>
-      <div class="hero-loc-badge"><span>🌍</span> Cała Polska i Europa</div>
+  <div class="hero-inner">
+    <p class="eyebrow">Golf Events · Kraków</p>
+    <h1>Twój wymarzony<br><em>event golfowy w Krakowie.</em></h1>
+    <p class="hero-sub">Zorganizujemy dla Ciebie <strong>imprezę firmową, urodziny,<br>wieczór kawalerski lub turniej</strong> — zajmujemy się wszystkim.</p>
+    <p class="hero-loc">Eventy na <b>dwóch krakowskich polach golfowych</b> i profesjonalnych symulatorach.</p>
+    <div class="hero-btns">
+      <a href="#kontakt" class="btn-gold">Zapytaj o event</a>
+      <a href="firma/oferta-imprezy-firmowe.pdf" class="btn-outline" target="_blank">Pobierz ofertę PDF</a>
     </div>
-    <div class="hero-buttons">
-      <a href="#kontakt" class="btn-primary">Zapytaj o event</a>
-      <a href="#uslugi" class="btn-outline">Co organizujemy</a>
+    <div class="hero-tags">
+      <p class="tags-label">Co organizujemy:</p>
+      <div class="tags-row">
+        <span class="tag-service">Imprezy firmowe</span>
+        <span class="tag-service">Kurs Zielonej Karty</span>
+        <span class="tag-service">Urodziny</span>
+        <span class="tag-service">Urodziny dla dzieci</span>
+        <span class="tag-service">Kawaler / Panieński</span>
+        <span class="tag-service">Turniej Golfowy</span>
+      </div>
+      <p class="tags-label">Organizujemy na:</p>
+      <div class="tags-row">
+        <span class="tag-loc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Krakow Valley Golf &amp; CC
+        </span>
+        <span class="tag-loc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Royal Kraków Golf &amp; CC
+        </span>
+        <span class="tag-loc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg>
+          Symulatory golfowe
+        </span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="stat-item">
-    <div class="stat-number">20+</div>
-    <div class="stat-label">Lat doświadczenia PGA</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-number">2</div>
-    <div class="stat-label">Pola w Krakowie</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-number">360°</div>
-    <div class="stat-label">Organizacja od A do Z</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-number">PL / EU</div>
-    <div class="stat-label">Polska i zagranica</div>
-  </div>
-</div>
+<section class="section" id="uslugi">
+  <div class="section-inner">
+    <p class="section-eyebrow">Czym się zajmujemy</p>
+    <h2 class="section-title">Wybierz swój event</h2>
+    <div class="cards">
 
-<div class="gold-divider"></div>
+      <div class="card">
+        <div class="card-head">
+          <div class="card-icon-row">
+            <div class="card-icon c1">&#127970;</div>
+            <div>
+              <p class="card-title">Imprezy Firmowe</p>
+              <p class="card-tagline">Integracja przez golf — dla całego zespołu.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="program-label">Program eventu</p>
+          <ul class="program">
+            <li>Wprowadzenie do golfa — zasady i etykieta</li>
+            <li>Driving range — trening pod okiem instruktora</li>
+            <li>Putting green — zabawa i rywalizacja</li>
+            <li>Gra na polu pod opieką instruktora</li>
+            <li>Konkursy z nagrodami dla zespołu</li>
+          </ul>
+          <div class="catering-note">+ opcja cateringowa dostępna w pakiecie</div>
+          <div class="card-chips"><span class="chip">Od 10 osób</span><span class="chip">Cały dzień</span><span class="chip">Nagrody</span></div>
+        </div>
+        <div class="card-footer">
+          <p class="card-price">od XX zł<em>&nbsp;/os.</em></p>
+          <a class="card-pdf" href="firma/oferta-imprezy-firmowe.pdf" target="_blank">&#8595; Oferta PDF</a>
+        </div>
+      </div>
 
-<!-- MAIN SERVICES -->
-<section class="main-services" id="uslugi">
-  <div class="section-eyebrow">Co organizujemy</div>
-  <h2 class="section-title">Golf jako narzędzie<br>budowania relacji biznesowych.</h2>
-  <p class="section-lead">
-    Imprezy golfowe to jeden z najskuteczniejszych formatów integracji dla firm — łączą aktywność, prestiż i czas spędzony razem poza biurem. Zajmujemy się wszystkim. Wy skupiacie się na ludziach.
-  </p>
+      <div class="card">
+        <div class="card-head">
+          <div class="card-icon-row">
+            <div class="card-icon c2">&#128203;</div>
+            <div>
+              <p class="card-title">Kurs Zielonej Karty</p>
+              <p class="card-tagline">Oficjalna licencja PZG w jeden dzień.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="program-label">Program dnia (6h)</p>
+          <ul class="program">
+            <li>Teoria — przepisy gry, etykieta, zasady bezpieczeństwa</li>
+            <li>Driving range — technika uderzeń od podstaw</li>
+            <li>Putting green — krótka gra i precyzja</li>
+            <li>Gra na polu pod opieką instruktora PGA</li>
+            <li>Egzamin PZG — oficjalna Zielona Karta</li>
+          </ul>
+          <div class="card-chips"><span class="chip">1 dzień</span><span class="chip">6h nauki</span><span class="chip">Egzamin PZG</span><span class="chip">Certyfikat</span></div>
+        </div>
+        <div class="card-footer">
+          <p class="card-price">od XX zł<em>&nbsp;/os.</em></p>
+        </div>
+      </div>
 
-  <!-- FEATURE: Imprezy Firmowe -->
-  <div class="feature-card">
-    <div class="feature-card-content">
-      <div class="feature-badge">★ Nasz flagowy format</div>
-      <div class="feature-card-title">Impreza Firmowa<br>na Polu Golfowym</div>
-      <p class="feature-card-desc">
-        Przyjeżdżacie — my robimy resztę. Standardowy program składa się z trzech etapów: nauka, gra, rywalizacja. Żadnego doświadczenia nie trzeba.
-      </p>
-      <ul class="feature-bullets">
-        <li><strong style="color:var(--gold);font-weight:600">Driving Range</strong> — wprowadzenie do golfa, pokazujemy technikę uderzenia, każdy próbuje samodzielnie</li>
-        <li><strong style="color:var(--gold);font-weight:600">Gra na polu</strong> — wychodzimy na dołki, instruktorzy prowadzą grupę, każdy gra we własnym tempie</li>
-        <li><strong style="color:var(--gold);font-weight:600">Mini konkurs</strong> — longest drive, closest-to-pin lub putting challenge, nagrody, świetna atmosfera</li>
-        <li>Pełna obsługa instruktorska przez cały czas — nikt nie zostaje sam</li>
-        <li>Opcjonalnie: catering, upominki firmowe, dokumentacja fotograficzna</li>
-      </ul>
-    </div>
-    <div class="feature-card-visual">
-      <span class="big-icon">⛳</span>
-    </div>
-  </div>
+      <div class="card">
+        <div class="card-head">
+          <div class="card-icon-row">
+            <div class="card-icon c3">&#127874;</div>
+            <div>
+              <p class="card-title">Impreza Urodzinowa</p>
+              <p class="card-tagline">Pierwsze spotkanie z golfem jako prezent urodzinowy.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="program-label">Program eventu</p>
+          <ul class="program">
+            <li>Wprowadzenie do golfa — bez doświadczenia wymagane</li>
+            <li>Driving range — pierwsze uderzenia z instruktorem</li>
+            <li>Putting green — zabawy i minigolf</li>
+            <li>Gra na polu pod opieką instruktora</li>
+            <li>Konkursy i pamiątkowe chwile</li>
+          </ul>
+          <div class="catering-note">+ opcja cateringowa dostępna w pakiecie</div>
+          <div class="card-chips"><span class="chip">Pole lub symulator</span><span class="chip">Dla grup</span></div>
+        </div>
+        <div class="card-footer">
+          <p class="card-price">od XX zł<em>&nbsp;/os.</em></p>
+          <a class="card-pdf" href="firma/oferta-urodziny.pdf" target="_blank">&#8595; Oferta PDF</a>
+        </div>
+      </div>
 
-  <!-- 3 secondary cards -->
-  <div class="secondary-grid" style="grid-template-columns: repeat(2,1fr)">
-    <div class="service-card">
-      <div class="service-icon">🎮</div>
-      <div class="service-title">Event na Symulatorze</div>
-      <p class="service-desc">Golf bez wychodzenia z miasta — organizujemy turnieje i dni integracyjne na profesjonalnych symulatorach golfowych. Świetna opcja całoroczna, niezależna od pogody. Dla każdego poziomu zaawansowania.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">✈️</div>
-      <div class="service-title">Wyjazdowy Event Golfowy</div>
-      <p class="service-desc">Organizujemy wyjazdy golfowe dla firm — do Португalii, Hiszpanii, Włoch, Szkocji i innych destynacji. Pełna obsługa logistyczna: pole, hotel, transport, program rozgrywek i opieka instruktorska na miejscu.</p>
+      <div class="card">
+        <div class="card-head">
+          <div class="card-icon-row">
+            <div class="card-icon c4">&#11088;</div>
+            <div>
+              <p class="card-title">Urodziny dla dzieci</p>
+              <p class="card-tagline">Golf, zabawa i niespodzianki — od 10 lat.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="program-label">Program eventu</p>
+          <ul class="program">
+            <li>Wprowadzenie do golfa w formie zabawy</li>
+            <li>Driving range — pierwsze uderzenia po dziecięcemu</li>
+            <li>Putting green — minigolf i zabawy celności</li>
+            <li>Gra na polu z instruktorem</li>
+            <li>Konkursy i upominek dla każdego dziecka</li>
+          </ul>
+          <div class="catering-note">+ opcja cateringowa dostępna w pakiecie</div>
+          <div class="card-chips"><span class="chip">Od 10 lat</span><span class="chip">Upominki</span><span class="chip">Konkursy</span></div>
+        </div>
+        <div class="card-footer">
+          <p class="card-price">od XX zł<em>&nbsp;/os.</em></p>
+          <a class="card-pdf" href="firma/oferta-urodziny-dzieci.pdf" target="_blank">&#8595; Oferta PDF</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-icon-row">
+            <div class="card-icon c5">&#128141;</div>
+            <div>
+              <p class="card-title">Kawaler / Panieński</p>
+              <p class="card-tagline">Niezapomniana impreza przed wielkim dniem.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="program-label">Program eventu</p>
+          <ul class="program">
+            <li>Wprowadzenie do golfa dla całej grupy</li>
+            <li>Driving range — konkurs na najdłuższe uderzenie</li>
+            <li>Putting green — konkurs celności</li>
+            <li>Gra na polu z instruktorem</li>
+            <li>Zabawne konkursy z nagrodami</li>
+          </ul>
+          <div class="catering-note">+ opcja cateringowa dostępna w pakiecie</div>
+          <div class="card-chips"><span class="chip">Grupy</span><span class="chip">Konkursy</span><span class="chip">Dobra zabawa</span></div>
+        </div>
+        <div class="card-footer">
+          <p class="card-price">od XX zł<em>&nbsp;/os.</em></p>
+          <a class="card-pdf" href="firma/oferta-kawalerski.pdf" target="_blank">&#8595; Oferta PDF</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-icon-row">
+            <div class="card-icon c6">&#127942;</div>
+            <div>
+              <p class="card-title">Turniej Golfowy</p>
+              <p class="card-tagline">Kompleksowa organizacja od A do Z.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Jesteśmy w stanie kompleksowo zrealizować turniej golfowy dla Twojej firmy, grupy przyjaciół lub lokalnej społeczności — niezależnie od skali i formatu zawodów.</p>
+          <div class="card-chips"><span class="chip">Zapisy</span><span class="chip">Scorecards</span><span class="chip">Nagrody</span><span class="chip">Catering</span></div>
+        </div>
+        <div class="card-footer">
+          <p class="card-price">Wycena indywidualna</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- FORMATS STRIP -->
-<div class="formats-strip">
-  <span class="formats-label">Możemy zorganizować event na:</span>
-  <span class="format-chip">⛳ Krakow Valley Golf & CC</span>
-  <span class="format-chip">👑 Royal Kraków Golf & CC</span>
-  <span class="format-chip">🇵🇱 Dowolnym polu w Polsce</span>
-  <span class="format-chip">🎮 Symulatorach golfowych</span>
-  <span class="format-chip">🌍 Polach za granicą</span>
-</div>
-
-<div class="gold-divider"></div>
-
-<!-- TEAM -->
-<section class="team" id="zespol">
-  <div class="section-eyebrow">Zespół</div>
-  <h2 class="section-title">Dwaj instruktorzy PGA.<br>Jedno doświadczenie.</h2>
-  <p class="section-lead">Łączymy ponad 20 lat doświadczenia golfowego z pasją do organizacji wydarzeń. Jesteśmy na miejscu podczas każdego eventu — od przywitania gości po wręczenie nagród.</p>
-  <div class="team-grid">
-
-    <!-- WIESŁAW FIRST -->
-    <div class="team-card">
-      <div class="team-avatar wk">⛳</div>
-      <div class="team-name">Wiesław Klima</div>
-      <div class="team-role">Head Pro · PGA Qualified Golf Trainer · 20+ lat doświadczenia</div>
-      <p class="team-bio">Po kilkunastu latach fascynacji golfem amatorskim w USA, pasja do tej dyscypliny przekształciła się w sposób na życie. Kariera nauczycielska oraz przynależność do PGA Polska trwa nieprzerwanie od ponad 20 lat. Po doświadczeniach zdobytych podczas licznych szkoleń PGA i wieloletnim stażu w obcowaniu z golfem — zaraża pasją do tej pięknej gry zarówno początkujących, jak i bardziej doświadczonych graczy.</p>
-      <div class="team-tags">
-        <span class="team-tag">PGA Polska</span>
-        <span class="team-tag">20+ lat</span>
-        <span class="team-tag">Eventy firmowe</span>
-        <span class="team-tag">USA experience</span>
+<section class="team-section" id="zespol">
+  <div class="team-inner">
+    <p class="section-eyebrow" style="color:var(--gold);">Zespół</p>
+    <h2 class="section-title" style="color:var(--cream);margin-bottom:0;">Prowadzeni przez PGA Pro</h2>
+    <p style="font-size:13px;color:rgba(245,242,236,0.45);margin-top:8px;">Ponad 20 lat doświadczenia w organizacji eventów golfowych w Polsce i Europie.</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">JK</div>
+        <p class="team-name">Jakub Kulig</p>
+        <p class="team-role">PGA Professional</p>
+        <p class="team-bio">Instruktor z licencją PGA, wieloletnie doświadczenie w nauce i organizacji eventów golfowych.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">WK</div>
+        <p class="team-name">Wiesław Klima</p>
+        <p class="team-role">PGA Professional</p>
+        <p class="team-bio">Współzałożyciel akademii, specjalista od eventów firmowych i kursów Zielonej Karty.</p>
       </div>
     </div>
-
-    <!-- JAKUB SECOND -->
-    <div class="team-card">
-      <div class="team-avatar jk">🏌️</div>
-      <div class="team-name">Jakub Kulig</div>
-      <div class="team-role">PGA Polska Golf Instructor · Event Lead</div>
-      <p class="team-bio">Certyfikowany instruktor PGA Polska z doświadczeniem w prowadzeniu lekcji indywidualnych i grupowych w Krakow Valley i Royal Kraków. Specjalizuje się w pracy z grupami korporacyjnymi i osobami stawiającymi pierwsze kroki w golfie. Absolwent egzaminu PGA Polska 2026.</p>
-      <div class="team-tags">
-        <span class="team-tag">PGA Polska 2026</span>
-        <span class="team-tag">Krakow Valley</span>
-        <span class="team-tag">Royal Kraków</span>
-        <span class="team-tag">Grupy firmowe</span>
-      </div>
-    </div>
-
   </div>
 </section>
 
-<div class="gold-divider"></div>
-
-<!-- CONTACT -->
-<section class="contact" id="kontakt">
-  <div class="contact-wrap">
-    <div class="contact-info">
-      <div class="section-eyebrow">Kontakt</div>
-      <h2 class="section-title">Zaplanujmy<br>Wasz event razem.</h2>
-      <p class="section-lead">Wypełnijcie formularz, a odezwiemy się w ciągu 24 h z wstępną propozycją i bezpłatną konsultacją. Bez zobowiązań.</p>
-
-      <!-- PDF OFFER DOWNLOAD -->
-      <div class="offer-download">
-        <div class="offer-download-icon">📄</div>
-        <div class="offer-download-text">
-          <div class="offer-download-title">Oferta dla firm 2025</div>
-          <div class="offer-download-sub">Programy, pakiety, cennik — wszystko w jednym pliku PDF</div>
-        </div>
-        <a href="#" class="offer-download-btn">Pobierz ofertę →</a>
-      </div>
-
-      <ul class="contact-bullets">
-        <li><span class="icon">📅</span><span>Odpowiedź w ciągu 24 h od zgłoszenia</span></li>
-        <li><span class="icon">🎯</span><span>Bezpłatna konsultacja i wstępna wycena</span></li>
-        <li><span class="icon">🌍</span><span>Kraków, cała Polska, Europa — dojeżdżamy</span></li>
-      </ul>
-    </div>
-    <div class="contact-form">
-      <div class="form-title">Zapytanie o event firmowy</div>
-      <div class="form-grid">
+<section class="form-section" id="kontakt">
+  <div class="form-inner">
+    <p class="section-eyebrow">Kontakt</p>
+    <h2 class="section-title">Zapytaj o event</h2>
+    <div class="form-box">
+      <form id="firma-form" action="https://formspree.io/f/xwvzzwld" method="POST">
+        <input type="hidden" name="_subject" value="Nowe zapytanie o event — jakubkulig.pl/firma" />
         <div class="form-row">
-          <label>Imię i nazwisko</label>
-          <input type="text" placeholder="Jan Kowalski">
+          <div class="form-field">
+            <label for="name">Imię i nazwisko</label>
+            <input type="text" id="name" name="name" placeholder="Jan Kowalski" required />
+          </div>
+          <div class="form-field">
+            <label for="phone">Telefon</label>
+            <input type="tel" id="phone" name="phone" placeholder="+48 ..." />
+          </div>
         </div>
-        <div class="form-row">
-          <label>Firma</label>
-          <input type="text" placeholder="Nazwa firmy">
+        <div class="form-field">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="jan@firma.pl" required />
         </div>
-      </div>
-      <div class="form-grid">
-        <div class="form-row">
-          <label>E-mail</label>
-          <input type="email" placeholder="jan@firma.pl">
-        </div>
-        <div class="form-row">
-          <label>Telefon</label>
-          <input type="tel" placeholder="+48 500 000 000">
-        </div>
-      </div>
-      <div class="form-row">
-        <label>Format eventu</label>
-        <select>
-          <option value="">Wybierz format...</option>
-          <option>Impreza firmowa na polu golfowym</option>
-          <option>Dzień integracyjny</option>
-          <option>Event na symulatorze golfowym</option>
-          <option>Wyjazdowy event golfowy</option>
-          <option>Nie wiem jeszcze — potrzebuję porady</option>
-        </select>
-      </div>
-      <div class="form-grid">
-        <div class="form-row">
-          <label>Liczba uczestników</label>
-          <select>
-            <option value="">Ile osób?</option>
-            <option>10–20 osób</option>
-            <option>20–40 osób</option>
-            <option>40–80 osób</option>
-            <option>80+ osób</option>
+        <div class="form-field">
+          <label for="event-type">Rodzaj eventu</label>
+          <select id="event-type" name="event_type">
+            <option value="">Wybierz rodzaj eventu...</option>
+            <option>Impreza firmowa</option>
+            <option>Kurs Zielonej Karty</option>
+            <option>Urodziny</option>
+            <option>Urodziny dla dzieci</option>
+            <option>Kawaler / Panieński</option>
+            <option>Turniej Golfowy</option>
           </select>
         </div>
         <div class="form-row">
-          <label>Preferowany termin</label>
-          <input type="text" placeholder="np. wrzesień 2025">
+          <div class="form-field">
+            <label for="people">Liczba osób</label>
+            <input type="text" id="people" name="people" placeholder="np. 20" />
+          </div>
+          <div class="form-field">
+            <label for="date">Preferowana data</label>
+            <input type="text" id="date" name="date" placeholder="np. sierpień 2025" />
+          </div>
         </div>
+        <div class="form-field">
+          <label for="message">Dodatkowe informacje</label>
+          <textarea id="message" name="message" placeholder="Opisz czego potrzebujesz..."></textarea>
+        </div>
+        <button type="submit" class="form-submit" id="submit-btn">Wyślij zapytanie</button>
+      </form>
+      <div class="form-success" id="form-success">
+        <p style="font-size:20px;margin-bottom:8px;">&#10003;</p>
+        <p>Dziękujemy! Odezwiemy się w ciągu 24h.</p>
       </div>
-      <div class="form-row">
-        <label>Dodatkowe informacje</label>
-        <textarea placeholder="Cel eventu, lokalizacja, budżet, catering, nagrody, specjalne oczekiwania..."></textarea>
-      </div>
-      <button class="form-submit">Wyślij zapytanie →</button>
-      <p class="form-note">Odpowiadamy w ciągu 24 godzin. Bez spamu, bez zobowiązań.</p>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-logo"><span>Golf Events</span> · Kraków</div>
-  <div class="footer-copy">© 2025 · Korporacyjne Imprezy Golfowe</div>
-  <div class="footer-links">
-    <a href="#">Polityka prywatności</a>
-    <a href="https://jakubkulig.pl" target="_blank">jakubkulig.pl</a>
-  </div>
+  <p>&copy; 2025 Jakub Kulig Golf Academy &nbsp;·&nbsp; <a href="/">jakubkulig.pl</a> &nbsp;·&nbsp; <a href="mailto:kontakt@jakubkulig.pl">kontakt@jakubkulig.pl</a></p>
 </footer>
 
+<!-- MOBILE STICKY CTA -->
+<div class="mobile-cta" id="mobile-cta">
+  <a href="#kontakt" class="m-btn-gold">Zapytaj o event</a>
+  <a href="#uslugi" class="m-btn-ghost">Zobacz ofertę</a>
+</div>
+
+<script>
+  // Hide sticky CTA when contact form is in view
+  const contactSection = document.getElementById('kontakt');
+  const mobileCta = document.getElementById('mobile-cta');
+  if (contactSection && mobileCta) {
+    const obs = new IntersectionObserver(entries => {
+      mobileCta.style.display = entries[0].isIntersecting ? 'none' : '';
+    }, { threshold: 0.1 });
+    obs.observe(contactSection);
+  }
+
+  const form = document.getElementById('firma-form');
+  const btn = document.getElementById('submit-btn');
+  const success = document.getElementById('form-success');
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    btn.textContent = 'Wysyłanie...';
+    btn.disabled = true;
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+      if (res.ok) { form.style.display = 'none'; success.style.display = 'block'; }
+      else { btn.textContent = 'Błąd — spróbuj ponownie'; btn.disabled = false; }
+    } catch(err) { btn.textContent = 'Błąd — spróbuj ponownie'; btn.disabled = false; }
+  });
+</script>
 </body>
 </html>
