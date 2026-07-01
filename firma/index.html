@@ -89,11 +89,11 @@
     .catering-note { font-size: 10.5px; color: var(--gold); background: rgba(201,168,76,0.07); border: 0.5px solid rgba(201,168,76,0.2); border-radius: 3px; padding: 6px 10px; margin-bottom: 14px; }
     .card-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; margin-top: auto; }
     .chip { font-size: 10px; color: var(--green-sage); background: var(--cream); border: 0.5px solid rgba(82,121,111,0.18); padding: 4px 9px; border-radius: 2px; }
-    .card-footer { display: flex; align-items: center; justify-content: space-between; border-top: 0.5px solid rgba(26,60,46,0.07); padding: 12px 18px; }
-    .card-price { font-size: 13px; color: var(--green-deep); font-weight: 600; }
-    .card-price em { font-style: normal; font-size: 11px; color: var(--green-sage); font-weight: 400; }
-    .card-pdf { font-size: 11px; color: var(--gold); font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
-    .card-pdf:hover { opacity: 0.75; }
+    .card-footer { border-top: 0.5px solid rgba(26,60,46,0.07); padding: 12px 18px; }
+    .card-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 600; color: var(--green-deep); text-decoration: none; border: 1.5px solid rgba(26,60,46,0.2); padding: 8px 16px; border-radius: 100px; transition: all 0.2s; letter-spacing: 0.3px; }
+    .card-btn:hover { background: var(--green-deep); color: var(--cream); border-color: var(--green-deep); }
+    .card-btn-cta { border-color: rgba(201,168,76,0.4); color: var(--gold); }
+    .card-btn-cta:hover { background: rgba(201,168,76,0.1); color: var(--gold); border-color: var(--gold); }
     .c1 { background: rgba(201,168,76,.12); color: #C9A84C; }
     .c2 { background: rgba(45,106,79,.12);  color: #2D6A4F; }
     .c3 { background: rgba(199,94,86,.1);   color: #c75e56; }
@@ -207,7 +207,6 @@
     </div>
   </div>
 </nav>
-
 <section class="hero">
   <div class="hero-inner">
     <p class="eyebrow">Golf Events · Kraków</p>
@@ -216,7 +215,7 @@
     <p class="hero-loc">Eventy na <b>dwóch krakowskich polach golfowych</b> i profesjonalnych symulatorach.</p>
     <div class="hero-btns">
       <a href="#kontakt" class="btn-gold">Zapytaj o event</a>
-      <a href="firma/oferta-imprezy-firmowe.pdf" class="btn-outline" target="_blank">Pobierz ofertę PDF</a>
+      <a href="#kontakt" class="btn-outline">Zapytaj o event</a>
     </div>
     <div class="hero-tags">
       <p class="tags-label">Co organizujemy:</p>
@@ -276,11 +275,9 @@
           <div class="card-chips"><span class="chip">Od 10 osób</span><span class="chip">Cały dzień</span><span class="chip">Nagrody</span></div>
         </div>
         <div class="card-footer">
-          <p class="card-price">od XX zł<em>&nbsp;/os.</em></p>
-          <a class="card-pdf" href="firma/oferta-imprezy-firmowe.pdf" target="_blank">&#8595; Oferta PDF</a>
+          <a class="card-btn card-btn-cta" href="#kontakt">Zapytaj o event →</a>
         </div>
       </div>
-
       <div class="card">
         <div class="card-head">
           <div class="card-icon-row">
@@ -303,7 +300,7 @@
           <div class="card-chips"><span class="chip">1 dzień</span><span class="chip">6h nauki</span><span class="chip">Egzamin PZG</span><span class="chip">Certyfikat</span></div>
         </div>
         <div class="card-footer">
-          <p class="card-price">od XX zł<em>&nbsp;/os.</em></p>
+          <a class="card-btn card-btn-cta" href="#kontakt">Zapytaj o termin →</a>
         </div>
       </div>
 
@@ -330,9 +327,7 @@
           <div class="card-chips"><span class="chip">Pole lub symulator</span><span class="chip">Dla grup</span></div>
         </div>
         <div class="card-footer">
-          <p class="card-price">od XX zł<em>&nbsp;/os.</em></p>
-          <a class="card-pdf" href="urodziny/" style="margin-right:8px">Zobacz szczegóły →</a>
-          <a class="card-pdf" href="firma/oferta-urodziny.pdf" target="_blank">&#8595; Oferta PDF</a>
+          <a class="card-btn" href="urodziny/">Zobacz szczegóły →</a>
         </div>
       </div>
 
@@ -359,8 +354,7 @@
           <div class="card-chips"><span class="chip">Od 10 lat</span><span class="chip">Upominki</span><span class="chip">Konkursy</span></div>
         </div>
         <div class="card-footer">
-          <p class="card-price">od XX zł<em>&nbsp;/os.</em></p>
-          <a class="card-pdf" href="firma/oferta-urodziny-dzieci.pdf" target="_blank">&#8595; Oferta PDF</a>
+          <a class="card-btn" href="urodziny-dzieci/">Zobacz szczegóły →</a>
         </div>
       </div>
 
@@ -387,9 +381,7 @@
           <div class="card-chips"><span class="chip">Grupy</span><span class="chip">Konkursy</span><span class="chip">Dobra zabawa</span></div>
         </div>
         <div class="card-footer">
-          <p class="card-price">od XX zł<em>&nbsp;/os.</em></p>
-          <a class="card-pdf" href="kawalerski/" style="margin-right:8px">Zobacz szczegóły →</a>
-          <a class="card-pdf" href="firma/oferta-kawalerski.pdf" target="_blank">&#8595; Oferta PDF</a>
+          <a class="card-btn" href="kawalerski/">Zobacz szczegóły →</a>
         </div>
       </div>
 
@@ -408,14 +400,13 @@
           <div class="card-chips"><span class="chip">Zapisy</span><span class="chip">Scorecards</span><span class="chip">Nagrody</span><span class="chip">Catering</span></div>
         </div>
         <div class="card-footer">
-          <p class="card-price">Wycena indywidualna</p>
+          <a class="card-btn card-btn-cta" href="#kontakt">Zapytaj o wycenę →</a>
         </div>
       </div>
 
     </div>
   </div>
 </section>
-
 <section class="team-section" id="zespol">
   <div class="team-inner">
     <p class="section-eyebrow" style="color:var(--gold);">Zespół</p>
