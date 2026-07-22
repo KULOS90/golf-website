@@ -1,1 +1,562 @@
-MISSING
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eventy Firmowe na Polu Golfowym – Kraków | Jakub Kulig Golf Academy</title>
+  <meta name="description" content="Imprezy firmowe i integracje na polu golfowym pod Krakowem. Grupowe kursy Zielonej Karty, urodziny i eventy na zamówienie. Pełna organizacja." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green-deep: #1A3C2E;
+      --green-mid:  #2D6A4F;
+      --green-sage: #52796F;
+      --gold:       #C9A84C;
+      --cream:      #F5F2EC;
+      --white:      #FFFFFF;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--green-deep); line-height: 1.6; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(15,36,25,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+      padding: 0 24px; display: flex; align-items: center;
+      justify-content: space-between; height: 58px;
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--cream); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(245,242,236,0.65); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { background: var(--gold); color: var(--green-deep) !important; padding: 7px 16px; border-radius: 3px; font-weight: 600 !important; }
+    .lang-switch { display: flex; align-items: center; gap: 6px; margin-left: 8px; border-left: 1px solid rgba(201,168,76,0.2); padding-left: 16px; }
+    .lang-switch a, .lang-active { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+    .lang-switch a { color: rgba(245,242,236,0.4); text-decoration: none; transition: color 0.2s; }
+    .lang-switch a:hover { color: var(--gold); }
+    .lang-active { color: var(--gold); }
+    .lang-sep { color: rgba(245,242,236,0.2); font-size: 10px; }
+
+    .hero {
+      min-height: 100vh; background: linear-gradient(145deg, #0a1f12 0%, #1A3C2E 55%, #2D6A4F 100%);
+      display: flex; align-items: center; padding: 100px 24px 60px; position: relative; overflow: hidden;
+    }
+    .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 65%); pointer-events: none; }
+    .hero-inner { max-width: 720px; position: relative; z-index: 1; }
+    .eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 3.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+    .eyebrow::after { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); opacity: 0.5; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 6vw, 52px); font-weight: 500; color: var(--cream); line-height: 1.15; margin-bottom: 18px; }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero-sub { font-size: 15px; color: rgba(245,242,236,0.78); line-height: 1.7; margin-bottom: 8px; max-width: 540px; }
+    .hero-sub strong { color: var(--cream); font-weight: 500; }
+    .hero-loc { font-size: 13px; color: rgba(245,242,236,0.48); margin-bottom: 36px; }
+    .hero-loc b { color: rgba(201,168,76,0.75); font-weight: 400; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+    .btn-gold { background: var(--gold); color: var(--green-deep); border: none; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 14px 28px; border-radius: 3px; cursor: pointer; text-decoration: none; display: inline-block; transition: opacity 0.2s; }
+    .btn-gold:hover { opacity: 0.88; }
+    .btn-outline { background: transparent; color: var(--cream); border: 1px solid rgba(245,242,236,0.3); font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 28px; border-radius: 3px; cursor: pointer; text-decoration: none; display: inline-block; transition: border-color 0.2s; }
+    .btn-outline:hover { border-color: rgba(201,168,76,0.5); }
+    .hero-tags { border-top: 1px solid rgba(201,168,76,0.18); padding-top: 28px; }
+    .tags-label { font-size: 9px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(201,168,76,0.5); margin-bottom: 10px; }
+    .tags-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+    .tag-service { font-size: 11px; color: rgba(245,242,236,0.7); background: rgba(201,168,76,0.09); border: 1px solid rgba(201,168,76,0.18); padding: 6px 13px; border-radius: 3px; }
+    .tag-loc { font-size: 11.5px; color: rgba(245,242,236,0.82); background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.25); padding: 6px 14px; border-radius: 3px; display: flex; align-items: center; gap: 6px; }
+    .tag-loc svg { width: 12px; height: 12px; color: var(--gold); flex-shrink: 0; }
+
+    .section { padding: 72px 24px; }
+    .section-inner { max-width: 1000px; margin: 0 auto; }
+    .section-eyebrow { font-size: 9px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(22px, 4vw, 32px); font-weight: 500; color: var(--green-deep); margin-bottom: 36px; }
+
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .card { background: var(--white); border: 0.5px solid rgba(26,60,46,0.1); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; transition: box-shadow 0.25s, transform 0.25s; }
+    .card:hover { box-shadow: 0 8px 32px rgba(26,60,46,0.1); transform: translateY(-2px); }
+    .card-head { padding: 18px 18px 14px; border-bottom: 0.5px solid rgba(26,60,46,0.07); }
+    .card-icon-row { display: flex; align-items: flex-start; gap: 12px; }
+    .card-icon { width: 38px; height: 38px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+    .card-title { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 500; color: var(--green-deep); margin-bottom: 3px; line-height: 1.3; }
+    .card-tagline { font-size: 11px; color: var(--green-sage); line-height: 1.5; }
+    .card-body { padding: 16px 18px; flex: 1; display: flex; flex-direction: column; }
+    .program-label { font-size: 8.5px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(82,121,111,0.55); margin-bottom: 10px; }
+    .program { list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px; }
+    .program li { display: flex; align-items: flex-start; gap: 9px; font-size: 12px; color: var(--green-deep); line-height: 1.45; }
+    .program li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); margin-top: 5px; flex-shrink: 0; }
+    .card-desc { font-size: 12.5px; color: var(--green-sage); line-height: 1.65; margin-bottom: 14px; }
+    .catering-note { font-size: 10.5px; color: var(--gold); background: rgba(201,168,76,0.07); border: 0.5px solid rgba(201,168,76,0.2); border-radius: 3px; padding: 6px 10px; margin-bottom: 14px; }
+    .card-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; margin-top: auto; }
+    .chip { font-size: 10px; color: var(--green-sage); background: var(--cream); border: 0.5px solid rgba(82,121,111,0.18); padding: 4px 9px; border-radius: 2px; }
+    .card-footer { border-top: 0.5px solid rgba(26,60,46,0.07); padding: 12px 18px; }
+    .card-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 600; color: var(--green-deep); text-decoration: none; border: 1.5px solid rgba(26,60,46,0.2); padding: 8px 16px; border-radius: 100px; transition: all 0.2s; letter-spacing: 0.3px; }
+    .card-btn:hover { background: var(--green-deep); color: var(--cream); border-color: var(--green-deep); }
+    .card-btn-cta { border-color: rgba(201,168,76,0.4); color: var(--gold); }
+    .card-btn-cta:hover { background: rgba(201,168,76,0.1); color: var(--gold); border-color: var(--gold); }
+    .c1 { background: rgba(201,168,76,.12); color: #C9A84C; }
+    .c2 { background: rgba(45,106,79,.12);  color: #2D6A4F; }
+    .c3 { background: rgba(199,94,86,.1);   color: #c75e56; }
+    .c4 { background: rgba(77,139,207,.1);  color: #4d8bcf; }
+    .c5 { background: rgba(130,92,173,.1);  color: #825cad; }
+    .c6 { background: rgba(46,139,87,.1);   color: #2e8b57; }
+
+    .team-section { background: var(--green-deep); padding: 72px 24px; }
+    .team-inner { max-width: 1000px; margin: 0 auto; }
+    .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
+    .team-card { background: rgba(255,255,255,0.06); border: 0.5px solid rgba(201,168,76,0.15); border-radius: 10px; padding: 24px; }
+    .team-avatar { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #2D6A4F, #1A3C2E); border: 2px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; color: var(--gold); margin-bottom: 14px; font-family: 'Playfair Display', serif; }
+    .team-name { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 500; color: var(--cream); margin-bottom: 3px; }
+    .team-role { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(201,168,76,0.7); margin-bottom: 10px; }
+    .team-bio { font-size: 12px; color: rgba(245,242,236,0.5); line-height: 1.6; }
+
+    .form-section { background: var(--cream); padding: 72px 24px; }
+    .form-inner { max-width: 640px; margin: 0 auto; }
+    .form-box { background: var(--white); border-radius: 12px; padding: 32px; border: 0.5px solid rgba(26,60,46,0.1); box-shadow: 0 4px 24px rgba(26,60,46,0.06); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+    .form-field label { font-size: 9.5px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green-sage); }
+    .form-field input, .form-field select, .form-field textarea { border: 0.5px solid rgba(26,60,46,0.2); border-radius: 5px; padding: 10px 13px; font-size: 13px; font-family: 'Inter', sans-serif; color: var(--green-deep); background: var(--cream); outline: none; resize: none; transition: border-color 0.2s; appearance: none; }
+    .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--gold); }
+    .form-field textarea { height: 90px; }
+    .form-submit { background: var(--gold); color: var(--green-deep); border: none; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 14px 28px; border-radius: 3px; cursor: pointer; width: 100%; font-family: 'Inter', sans-serif; transition: opacity 0.2s; }
+    .form-submit:hover { opacity: 0.88; }
+    .form-success { display: none; text-align: center; padding: 20px; color: var(--green-mid); font-size: 14px; }
+
+    footer { background: #0a1f12; padding: 32px 24px; text-align: center; border-top: 1px solid rgba(201,168,76,0.1); }
+    footer p { font-size: 11px; color: rgba(245,242,236,0.35); }
+    footer a { color: rgba(201,168,76,0.6); text-decoration: none; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 640px) {
+      /* Nav */
+      .nav-links a:not(.nav-cta):not(.lang-switch a) { display: none; }
+      .nav-links > a:not(.nav-cta) { display: none; }
+      .nav-cta { font-size: 10px; padding: 6px 13px; }
+      .lang-switch { border-left: none; padding-left: 0; margin-left: 4px; }
+
+      /* Hero */
+      .hero {
+        min-height: 100svh;
+        padding: 80px 20px 48px;
+        align-items: flex-start;
+      }
+      .hero h1 { font-size: 30px; }
+      .hero-sub { font-size: 14px; }
+      .hero-sub br { display: none; }
+      .hero-loc { font-size: 12px; margin-bottom: 28px; }
+      .hero-btns { flex-direction: column; gap: 10px; margin-bottom: 32px; }
+      .btn-gold, .btn-outline { text-align: center; padding: 15px 20px; font-size: 11px; }
+      .tags-row { gap: 6px; }
+      .tag-service, .tag-loc { font-size: 10.5px; padding: 5px 10px; }
+
+      /* Services */
+      .section { padding: 48px 16px; }
+      .cards { grid-template-columns: 1fr; gap: 12px; }
+      .card-title { font-size: 15px; }
+      .program li { font-size: 13px; }
+
+      /* Team */
+      .team-section { padding: 48px 16px; }
+      .team-grid { grid-template-columns: 1fr; gap: 12px; margin-top: 24px; }
+      .team-card { padding: 20px; }
+
+      /* Form */
+      .form-section { padding: 48px 16px; }
+      .form-box { padding: 20px 16px; }
+      .form-row { grid-template-columns: 1fr; }
+      /* Prevent iOS zoom on input focus */
+      .form-field input,
+      .form-field select,
+      .form-field textarea { font-size: 16px; }
+
+      /* Sticky bottom CTA */
+      .mobile-cta {
+        display: flex !important;
+        position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+        background: var(--green-deep);
+        border-top: 1px solid rgba(201,168,76,0.2);
+        padding: 12px 16px;
+        gap: 10px;
+        align-items: center;
+      }
+      .mobile-cta a { flex: 1; text-align: center; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; padding: 12px 8px; border-radius: 3px; }
+      .mobile-cta .m-btn-gold { background: var(--gold); color: var(--green-deep); }
+      .mobile-cta .m-btn-ghost { color: rgba(245,242,236,0.6); border: 1px solid rgba(245,242,236,0.18); }
+
+      /* Extra bottom padding so content isn't hidden under sticky CTA */
+      footer { padding-bottom: 80px; }
+    }
+
+    /* Hide mobile CTA on desktop */
+    .mobile-cta { display: none; }
+
+    /* ===== EVENTY FIRMOWE - nowy hero + oferta (v2) ===== */
+    .hero-v2 { position: relative; min-height: 88vh; display: flex; align-items: center; overflow: hidden; background: #0a1f12; }
+    .hero-v2 .hero-bg { position: absolute; inset: 0; background-image: url('hero-firma.jpg'); background-size: cover; background-position: 60% center; }
+    .hero-v2 .hero-scrim { position: absolute; inset: 0; background: linear-gradient(96deg, rgba(10,26,18,0.92) 0%, rgba(10,26,18,0.78) 26%, rgba(10,26,18,0.42) 46%, rgba(10,26,18,0.08) 62%, rgba(10,26,18,0) 76%), linear-gradient(180deg, rgba(10,26,18,0.55) 0%, rgba(10,26,18,0) 26%); }
+    .hero-v2 .hero-v2-inner { position: relative; z-index: 2; width: 100%; max-width: 1200px; margin: 0 auto; padding: 120px 24px; }
+    .hero-v2 .hero-copy { max-width: 600px; }
+    .lockup { display: flex; flex-direction: column; align-items: flex-start; gap: 9px; margin-bottom: 40px; }
+    .lockup .mark { color: var(--gold); }
+    .lockup .lk-name { font-size: 18px; letter-spacing: 6px; text-transform: uppercase; color: var(--cream); }
+    .lockup .lk-tag { font-size: 9.5px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); }
+    .hero-v2 h1 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 5.6vw, 72px); font-weight: 500; line-height: 1.04; letter-spacing: -1px; color: var(--cream); text-shadow: 0 2px 30px rgba(0,0,0,0.45); margin: 0; }
+    .hero-v2 h1 span { display: block; }
+    .hero-v2 h1 .gold { color: var(--gold); }
+    .hero-rule { width: 150px; height: 1px; background: var(--gold); opacity: 0.8; margin: 32px 0 20px; }
+    .hero-dots { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-size: 12px; letter-spacing: 2.6px; text-transform: uppercase; color: rgba(245,242,236,0.92); text-shadow: 0 1px 14px rgba(0,0,0,0.5); }
+    .hero-dots i { color: var(--gold); font-style: normal; font-size: 10px; }
+    .hero-v2-cta { margin-top: 40px; }
+    .btn-hero { display: inline-flex; align-items: center; gap: 14px; background: var(--gold); color: var(--green-deep); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 16px 28px; border-radius: 3px; text-decoration: none; box-shadow: 0 8px 26px rgba(0,0,0,0.28); transition: transform 0.2s, opacity 0.2s; }
+    .btn-hero:hover { opacity: 0.9; transform: translateY(-2px); }
+    .strip { background: #14301f; }
+    .strip-in { display: grid; grid-template-columns: repeat(4, 1fr); max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .strip-item { display: flex; align-items: center; gap: 14px; padding: 24px 22px 24px 0; border-right: 1px solid rgba(245,242,236,0.1); }
+    .strip-item:last-child { border-right: 0; }
+    .strip-item svg { flex-shrink: 0; color: var(--gold); width: 28px; height: 28px; }
+    .strip-item h3 { font-size: 11px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--cream); font-weight: 700; margin-bottom: 3px; }
+    .strip-item p { font-size: 12px; color: rgba(245,242,236,0.6); font-weight: 300; line-height: 1.4; }
+    .main-card { background: var(--white); border: 1px solid rgba(45,106,79,0.16); border-radius: 20px; overflow: hidden; margin-bottom: 24px; text-align: left; }
+    .mc-top { background: var(--green-mid); color: var(--cream); padding: 38px; display: flex; justify-content: space-between; align-items: flex-start; gap: 26px; flex-wrap: wrap; }
+    .mc-for { font-size: 11px; letter-spacing: 1.6px; text-transform: uppercase; color: rgba(245,242,236,0.55); margin-bottom: 8px; }
+    .mc-title { font-family: 'Playfair Display', serif; font-size: clamp(25px, 3vw, 34px); font-weight: 600; color: var(--white); margin-bottom: 10px; }
+    .mc-tagline { font-size: 15px; color: rgba(245,242,236,0.82); font-weight: 300; max-width: 48ch; }
+    .mc-badge { background: var(--gold); color: var(--green-deep); border-radius: 12px; padding: 14px 20px; text-align: center; flex-shrink: 0; }
+    .mc-badge .amt { display: block; font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 600; line-height: 1.15; }
+    .mc-badge .lab { display: block; font-size: 9.5px; letter-spacing: 1.6px; text-transform: uppercase; opacity: 0.75; margin-top: 3px; }
+    .mc-body { padding: 32px 38px 38px; }
+    .mc-highlight { display: inline-block; background: rgba(45,106,79,0.08); color: var(--green-mid); border: 1px solid rgba(45,106,79,0.22); border-radius: 999px; padding: 6px 16px; font-size: 13px; font-weight: 500; margin-bottom: 20px; }
+    .mc-desc { color: var(--green-sage); font-size: 15px; font-weight: 300; max-width: 78ch; margin-bottom: 30px; line-height: 1.7; }
+    .mc-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 38px; padding-bottom: 30px; border-bottom: 1px solid rgba(45,106,79,0.14); }
+    .mc-col-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 14px; }
+    .mc-list { list-style: none; }
+    .mc-list li { position: relative; padding-left: 22px; font-size: 14.5px; color: var(--green-deep); padding-bottom: 10px; }
+    .mc-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: var(--green-mid); }
+    .mc-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; padding: 26px 0 28px; }
+    .mc-meta .k { font-size: 10px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--green-sage); margin-bottom: 5px; }
+    .mc-meta .v { font-size: 14.5px; font-weight: 600; color: var(--green-deep); }
+    .mc-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+    .mc-note { font-size: 13px; color: var(--green-sage); }
+    .cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: left; }
+    .card-s { background: var(--white); border: 1px solid rgba(45,106,79,0.16); border-radius: 20px; padding: 32px 30px 30px; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+    .card-s:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(45,106,79,0.12); border-color: rgba(45,106,79,0.38); }
+    .card-s .icon { width: 30px; height: 30px; color: var(--green-mid); margin-bottom: 18px; }
+    .card-s h4 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; margin-bottom: 8px; color: var(--green-deep); }
+    .card-s .desc { color: var(--green-sage); font-size: 14px; font-weight: 300; margin-bottom: 20px; }
+    .spec { list-style: none; border-top: 1px solid rgba(45,106,79,0.14); padding-top: 16px; margin-bottom: 22px; }
+    .spec li { display: flex; justify-content: space-between; gap: 12px; font-size: 13.5px; padding: 7px 0; border-bottom: 1px dotted rgba(45,106,79,0.16); }
+    .spec li:last-child { border-bottom: 0; }
+    .spec .k { color: var(--green-sage); font-weight: 300; }
+    .spec .v { color: var(--green-deep); font-weight: 600; text-align: right; }
+    .chips-s { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px; }
+    .chip-s { font-size: 11.5px; color: var(--green-mid); background: rgba(45,106,79,0.07); border: 1px solid rgba(45,106,79,0.18); padding: 5px 11px; border-radius: 999px; }
+    .card-s .link { margin-top: auto; font-size: 11px; letter-spacing: 1.6px; text-transform: uppercase; font-weight: 700; color: var(--green-mid); text-decoration: none; border-bottom: 2px solid var(--gold); padding-bottom: 5px; align-self: flex-start; }
+    .card-s .link:hover { color: var(--gold); }
+    @media (max-width: 980px) {
+      .hero-v2 { min-height: 0; }
+      .hero-v2 .hero-bg { background-position: 64% center; }
+      .hero-v2 .hero-scrim { background: linear-gradient(180deg, rgba(10,26,18,0.5) 0%, rgba(10,26,18,0.35) 34%, rgba(10,26,18,0.86) 78%, rgba(10,26,18,0.95) 100%); }
+      .hero-v2 .hero-v2-inner { padding: 140px 20px 64px; }
+      .hero-v2 .hero-copy { max-width: none; }
+      .strip-in { grid-template-columns: repeat(2, 1fr); }
+      .strip-item { padding: 20px 14px 20px 0; }
+      .strip-item:nth-child(2) { border-right: 0; }
+      .strip-item:nth-child(1), .strip-item:nth-child(2) { border-bottom: 1px solid rgba(245,242,236,0.1); }
+      .mc-top, .mc-body { padding: 28px 22px; }
+      .mc-cols { grid-template-columns: 1fr; gap: 26px; }
+      .mc-meta { grid-template-columns: repeat(2, 1fr); }
+      .cards-3 { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .strip-in { grid-template-columns: 1fr; }
+      .strip-item { border-right: 0; border-bottom: 1px solid rgba(245,242,236,0.1); padding: 18px 0; }
+      .strip-item:last-child { border-bottom: 0; }
+      .mc-meta { grid-template-columns: 1fr; }
+    }
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">Jakub Kulig <span>Golf Academy</span></a>
+  <div class="nav-links">
+    <a href="/">Strona główna</a>
+    <a href="/lekcje">Lekcje</a>
+    <a href="#kontakt" class="nav-cta">Zapytaj o event</a>
+    <div class="lang-switch">
+      <span class="lang-active">PL</span>
+      <span class="lang-sep">|</span>
+      <a href="en/">EN</a>
+    </div>
+  </div>
+</nav>
+<section class="hero-v2">
+  <div class="hero-bg" role="img" aria-label="Gracze na fairwayu o zachodzie slonca"></div>
+  <div class="hero-scrim"></div>
+  <div class="hero-v2-inner">
+    <div class="hero-copy">
+      <div class="lockup">
+        <svg class="mark" width="72" height="44" viewBox="0 0 74 46" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+          <path d="M37 5v20"/>
+          <path d="M37 5.5c4 .6 7 2.4 10.5 1.6C45 10 44 12 37 12.4" fill="currentColor" stroke="none"/>
+          <path d="M6 38c9-11 19-14 31-14s22 3 31 14" opacity=".85"/>
+          <path d="M22 33c6 2.6 12 3.6 18.5 2.4" opacity=".55"/>
+        </svg>
+        <div class="lk-name">Golf Events</div>
+        <div class="lk-tag">Razem na wy&#380;szym poziomie</div>
+      </div>
+      <h1>
+        <span>Golf, kt&oacute;ry</span>
+        <span class="gold">buduje relacje</span>
+        <span>biznesowe</span>
+      </h1>
+      <div class="hero-rule"></div>
+      <div class="hero-dots">
+        <span>Eventy</span><i>&bull;</i>
+        <span>Integracje</span><i>&bull;</i>
+        <span>Turnieje</span><i>&bull;</i>
+        <span>Networking</span>
+      </div>
+      <div class="hero-v2-cta">
+        <a href="#kontakt" class="btn-hero">
+          Zorganizujmy co&#347; wyj&#261;tkowego
+          <svg width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h15M11 1l5 5-5 5"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-in">
+    <div class="strip-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="9" cy="8" r="2.6"/><circle cx="16.5" cy="9" r="2"/><path d="M3.5 18c0-3 2.5-5 5.5-5s5.5 2 5.5 5M15.5 13.4c2.6.2 4.5 2.1 4.5 4.6"/></svg>
+      <div><h3>Integracje firmowe</h3><p>Budujemy relacje w najlepszym otoczeniu</p></div>
+    </div>
+    <div class="strip-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M8 20h8M12 16.5V20M6 4h12v4.5a6 6 0 0 1-12 0V4Z"/><path d="M18 5.5h2.5V8a2.8 2.8 0 0 1-2.8 2.8M6 5.5H3.5V8a2.8 2.8 0 0 0 2.8 2.8"/></svg>
+      <div><h3>Eventy golfowe</h3><p>Turnieje dopasowane do Twoich cel&oacute;w</p></div>
+    </div>
+    <div class="strip-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"><path d="M2.5 11.5 6 8l3.5 2.5 2.5-2 4 3.5"/><path d="M12 8.5 15 6l6.5 5.5-3 3.5-2.5-2"/><path d="M9.5 10.5 7 13l2 2 2-1.5"/></svg>
+      <div><h3>Networking</h3><p>Nowe kontakty, realne mo&#380;liwo&#347;ci</p></div>
+    </div>
+    <div class="strip-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M7 21V4"/><path d="M7 4.5c4 .8 7.5 2.8 11.5 1.5C15 9 14 11 7 11.6"/><path d="M3 21h9"/></svg>
+      <div><h3>Pe&#322;na organizacja</h3><p>Od pomys&#322;u po perfekcyjne wykonanie</p></div>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="uslugi">
+  <div class="section-inner">
+    <p class="section-eyebrow">Nasza specjalizacja</p>
+    <h2 class="section-title">Golf jako narz&#281;dzie integracji</h2>
+
+    <article class="main-card">
+      <div class="mc-top">
+        <div>
+          <p class="mc-for">Nasza g&#322;&oacute;wna specjalizacja</p>
+          <p class="mc-title">Impreza Firmowa</p>
+          <p class="mc-tagline">Ca&#322;odniowa integracja zespo&#322;u na prawdziwym polu golfowym, prowadzona przez instruktor&oacute;w PGA Polska</p>
+        </div>
+        <div class="mc-badge">
+          <span class="amt">od 10 os&oacute;b</span>
+          <span class="lab">wycena indywidualna</span>
+        </div>
+      </div>
+      <div class="mc-body">
+        <span class="mc-highlight">&#9971; Prawdziwa gra na polu &mdash; nie tylko driving range</span>
+        <p class="mc-desc">Golf dzia&#322;a na integracj&#281; inaczej ni&#380; typowy team building: nie ma tu podzia&#322;u na sprawnych i niesprawnych, a rozmowa toczy si&#281; naturalnie przez kilka godzin marszu. Zajmujemy si&#281; ca&#322;o&#347;ci&#261; &mdash; sprz&#281;tem, instruktorami, cateringiem, konkursami i nagrodami. Zesp&oacute;&#322; przyje&#380;d&#380;a i gra, reszta jest po naszej stronie.</p>
+        <div class="mc-cols">
+          <div>
+            <p class="mc-col-title">Jak wygl&#261;da dzie&#324;</p>
+            <ul class="mc-list">
+              <li>Powitanie, kawa i wprowadzenie do etykiety</li>
+              <li>Akademia &mdash; pierwsze uderzenia z instruktorem</li>
+              <li>Konkursy na driving range i putting green</li>
+              <li>Gra na polu w grupach pod opiek&#261; Pro</li>
+              <li>Lunch, rozdanie nagr&oacute;d i podsumowanie</li>
+            </ul>
+          </div>
+          <div>
+            <p class="mc-col-title">Co zawiera oferta</p>
+            <ul class="mc-list">
+              <li>Pe&#322;ny sprz&#281;t golfowy dla ka&#380;dego uczestnika</li>
+              <li>Instruktorzy PGA Polska przez ca&#322;y event</li>
+              <li>Pi&#322;ki treningowe i green fee</li>
+              <li>Scenariusz konkurs&oacute;w i nagrody</li>
+              <li>Catering &mdash; opcjonalnie w pakiecie</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mc-meta">
+          <div><p class="k">Wielko&#347;&#263; grupy</p><p class="v">10&ndash;80 os&oacute;b</p></div>
+          <div><p class="k">Czas trwania</p><p class="v">p&oacute;&#322; dnia lub ca&#322;y</p></div>
+          <div><p class="k">Lokalizacja</p><p class="v">2 pola pod Krakowem</p></div>
+          <div><p class="k">Sezon</p><p class="v">kwiecie&#324; &ndash; pa&#378;dziernik</p></div>
+        </div>
+        <div class="mc-foot">
+          <a href="#kontakt" class="btn-gold">Zapytaj o wycen&#281;</a>
+          <span class="mc-note">Odpowiadamy w ci&#261;gu 24 h &mdash; z propozycj&#261; terminu i scenariusza</span>
+        </div>
+      </div>
+    </article>
+
+    <div class="cards-3">
+      <div class="card-s">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h6M7 13h10M7 17h4"/></svg>
+        <h4>Grupowy kurs Zielonej Karty</h4>
+        <p class="desc">Integracja z konkretnym efektem &mdash; ka&#380;dy uczestnik wychodzi z oficjaln&#261; licencj&#261; PZG.</p>
+        <ul class="spec">
+          <li><span class="k">Czas</span><span class="v">1 dzie&#324; / 6 h</span></li>
+          <li><span class="k">Efekt</span><span class="v">licencja PZG</span></li>
+          <li><span class="k">Egzamin</span><span class="v">na miejscu</span></li>
+        </ul>
+        <a class="link" href="#kontakt">Zapytaj o termin &rarr;</a>
+      </div>
+      <div class="card-s">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 11h16v9H4zM4 11V9h16v2M12 9V6"/><path d="M12 6c0-1.4-1.1-2.5-2.5-2.5S7 4.6 7 6h5ZM12 6c0-1.4 1.1-2.5 2.5-2.5S17 4.6 17 6h-5Z"/></svg>
+        <h4>Impreza urodzinowa</h4>
+        <p class="desc">Golf jako prezent &mdash; pierwsze uderzenia, konkursy i gra na polu w gronie znajomych.</p>
+        <ul class="spec">
+          <li><span class="k">Miejsce</span><span class="v">pole lub symulator</span></li>
+          <li><span class="k">Grupa</span><span class="v">dla grup</span></li>
+          <li><span class="k">Wiek</span><span class="v">doro&#347;li i dzieci</span></li>
+        </ul>
+        <a class="link" href="urodziny/">Zobacz szczeg&oacute;&#322;y &rarr;</a>
+      </div>
+      <div class="card-s">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.4"/></svg>
+        <h4>Tw&oacute;j event</h4>
+        <p class="desc">Masz inny pomys&#322;? Program budujemy od zera pod okazj&#281;, grup&#281; i bud&#380;et.</p>
+        <div class="chips-s">
+          <span class="chip-s">Wiecz&oacute;r kawalerski</span>
+          <span class="chip-s">Panie&#324;ski</span>
+          <span class="chip-s">Urodziny dla dzieci</span>
+          <span class="chip-s">Turniej</span>
+          <span class="chip-s">Spotkanie ze znajomymi</span>
+        </div>
+        <a class="link" href="#kontakt">Opowiedz nam o pomy&#347;le &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="team-section" id="zespol">
+  <div class="team-inner">
+    <p class="section-eyebrow" style="color:var(--gold);">Zespół</p>
+    <h2 class="section-title" style="color:var(--cream);margin-bottom:0;">Prowadzeni przez PGA Pro</h2>
+    <p style="font-size:13px;color:rgba(245,242,236,0.45);margin-top:8px;">Ponad 20 lat doświadczenia w organizacji eventów golfowych w Polsce i Europie.</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">JK</div>
+        <p class="team-name">Jakub Kulig</p>
+        <p class="team-role">PGA Professional</p>
+        <p class="team-bio">Instruktor z licencją PGA, wieloletnie doświadczenie w nauce i organizacji eventów golfowych.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">WK</div>
+        <p class="team-name">Wiesław Klima</p>
+        <p class="team-role">PGA Professional</p>
+        <p class="team-bio">Współzałożyciel akademii, specjalista od eventów firmowych i kursów Zielonej Karty.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="form-section" id="kontakt">
+  <div class="form-inner">
+    <p class="section-eyebrow">Kontakt</p>
+    <h2 class="section-title">Zapytaj o event</h2>
+    <div class="form-box">
+      <form id="firma-form" action="https://formspree.io/f/xwvzzwld" method="POST">
+        <input type="hidden" name="_subject" value="Nowe zapytanie o event — jakubkulig.pl/firma" />
+        <div class="form-row">
+          <div class="form-field">
+            <label for="name">Imię i nazwisko</label>
+            <input type="text" id="name" name="name" placeholder="Jan Kowalski" required />
+          </div>
+          <div class="form-field">
+            <label for="phone">Telefon</label>
+            <input type="tel" id="phone" name="phone" placeholder="+48 ..." />
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="jan@firma.pl" required />
+        </div>
+        <div class="form-field">
+          <label for="event-type">Rodzaj eventu</label>
+          <select id="event-type" name="event_type">
+            <option value="">Wybierz rodzaj eventu...</option>
+            <option>Impreza firmowa</option>
+            <option>Kurs Zielonej Karty</option>
+            <option>Urodziny</option>
+            <option>Urodziny dla dzieci</option>
+            <option>Kawaler / Panieński</option>
+            <option>Turniej Golfowy</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="people">Liczba osób</label>
+            <input type="text" id="people" name="people" placeholder="np. 20" />
+          </div>
+          <div class="form-field">
+            <label for="date">Preferowana data</label>
+            <input type="text" id="date" name="date" placeholder="np. sierpień 2025" />
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="message">Dodatkowe informacje</label>
+          <textarea id="message" name="message" placeholder="Opisz czego potrzebujesz..."></textarea>
+        </div>
+        <button type="submit" class="form-submit" id="submit-btn">Wyślij zapytanie</button>
+      </form>
+      <div class="form-success" id="form-success">
+        <p style="font-size:20px;margin-bottom:8px;">&#10003;</p>
+        <p>Dziękujemy! Odezwiemy się w ciągu 24h.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Jakub Kulig Golf Academy &nbsp;·&nbsp; <a href="/">jakubkulig.pl</a> &nbsp;·&nbsp; <a href="mailto:kontakt@jakubkulig.pl">kontakt@jakubkulig.pl</a></p>
+</footer>
+
+<!-- MOBILE STICKY CTA -->
+<div class="mobile-cta" id="mobile-cta">
+  <a href="#kontakt" class="m-btn-gold">Zapytaj o event</a>
+  <a href="#uslugi" class="m-btn-ghost">Zobacz ofertę</a>
+</div>
+
+<script>
+  // Hide sticky CTA when contact form is in view
+  const contactSection = document.getElementById('kontakt');
+  const mobileCta = document.getElementById('mobile-cta');
+  if (contactSection && mobileCta) {
+    const obs = new IntersectionObserver(entries => {
+      mobileCta.style.display = entries[0].isIntersecting ? 'none' : '';
+    }, { threshold: 0.1 });
+    obs.observe(contactSection);
+  }
+
+  const form = document.getElementById('firma-form');
+  const btn = document.getElementById('submit-btn');
+  const success = document.getElementById('form-success');
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    btn.textContent = 'Wysyłanie...';
+    btn.disabled = true;
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+      if (res.ok) { form.style.display = 'none'; success.style.display = 'block'; }
+      else { btn.textContent = 'Błąd — spróbuj ponownie'; btn.disabled = false; }
+    } catch(err) { btn.textContent = 'Błąd — spróbuj ponownie'; btn.disabled = false; }
+  });
+</script>
+</body>
+</html>
