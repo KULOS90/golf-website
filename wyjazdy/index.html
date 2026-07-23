@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wyjazdy Golfowe — Jakub Kulig | Organizacja wyjazdów golfowych</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --green-deep: #14332A;
+    --green-mid:  #2D6A4F;
+    --green-sage: #52796F;
+    --gold:       #C9A84C;
+    --gold-soft:  #E4CE8F;
+    --cream:      #F5F2EC;
+    --white:      #FFFFFF;
+    --ink:        #1A2B24;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--green-deep); line-height: 1.6; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(15,36,25,0.55); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.18);
+    padding: 0 40px; display: flex; align-items: center; justify-content: space-between;
+    height: 66px; transition: background .3s;
+  }
+  nav.scrolled { background: rgba(15,36,25,0.94); }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--white); text-decoration: none; }
+  .brand .logo { width: 26px; height: 26px; color: var(--gold); }
+  .brand b { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 19px; letter-spacing: .5px; }
+  .brand b span { color: var(--gold); }
+  .nav-links { display: flex; align-items: center; gap: 30px; }
+  .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 13px; letter-spacing: .5px; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { background: var(--gold); color: var(--green-deep) !important; padding: 9px 20px; border-radius: 999px; font-weight: 700 !important; font-size: 12px !important; letter-spacing: 1px; text-transform: uppercase; }
+  .nav-lang { color: rgba(255,255,255,0.55); font-size: 12px; letter-spacing: 1px; }
+  .nav-lang b { color: var(--white); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding: 120px 60px 0;
+    background:
+      linear-gradient(105deg, rgba(10,28,20,0.92) 0%, rgba(12,32,22,0.62) 42%, rgba(12,32,22,0.20) 70%),
+      linear-gradient(160deg, #1c4034, #0d221a),
+      url('HERO.jpg') center/cover no-repeat;
+    color: var(--white);
+  }
+  /* Optional online placeholder — remove when using own photo */
+  .hero { background-image:
+      linear-gradient(105deg, rgba(10,28,20,0.92) 0%, rgba(12,32,22,0.60) 42%, rgba(12,32,22,0.18) 72%),
+      url('hero.jpg'),
+      linear-gradient(160deg, #1c4034, #0d221a);
+    background-size: cover, cover, cover; background-position: center; }
+
+  .hero-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 30px; }
+  .hero-eyebrow .logo { width: 34px; height: 34px; color: var(--gold); }
+  .hero-eyebrow .et { line-height: 1.2; }
+  .hero-eyebrow .et b { font-family: 'Playfair Display', serif; font-size: 22px; letter-spacing: 2px; display: block; }
+  .hero-eyebrow .et b span { color: var(--gold); }
+  .hero-eyebrow .et small { font-size: 10px; letter-spacing: 2.5px; color: rgba(255,255,255,0.7); text-transform: uppercase; }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-weight: 500;
+    font-size: clamp(42px, 6vw, 88px); line-height: 1.02; max-width: 14ch; margin-bottom: 26px;
+  }
+  .hero h1 .gold { color: var(--gold); }
+  .hero p.lead { font-size: clamp(15px, 1.5vw, 19px); font-weight: 300; max-width: 46ch; color: rgba(255,255,255,0.9); margin-bottom: 34px; }
+  .hero-btn {
+    display: inline-flex; align-items: center; gap: 14px; background: var(--gold); color: var(--green-deep);
+    padding: 16px 30px; border-radius: 6px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    font-size: 13px; text-decoration: none; transition: transform .2s, box-shadow .2s; box-shadow: 0 10px 30px rgba(201,168,76,0.28);
+  }
+  .hero-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(201,168,76,0.4); }
+
+  /* feature strip */
+  .hero-strip {
+    margin: 60px -60px 0; padding: 26px 60px;
+    background: rgba(9,26,18,0.72); border-top: 1px solid rgba(201,168,76,0.18);
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px;
+  }
+  .strip-item { display: flex; align-items: flex-start; gap: 14px; }
+  .strip-item svg { width: 30px; height: 30px; color: var(--gold); flex-shrink: 0; }
+  .strip-item h4 { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-soft); margin-bottom: 4px; }
+  .strip-item p { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.78); line-height: 1.4; }
+  .strip-item + .strip-item { border-left: 1px solid rgba(255,255,255,0.12); padding-left: 30px; }
+
+  /* ---------- SECTION SHELL ---------- */
+  section { padding: 90px 60px; }
+  .eyebrow { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .sec-head { max-width: 720px; margin: 0 auto 54px; text-align: center; }
+  .sec-head h2 { font-family: 'Playfair Display', serif; font-weight: 500; font-size: clamp(30px, 4vw, 48px); color: var(--green-deep); margin-bottom: 14px; }
+  .sec-head p { color: var(--green-sage); font-size: 16px; font-weight: 300; }
+
+  /* ---------- DESTINATION TILES ---------- */
+  .dest-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; }
+  .dest {
+    position: relative; border-radius: 22px; overflow: hidden; min-height: 340px; display: flex; flex-direction: column;
+    justify-content: flex-end; color: var(--white); text-decoration: none; isolation: isolate;
+    box-shadow: 0 12px 34px rgba(20,51,42,0.12); transition: transform .28s, box-shadow .28s;
+  }
+  .dest::before { content:""; position: absolute; inset: 0; z-index: -2; background-size: cover; background-position: center; transition: transform .5s; }
+  .dest::after { content:""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10,28,20,0) 30%, rgba(9,24,17,0.82) 100%); }
+  .dest:hover { transform: translateY(-6px); box-shadow: 0 22px 50px rgba(20,51,42,0.22); }
+  .dest:hover::before { transform: scale(1.06); }
+  .dest .body { padding: 30px 32px 32px; position: relative; }
+  .dest .flag { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-soft); margin-bottom: 8px; font-weight: 600; }
+  .dest h3 { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 30px; margin-bottom: 8px; }
+  .dest p { font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.85); max-width: 42ch; margin-bottom: 16px; }
+  .dest .more { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; color: var(--gold); display: inline-flex; gap: 8px; align-items: center; }
+  .badge {
+    position: absolute; top: 20px; left: 20px; z-index: 2; background: var(--gold); color: var(--green-deep);
+    font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; padding: 7px 14px; border-radius: 999px;
+    box-shadow: 0 6px 18px rgba(201,168,76,0.4);
+  }
+  .dest.feature { grid-column: 1 / -1; min-height: 380px; }
+
+  /* destination backgrounds (placeholder tints + optional photo) */
+  .d-irl::before { background-image:
+      linear-gradient(135deg, rgba(15,58,42,0.35), rgba(9,40,28,0.35)),
+      url('https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=1400&q=80'),
+      linear-gradient(135deg, #1e5240, #0c3325); }
+  .d-esp::before { background-image:
+      linear-gradient(135deg, rgba(140,88,30,0.28), rgba(60,40,15,0.30)),
+      url('https://images.unsplash.com/photo-1552074284-5e88ef1aef18?auto=format&fit=crop&w=1400&q=80'),
+      linear-gradient(135deg, #b9822f, #6b4c1e); }
+  .d-ita::before { background-image:
+      linear-gradient(135deg, rgba(90,96,40,0.30), rgba(50,55,20,0.30)),
+      url('https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=1400&q=80'),
+      linear-gradient(135deg, #7a7c3a, #4b4d22); }
+  .d-aut::before { background-image:
+      linear-gradient(135deg, rgba(40,80,95,0.30), rgba(20,45,55,0.32)),
+      url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1400&q=80'),
+      linear-gradient(135deg, #35637a, #1c3a48); }
+  .dest::before { background-size: cover; background-position: center; }
+
+  /* ---------- CAROUSEL ---------- */
+  .gallery { background: var(--green-deep); color: var(--white); }
+  .gallery .sec-head h2 { color: var(--white); }
+  .gallery .sec-head p { color: rgba(255,255,255,0.7); }
+  .carousel-wrap { max-width: 1300px; margin: 0 auto; position: relative; }
+  .carousel { display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 6px 4px 18px; scroll-behavior: smooth; }
+  .carousel::-webkit-scrollbar { height: 6px; }
+  .carousel::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.5); border-radius: 6px; }
+  .slide {
+    flex: 0 0 auto; width: 420px; max-width: 82vw; height: 300px; border-radius: 18px; scroll-snap-align: center;
+    background-size: cover; background-position: center; position: relative; overflow: hidden;
+    box-shadow: 0 14px 34px rgba(0,0,0,0.3);
+  }
+  .slide span { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 22px 16px; font-size: 14px; font-weight: 500;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%); }
+  .car-btn {
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 46px; height: 46px; border-radius: 50%;
+    border: none; background: var(--gold); color: var(--green-deep); font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3); transition: transform .2s;
+  }
+  .car-btn:hover { transform: translateY(-50%) scale(1.08); }
+  .car-prev { left: -8px; } .car-next { right: -8px; }
+
+  /* ---------- CONTACT FORM ---------- */
+  .contact { background: var(--cream); }
+  .form-card { max-width: 760px; margin: 0 auto; background: var(--white); border: 1px solid rgba(45,106,79,0.16); border-radius: 24px; padding: 46px; box-shadow: 0 18px 50px rgba(20,51,42,0.08); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px; }
+  .form-field { display: flex; flex-direction: column; }
+  .form-field.full { grid-column: 1 / -1; }
+  label { font-size: 13px; font-weight: 600; color: var(--green-mid); margin-bottom: 7px; }
+  input, select, textarea {
+    font-family: inherit; font-size: 15px; padding: 13px 15px; border: 1px solid rgba(45,106,79,0.22); border-radius: 11px;
+    background: #fcfbf8; color: var(--green-deep); transition: border-color .2s, box-shadow .2s;
+  }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,0.15); }
+  textarea { resize: vertical; min-height: 120px; }
+  .submit-btn { width: 100%; margin-top: 6px; background: var(--green-mid); color: var(--white); border: none; padding: 16px; border-radius: 12px;
+    font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; font-size: 13px; cursor: pointer; transition: background .2s, transform .2s; }
+  .submit-btn:hover { background: var(--green-deep); transform: translateY(-1px); }
+  .form-note { text-align: center; margin-top: 18px; font-size: 13px; color: var(--green-sage); }
+
+  /* ---------- FOOTER ---------- */
+  footer { background: var(--green-deep); color: rgba(255,255,255,0.7); text-align: center; padding: 34px; font-size: 13px; letter-spacing: .5px; }
+  footer b { color: var(--gold); font-weight: 600; }
+
+  /* mock banner */
+  .mock-flag { position: fixed; bottom: 14px; right: 14px; z-index: 200; background: rgba(20,51,42,0.9); color: var(--gold-soft);
+    font-size: 11px; letter-spacing: 1px; padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(201,168,76,0.35); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px) {
+    nav { padding: 0 20px; } .nav-links { gap: 16px; } .nav-links a:not(.nav-cta) { display: none; }
+    .hero { padding: 110px 24px 0; }
+    .hero-strip { margin: 40px -24px 0; padding: 24px; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .strip-item + .strip-item { border-left: none; padding-left: 0; }
+    section { padding: 64px 22px; }
+    .dest-grid { grid-template-columns: 1fr; }
+    .dest.feature { grid-column: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="brand" href="#top">
+    <svg class="logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 21V4l11 3-11 3"/><circle cx="7" cy="21" r="1.3" fill="currentColor"/></svg>
+    <b>GOLF<span>&nbsp;TRAVEL</span></b>
+  </a>
+  <div class="nav-links">
+    <a href="#kierunki">Kierunki</a>
+    <a href="#galeria">Galeria</a>
+    <a href="#kontakt">Kontakt</a>
+    <a class="nav-cta" href="#kontakt">Zaplanuj wyjazd</a>
+    <span class="nav-lang"><b>PL</b> | EN</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-eyebrow">
+    <svg class="logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 21V4l11 3-11 3"/><circle cx="7" cy="21" r="1.3" fill="currentColor"/></svg>
+    <span class="et"><b>GOLF <span>TRAVEL</span></b><small>Niezwykłe miejsca. Niesamowite wspomnienia.</small></span>
+  </div>
+  <h1>Twój golf.<br><span class="gold">Twoja podróż.</span><br>Niezapomniane wspomnienia.</h1>
+  <p class="lead">Wyjątkowe kierunki. Świetne pola. Najlepsze towarzystwo. Zaplanuj z nami swój kolejny wyjazd golfowy.</p>
+  <a class="hero-btn" href="#kierunki">Zaplanuj swój wyjazd <span>&rarr;</span></a>
+
+  <div class="hero-strip">
+    <div class="strip-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>
+      <div><h4>Najpiękniejsze kierunki</h4><p>Starannie wybrane destynacje na całym świecie</p></div>
+    </div>
+    <div class="strip-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M7 21V4l11 3-11 3"/><circle cx="7" cy="21" r="1.3"/></svg>
+      <div><h4>Top pola golfowe</h4><p>Dostęp do najlepszych pól i ekskluzywnych klubów</p></div>
+    </div>
+    <div class="strip-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M12 11v4"/></svg>
+      <div><h4>Kompleksowa organizacja</h4><p>Loty, hotele, transfery i golf — wszystko w jednym miejscu</p></div>
+    </div>
+    <div class="strip-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.4"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M15 20c0-2 1-3.6 3-3.6s3 1.6 3 3.6"/></svg>
+      <div><h4>Wspaniałe towarzystwo</h4><p>Poznaj pasjonatów golfa i twórz niezapomniane relacje</p></div>
+    </div>
+  </div>
+</header>
+
+<!-- DESTINATIONS -->
+<section id="kierunki">
+  <div class="sec-head">
+    <p class="eyebrow">Kierunki</p>
+    <h2>Dokąd zabieramy graczy</h2>
+    <p>Cztery destynacje na dobry początek. Każdy wyjazd dopinamy indywidualnie — pola, hotele, transfery i program poza polem.</p>
+  </div>
+  <div class="dest-grid">
+    <a class="dest feature d-irl" href="irlandia/">
+      <span class="badge">Specjalność</span>
+      <div class="body">
+        <div class="flag">Irlandia</div>
+        <h3>Szmaragdowa wyspa i klasyczne linksty</h3>
+        <p>Nasz konik. Legendarne pola linksowe nad Atlantykiem, prawdziwy golf w surowej scenerii i niepowtarzalny klimat irlandzkich klubów.</p>
+        <span class="more">Zobacz ofertę &rarr;</span>
+      </div>
+    </a>
+    <a class="dest d-esp" href="#kontakt">
+      <div class="body">
+        <div class="flag">Hiszpania</div>
+        <h3>Słońce i golf o każdej porze</h3>
+        <p>Costa del Sol i najlepsze resorty — gra przez cały rok w ciepłym klimacie.</p>
+        <span class="more">Zobacz ofertę &rarr;</span>
+      </div>
+    </a>
+    <a class="dest d-ita" href="#kontakt">
+      <div class="body">
+        <div class="flag">Włochy</div>
+        <h3>Golf, smak i dolce vita</h3>
+        <p>Pola wśród toskańskich wzgórz i jezior, świetna kuchnia i wino po rundzie.</p>
+        <span class="more">Zobacz ofertę &rarr;</span>
+      </div>
+    </a>
+    <a class="dest d-aut" href="#kontakt">
+      <div class="body">
+        <div class="flag">Austria</div>
+        <h3>Golf w cieniu Alp</h3>
+        <p>Zielone fairwaye z górską panoramą — blisko Polski, idealne na krótszy wypad.</p>
+        <span class="more">Zobacz ofertę &rarr;</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- GALLERY / CAROUSEL -->
+<section class="gallery" id="galeria">
+  <div class="sec-head">
+    <p class="eyebrow">Galeria</p>
+    <h2>Chwile z naszych wyjazdów</h2>
+    <p>Kilka kadrów z pól, na których byliśmy. Twoje zdjęcia wrzucimy tutaj.</p>
+  </div>
+  <div class="carousel-wrap">
+    <button class="car-btn car-prev" onclick="slide(-1)" aria-label="Poprzednie">&#8249;</button>
+    <div class="carousel" id="car">
+      <div class="slide" style="background-image:linear-gradient(160deg,#1e5240,#0c3325),url('https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1200&q=80')"><span>Poranna runda</span></div>
+      <div class="slide" style="background-image:linear-gradient(160deg,#b9822f,#6b4c1e),url('https://images.unsplash.com/photo-1591491634026-77cd4a2b56d1?auto=format&fit=crop&w=1200&q=80')"><span>Wieczór na polu</span></div>
+      <div class="slide" style="background-image:linear-gradient(160deg,#35637a,#1c3a48),url('https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=1200&q=80')"><span>Panorama fairway</span></div>
+      <div class="slide" style="background-image:linear-gradient(160deg,#7a7c3a,#4b4d22),url('https://images.unsplash.com/photo-1600783245891-3fdc1f6f9a2f?auto=format&fit=crop&w=1200&q=80')"><span>Ekipa po rundzie</span></div>
+      <div class="slide" style="background-image:linear-gradient(160deg,#1e5240,#0c3325),url('https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=1200&q=80')"><span>Green o zachodzie</span></div>
+    </div>
+    <button class="car-btn car-next" onclick="slide(1)" aria-label="Następne">&#8250;</button>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="kontakt">
+  <div class="sec-head">
+    <p class="eyebrow">Kontakt</p>
+    <h2>Zaplanujmy Twój wyjazd</h2>
+    <p>Napisz, dokąd chcesz jechać i w jakim składzie — przygotujemy propozycję z terminem i wyceną.</p>
+  </div>
+  <form class="form-card" onsubmit="event.preventDefault(); alert('To mockup — formularz podłączymy do wysyłki maila.');">
+    <div class="form-row">
+      <div class="form-field"><label for="name">Imię i nazwisko</label><input id="name" type="text" placeholder="Jan Kowalski" required /></div>
+      <div class="form-field"><label for="email">E-mail</label><input id="email" type="email" placeholder="jan@example.com" required /></div>
+    </div>
+    <div class="form-row">
+      <div class="form-field"><label for="phone">Telefon</label><input id="phone" type="tel" placeholder="+48 500 000 000" /></div>
+      <div class="form-field"><label for="dest">Kierunek</label>
+        <select id="dest">
+          <option>Irlandia</option><option>Hiszpania</option><option>Włochy</option><option>Austria</option><option>Jeszcze nie wiem</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field full"><label for="msg">Wiadomość</label><textarea id="msg" placeholder="Liczba osób, przybliżony termin, poziom gry, oczekiwania..."></textarea></div>
+    </div>
+    <button class="submit-btn" type="submit">Wyślij zapytanie</button>
+    <p class="form-note">Odpowiadamy w ciągu 24 h — z propozycją terminu i wyceną.</p>
+  </form>
+</section>
+
+<footer>© 2026 <b>Golf Travel</b> · Jakub Kulig · Organizacja wyjazdów golfowych</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+  function slide(dir){ const c = document.getElementById('car'); c.scrollBy({ left: dir * 440, behavior: 'smooth' }); }
+</script>
+</body>
+</html>
