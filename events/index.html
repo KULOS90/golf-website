@@ -239,6 +239,13 @@
     .mc-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
     .mc-note { font-size: 13px; color: var(--green-sage); }
     .cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: left; }
+    .card-s.card-wide { grid-column: 1 / -1; flex-direction: row; align-items: center; flex-wrap: wrap; gap: 18px 40px; }
+    .card-wide .wide-head { display: flex; align-items: center; gap: 16px; flex: 1 1 260px; }
+    .card-wide .wide-head .icon { margin-bottom: 0; flex-shrink: 0; }
+    .card-wide h4 { margin-bottom: 4px; }
+    .card-wide .desc { margin-bottom: 0; }
+    .card-wide .chips-s { margin-bottom: 0; flex: 2 1 320px; }
+    .card-wide .link { margin-top: 0; margin-left: auto; white-space: nowrap; }
     .card-s { background: var(--white); border: 1px solid rgba(45,106,79,0.16); border-radius: 20px; padding: 32px 30px 30px; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
     .card-s:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(45,106,79,0.12); border-color: rgba(45,106,79,0.38); }
     .card-s .icon { width: 30px; height: 30px; color: var(--green-mid); margin-bottom: 18px; }
@@ -439,10 +446,14 @@
         </ul>
         <a class="link" href="#kontakt">Zapytaj o event &rarr;</a>
       </div>
-      <div class="card-s">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.4"/></svg>
-        <h4>Tw&oacute;j event</h4>
-        <p class="desc">Masz inny pomys&#322;? Program budujemy od zera pod okazj&#281;, grup&#281; i bud&#380;et.</p>
+      <div class="card-s card-wide">
+        <div class="wide-head">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.4"/></svg>
+          <div>
+            <h4>Tw&oacute;j event</h4>
+            <p class="desc">Masz inny pomys&#322;? Program budujemy od zera pod okazj&#281;, grup&#281; i bud&#380;et.</p>
+          </div>
+        </div>
         <div class="chips-s">
           <span class="chip-s">Wiecz&oacute;r kawalerski</span>
           <span class="chip-s">Panie&#324;ski</span>
@@ -450,7 +461,7 @@
           <span class="chip-s">Turniej</span>
           <span class="chip-s">Spotkanie ze znajomymi</span>
         </div>
-        <a class="link" href="#kontakt">Opowiedz nam o pomy&#347;le &rarr;</a>
+        <a class="link" href="#kontakt">Opowiedz nam o swoim pomy&#347;le &rarr;</a>
       </div>
     </div>
   </div>
