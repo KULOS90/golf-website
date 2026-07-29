@@ -185,6 +185,13 @@ footer { background: #1a1a1a; color: rgba(255,255,255,0.5); text-align: center; 
 .mobile-bar-tel { color: var(--green); text-decoration: none; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(45,90,39,0.3); padding: 0.5rem; border-radius: 100px; width: 36px; height: 36px; }
 .mobile-bar-voucher { background: var(--green); color: #fff; border: none; font-size: 0.82rem; font-weight: 600; padding: 0.5rem 1.1rem; border-radius: 100px; cursor: pointer; font-family: inherit; }
 .mobile-lang { font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--green); text-decoration: none; border: 1px solid rgba(45,90,39,0.25); padding: 4px 9px; border-radius: 100px; }
+.hamburger { background: none; border: 1px solid rgba(45,90,39,0.3); border-radius: 100px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; }
+.hamburger svg { width: 18px; height: 18px; stroke: var(--green); }
+.mobile-menu { display: none; position: fixed; top: 56px; left: 0; right: 0; z-index: 199; background: rgba(247,244,239,0.98); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(45,90,39,0.15); padding: 1rem 1.25rem 1.25rem; flex-direction: column; gap: 0.1rem; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { color: var(--text); text-decoration: none; font-size: 0.95rem; padding: 0.75rem 0.5rem; border-bottom: 1px solid rgba(45,90,39,0.08); transition: color 0.2s; }
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover, .mobile-menu a:active { color: var(--green); }
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 .hero-left > * { animation: fadeUp 0.6s ease both; }
@@ -296,23 +303,24 @@ body { padding-top: 56px; }
   <div class="pricing-grid">
     <div class="pricing-card">
       <div class="pricing-card-name">Individual lesson</div>
-      <div class="pricing-price">120 <span style="font-size:1.2rem;color:var(--text-muted)">PLN</span></div>
-      <div class="pricing-unit">per hour</div>
+      <div class="pricing-price">150 <span style="font-size:1.2rem;color:var(--text-muted)">zł</span></div>
+      <div class="pricing-unit">50 minutes</div>
       <div class="pricing-desc">One lesson tailored to your level and goal. Perfect for a first session or when you have a specific problem to solve.</div>
-      <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(45,90,39,0.12);font-size:0.9rem;color:var(--text-muted)">👫 Couples lesson: <strong>200 PLN</strong></div>
+      <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(45,90,39,0.12);font-size:0.9rem;color:var(--text-muted)">👫 Lesson for 2 people / couple: <strong>250 zł</strong></div>
     </div>
     <div class="pricing-card highlight">
       <div class="pricing-card-name">Green Card</div>
-      <div class="pricing-price" style="color:#fff">960 <span style="font-size:1.2rem;color:rgba(255,255,255,0.7)">PLN</span></div>
-      <div class="pricing-unit">8 hours · 120 PLN/h · individual</div>
+      <div class="pricing-price" style="color:#fff">1250 <span style="font-size:1.2rem;color:rgba(255,255,255,0.7)">zł</span></div>
+      <div class="pricing-unit">8 hours · individually</div>
       <div class="pricing-desc">Complete preparation for the Green Card exam. Theory, rules, etiquette and on-course practice. Educational materials included.</div>
-      <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.2);font-size:0.85rem;color:rgba(255,255,255,0.7)">+ PZG Green Card issuance fee</div>
+      <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.2);font-size:0.85rem;color:rgba(255,255,255,0.7)">+ 250 zł PZG Green Card issuance fee</div>
     </div>
     <div class="pricing-card">
       <div class="pricing-card-name">Group lessons</div>
       <div class="pricing-tba">Custom<br>pricing</div>
-      <div class="pricing-unit">for groups &amp; companies · great value</div>
-      <div class="pricing-desc">Want to try golf with friends? Looking for a corporate offer? Get in touch — we'll find a time and price that works for the whole group.</div>
+      <div class="pricing-unit">max. 4 people</div>
+      <div class="pricing-desc">Lessons in a small group of up to 4 — shared motivation with an individual approach. Perfect if you want to train with friends or family.</div>
+      <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(45,90,39,0.12);font-size:0.9rem;color:var(--text-muted)">📞 <a href="tel:510655432" style="color:var(--green);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(45,90,39,0.35)">Call for pricing →</a></div>
     </div>
   </div>
   <p class="pricing-note">Questions about pricing? Call: <a href="tel:510655432">510 655 432</a></p>
@@ -320,24 +328,24 @@ body { padding-top: 56px; }
 
 <section id="voucher" class="voucher-section">
   <div class="voucher-wrap">
-    <p class="section-label">Gift</p>
-    <h2>Give someone special<br><em>their first swing</em></h2>
-    <p class="voucher-intro">Golf lessons make an exceptional gift — active, elegant and unforgettable. Perfect for a dad, mum, partner or friend.</p>
+    <p class="section-label">Offer</p>
+    <h2>First Contact Lesson<br><em>Your first step into the world of golf</em></h2>
+    <p class="voucher-intro">Your first step into the world of golf is a moment worth experiencing with professional support. Under the guidance of an assistant golf instructor, you'll discover that golf is more than a sport — it's the art of precision, patience and focus.</p>
     <div class="voucher-card">
       <div class="voucher-card-top">
         <div>
-          <p class="voucher-for">Gift Voucher</p>
+          <p class="voucher-for">Lesson for beginners</p>
           <h3 class="voucher-title">First Contact Lesson</h3>
-          <p class="voucher-tagline">Golf from scratch — 3 hours with an assistant golf instructor on a real golf course</p>
+          <p class="voucher-tagline">2 hours with an assistant golf instructor — learning from scratch on the driving range and putting green</p>
         </div>
         <div class="voucher-price-badge">
-          <span class="voucher-price-amount">499 PLN</span>
-          <span class="voucher-price-label">voucher</span>
+          <span class="voucher-price-amount">350 zł</span>
+          <span class="voucher-price-label">per lesson</span>
         </div>
       </div>
       <div class="voucher-card-body">
-        <div class="voucher-highlight">⛳ Real play on the course — 3 to 5 holes</div>
-        <p class="voucher-desc">The first step into the world of golf is a moment worth experiencing with professional support. Under the guidance of an assistant golf instructor, the participant will discover that golf is more than a sport — it's the art of precision, patience and focus.</p>
+        <div class="voucher-highlight">🏌️ 2 hours of hands-on practice with an instructor</div>
+        <p class="voucher-desc">You don't need to know anything or have your own equipment — I provide everything. You'll learn the basics of golf in a friendly, relaxed atmosphere. After the lesson, you'll know if golf is for you — and I'm convinced it will be!</p>
         <div class="voucher-cols">
           <div>
             <p class="voucher-col-title">What you'll learn</p>
@@ -352,10 +360,9 @@ body { padding-top: 56px; }
           <div>
             <p class="voucher-col-title">What's included</p>
             <ul class="voucher-list">
-              <li>3 hours with an instructor</li>
+              <li>2 hours with an instructor</li>
               <li>Equipment included</li>
               <li>Range and training balls</li>
-              <li>First play on course — 3–5 holes</li>
               <li>Driving range + putting green</li>
             </ul>
           </div>
@@ -364,13 +371,33 @@ body { padding-top: 56px; }
           <div class="voucher-info-item"><span>📍</span><div><strong>Location</strong>Krakow Valley G&CC · Royal Kraków G&CC</div></div>
           <div class="voucher-info-item"><span>📅</span><div><strong>Season</strong>April – October</div></div>
           <div class="voucher-info-item"><span>👥</span><div><strong>For</strong>1–2 people</div></div>
-          <div class="voucher-info-item"><span>⏳</span><div><strong>Validity</strong>12 months</div></div>
+        </div>
+        <div style="background:var(--green-pale);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1rem;border:1px solid rgba(45,90,39,0.12);text-align:center;">
+          <p style="font-size:0.95rem;color:var(--text);margin:0;">📋 <strong>Lesson booked?</strong> <a href="/en/preparation/" style="color:var(--green);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(45,90,39,0.35);">Check how to prepare →</a></p>
         </div>
         <div class="voucher-cta-row">
-          <button class="btn-primary" onclick="document.getElementById('vf-modal-overlay').style.display='flex'">Order voucher — 499 PLN</button>
-          <a href="tel:510655432" class="btn-secondary">Call: 510 655 432</a>
-          <span class="voucher-note">I'll reply within a few hours with payment details</span>
+          <a href="tel:510655432" class="btn-primary">📞 Book a lesson — 510 655 432</a>
+          <a href="https://wa.me/48510655432" class="btn-secondary" target="_blank">WhatsApp →</a>
         </div>
+
+        <!-- GIFT VOUCHER -->
+        <div id="gift-voucher" style="margin-top:2.5rem;padding-top:2rem;border-top:2px solid rgba(45,90,39,0.15);">
+          <div style="background:linear-gradient(135deg,var(--green) 0%,#1A3C2E 100%);border-radius:16px;padding:2rem 2.25rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
+            <div>
+              <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:0.4rem;">🎁 Gift Voucher</p>
+              <h3 style="font-family:'Playfair Display',serif;font-size:1.35rem;color:#fff;margin-bottom:0.5rem;line-height:1.25;">Give someone special<br>their first golf lesson</h3>
+              <p style="font-size:0.88rem;color:rgba(255,255,255,0.65);line-height:1.6;max-width:400px;">Perfect for birthdays, a gift for a dad, mum or partner. An elegant voucher with the full package — equipment, balls and 2 hours with an instructor.</p>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;flex-shrink:0;">
+              <div style="background:var(--brown);color:#fff;border-radius:12px;padding:0.75rem 1.5rem;text-align:center;">
+                <span style="display:block;font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;line-height:1;">350 zł</span>
+                <span style="display:block;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;opacity:0.8;margin-top:4px;">voucher</span>
+              </div>
+              <button class="btn-primary" id="vf-open-btn" onclick="document.getElementById('vf-modal-overlay').style.display='flex'" style="background:#fff;color:var(--green);font-size:0.85rem;white-space:nowrap;">Order voucher →</button>
+            </div>
+          </div>
+        </div>
+
         <div id="vf-modal-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:1000;align-items:center;justify-content:center;padding:1rem;">
           <div class="vf-modal">
             <div class="vf-modal-header">
@@ -381,7 +408,7 @@ body { padding-top: 56px; }
               <button class="vf-close" onclick="document.getElementById('vf-modal-overlay').style.display='none'">✕</button>
             </div>
             <form action="https://formspree.io/f/xwvzzwld" method="POST" class="voucher-form" id="voucher-form">
-              <input type="hidden" name="_subject" value="New golf voucher order 499 PLN (EN) — jakubkulig.pl">
+              <input type="hidden" name="_subject" value="New golf voucher order 350 zł (EN) — jakubkulig.pl">
               <div class="vf-row">
                 <div class="vf-field"><label>Full name *</label><input type="text" name="imie_nazwisko" required placeholder="e.g. Anna Smith"></div>
                 <div class="vf-field"><label>E-mail *</label><input type="email" name="email" required placeholder="your@email.com"></div>
@@ -392,7 +419,7 @@ body { padding-top: 56px; }
               </div>
               <div class="vf-field"><label>Additional information</label><textarea name="wiadomosc" rows="2" placeholder="e.g. preferred dates..."></textarea></div>
               <div class="vf-footer">
-                <button type="submit" class="btn-primary" id="vf-submit">Order — 499 PLN</button>
+                <button type="submit" class="btn-primary" id="vf-submit">Order voucher — 350 zł</button>
                 <span class="voucher-note">I'll reply with payment details</span>
               </div>
               <div id="vf-success" style="display:none;" class="vf-success-msg">Thank you! I've received your order — I'll be in touch shortly.</div>
@@ -407,7 +434,7 @@ body { padding-top: 56px; }
 <section style="padding:5rem 2rem;max-width:800px;margin:0 auto;" id="faq">
   <p class="section-label">FAQ</p>
   <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:2.5rem;">Frequently asked questions</h2>
-  <details style="border-bottom:1px solid rgba(45,90,39,0.15);padding:1.25rem 0;"><summary style="font-weight:500;font-size:1rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">How much do golf lessons cost in Kraków? <span style="color:var(--green);font-size:1.4rem;">+</span></summary><p style="margin-top:0.75rem;color:var(--text-muted);line-height:1.7;">An individual lesson costs <strong>120 PLN/h</strong>. A couples lesson is <strong>200 PLN</strong>. The Green Card course (8 hours) is <strong>960 PLN</strong> — educational materials included.</p></details>
+  <details style="border-bottom:1px solid rgba(45,90,39,0.15);padding:1.25rem 0;"><summary style="font-weight:500;font-size:1rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">How much do golf lessons cost in Kraków? <span style="color:var(--green);font-size:1.4rem;">+</span></summary><p style="margin-top:0.75rem;color:var(--text-muted);line-height:1.7;">An individual lesson (50 min) costs <strong>150 zł</strong>. A couples lesson is <strong>250 zł</strong>. The Green Card course (8 hours) is <strong>1250 zł</strong> — educational materials included.</p></details>
   <details style="border-bottom:1px solid rgba(45,90,39,0.15);padding:1.25rem 0;"><summary style="font-weight:500;font-size:1rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">Do I need my own golf clubs? <span style="color:var(--green);font-size:1.4rem;">+</span></summary><p style="margin-top:0.75rem;color:var(--text-muted);line-height:1.7;">No, you don't. When you're starting out you can use clubs available at the club. We'll discuss choosing your own equipment during lessons.</p></details>
   <details style="border-bottom:1px solid rgba(45,90,39,0.15);padding:1.25rem 0;"><summary style="font-weight:500;font-size:1rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">How long does the Green Card course take? <span style="color:var(--green);font-size:1.4rem;">+</span></summary><p style="margin-top:0.75rem;color:var(--text-muted);line-height:1.7;">The course covers <strong>8 hours</strong> of individual lessons — theory, rules, etiquette and on-course practice. Educational materials are included.</p></details>
   <details style="border-bottom:1px solid rgba(45,90,39,0.15);padding:1.25rem 0;"><summary style="font-weight:500;font-size:1rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">Where do lessons take place? <span style="color:var(--green);font-size:1.4rem;">+</span></summary><p style="margin-top:0.75rem;color:var(--text-muted);line-height:1.7;">I teach at two courses in Kraków: <strong>Krakow Valley Golf & Country Club</strong> and <strong>Royal Kraków Golf & Country Club</strong>.</p></details>
@@ -435,8 +462,14 @@ body { padding-top: 56px; }
   <div class="mobile-bar-actions">
     <a href="/" class="mobile-lang">PL</a>
     <a href="tel:510655432" class="mobile-bar-tel" aria-label="Call"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.93 1.18 2 2 0 012.93 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg></a>
-    <button class="mobile-bar-voucher" onclick="document.getElementById('voucher').scrollIntoView({behavior:'smooth'})">🎁 Voucher</button>
+    <button class="hamburger" id="hamburger-btn" aria-label="Menu" onclick="document.getElementById('mobile-menu').classList.toggle('open');this.classList.toggle('active')"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button>
   </div>
+</div>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#lessons" onclick="document.getElementById('mobile-menu').classList.remove('open')">🏌️ Lessons</a>
+  <a href="#pricing" onclick="document.getElementById('mobile-menu').classList.remove('open')">💰 Pricing</a>
+  <a href="#voucher" onclick="document.getElementById('mobile-menu').classList.remove('open')">⛳ First Contact Lesson</a>
+  <a href="#contact" onclick="document.getElementById('mobile-menu').classList.remove('open')">📞 Contact</a>
 </div>
 
 <script>
