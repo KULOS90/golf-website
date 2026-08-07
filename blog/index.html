@@ -10,135 +10,126 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root { --green: #2d5a27; --green-light: #4a8c41; --green-pale: #eef4ed; --cream: #f7f4ef; --brown: #8b6914; --text: #1a1a1a; --text-muted: #666; }
-html { scroll-behavior: smooth; }
-body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
-
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 2.5rem; display: flex; justify-content: space-between; align-items: center; background: rgba(247,244,239,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(45,90,39,0.12); }
+:root { --green: #2d5a27; --green-pale: #eef4ed; --cream: #f7f4ef; --text: #1a1a1a; --text-muted: #666; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 2.5rem; background: rgba(247,244,239,0.92); border-bottom: 1px solid rgba(45,90,39,0.12); }
 .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--green); text-decoration: none; }
-.nav-logo:hover { opacity: 0.8; }
-
-.blog-container { max-width: 900px; margin: 0 auto; padding: 120px 2rem 4rem; }
-.blog-header { text-align: center; margin-bottom: 3.5rem; }
-.blog-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 1rem; }
-.blog-header p { color: var(--text-muted); max-width: 600px; margin: 0 auto 2rem; line-height: 1.7; font-size: 1rem; }
-
-.blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
-.blog-card { background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid rgba(45,90,39,0.1); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
-.blog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(45,90,39,0.1); }
-
-.blog-card-tag { background: var(--green-pale); color: var(--green); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.4rem 0.8rem; margin: 1rem 1rem 0 1rem; width: fit-content; border-radius: 100px; }
-
-.blog-card-content { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
-.blog-card h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 0.8rem; line-height: 1.3; color: #1a2e18; }
-.blog-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; flex: 1; }
-
-.blog-card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid rgba(45,90,39,0.08); }
-.blog-card-date { font-size: 0.8rem; color: var(--text-muted); }
-.blog-card-link { color: var(--green); font-weight: 600; text-decoration: none; font-size: 0.9rem; }
-.blog-card-link:hover { text-decoration: underline; }
-
-footer { background: #1a1a1a; color: rgba(255,255,255,0.5); text-align: center; padding: 1.5rem; font-size: 0.82rem; }
-
-@media (max-width: 768px) {
-nav { padding: 1rem 1.5rem; }
-.blog-container { padding: 100px 1.5rem 3rem; }
-.blog-grid { grid-template-columns: 1fr; }
-}
+.nav-back { font-size: 0.9rem; color: var(--text-muted); margin-left: 1rem; }
+.nav-back a { color: var(--green); text-decoration: none; }
+main { max-width: 900px; margin: 0 auto; padding: 120px 2rem 4rem; }
+h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--green); margin-bottom: 1rem; text-align: center; }
+.intro { text-align: center; color: var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem; }
+.articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem; }
+.article-card { background: white; border: 1px solid rgba(45,90,39,0.15); border-radius: 12px; overflow: hidden; transition: all 0.3s ease; }
+.article-card:hover { box-shadow: 0 8px 24px rgba(45,90,39,0.12); transform: translateY(-4px); }
+.article-card h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--green); padding: 1.5rem 1.5rem 0; margin: 0; }
+.article-card p { color: var(--text-muted); padding: 0.5rem 1.5rem; font-size: 0.95rem; }
+.article-card a { display: block; padding: 1.5rem; padding-top: 1rem; color: var(--green); text-decoration: none; font-weight: 600; }
+.article-card a:hover { background: var(--green-pale); }
+.category-tag { display: inline-block; background: var(--green-pale); color: var(--green); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin: 1.5rem 1.5rem 0; }
+footer { background: #1a1a1a; color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-size: 0.82rem; }
 </style>
 </head>
 <body>
-
 <nav>
   <a href="/" class="nav-logo">Jakub Kulig · Golf</a>
+  <span class="nav-back"><a href="/">← Wróć na główną</a></span>
 </nav>
 
-<div class="blog-container">
-  <div class="blog-header">
-    <h1>Blog Golfa</h1>
-    <p>Artykuły o nauce golfa, Zielonej Karcie, sprzęcie, cenach i wszytkim co musisz wiedzieć. Napisane przez instruktora golfa z licencją PZG.</p>
+<main>
+<h1>Blog Golfa w Krakowie</h1>
+<p class="intro">Artykuły o nauce golfa, Zielonej Karcie, sprzęcie, cenach i wszystkim co musisz wiedzieć. Napisane przez instruktora golfa z licencją PZG.</p>
+
+<div class="articles-grid">
+
+  <!-- Artykuł 1 -->
+  <div class="article-card">
+    <div class="category-tag">Cennik</div>
+    <h3>Ile kosztują lekcje golfa w Krakowie?</h3>
+    <p>Pełny cennik lekcji indywidualnych, grupowych, Zielonej Karty i voucherów. Co naprawdę trzeba wydać na naukę golfa?</p>
+    <a href="01-ile-kosztuja-lekcje-golfa-krakow.html">Czytaj artykuł →</a>
   </div>
 
-  <div class="blog-grid">
-    
-    <!-- Artykuł 1 -->
-    <article class="blog-card">
-      <span class="blog-card-tag">💰 Cennik</span>
-      <div class="blog-card-content">
-        <h3>Ile kosztują lekcje golfa w Krakowie?</h3>
-        <p>Pełny cennik lekcji indywidualnych, dla par, kursu na Zieloną Kartę i zajęć grupowych. Dowiedz się ile kosztuje nauka golfa z certyfikowanym instruktorem.</p>
-      </div>
-      <div class="blog-card-footer">
-        <span class="blog-card-date">2024</span>
-        <a href="01-ile-kosztuja-lekcje-golfa-krakow.html" class="blog-card-link">Czytaj →</a>
-      </div>
-    </article>
-
-    <!-- Artykuł 2 -->
-    <article class="blog-card">
-      <span class="blog-card-tag">🏌️ Podstawy</span>
-      <div class="blog-card-content">
-        <h3>Jak zacząć grać w golfa?</h3>
-        <p>Kompletny poradnik dla początkujących. Od pierwszej lekcji, przez driving range, aż do Zielonej Karty. Praktyczne porady krok po kroku.</p>
-      </div>
-      <div class="blog-card-footer">
-        <span class="blog-card-date">2024</span>
-        <a href="02-jak-zaczac-grac-w-golfa.html" class="blog-card-link">Czytaj →</a>
-      </div>
-    </article>
-
-    <!-- Artykuł 3 -->
-    <article class="blog-card">
-      <span class="blog-card-tag">📜 Licencja</span>
-      <div class="blog-card-content">
-        <h3>Zielona Karta PZG krok po kroku</h3>
-        <p>Wszystko o Zielonej Karcie. Jak się ją zdobywa, ile trwa egzamin, co należy umieć i jak się przygotować. Poradnik dla kandydatów.</p>
-      </div>
-      <div class="blog-card-footer">
-        <span class="blog-card-date">2024</span>
-        <a href="03-zielona-karta-pzg-krok-po-kroku.html" class="blog-card-link">Czytaj →</a>
-      </div>
-    </article>
-
-    <!-- Placeholder dla artykułów 4-10 (będą wkrótce) -->
-    <article class="blog-card" style="opacity: 0.5;">
-      <span class="blog-card-tag">🎯 Wkrótce</span>
-      <div class="blog-card-content">
-        <h3>Golf dla początkujących w Krakowie</h3>
-        <p>Artykuł w przygotowaniu...</p>
-      </div>
-      <div class="blog-card-footer">
-        <span class="blog-card-date">Wkrótce</span>
-      </div>
-    </article>
-
-    <article class="blog-card" style="opacity: 0.5;">
-      <span class="blog-card-tag">🎯 Wkrótce</span>
-      <div class="blog-card-content">
-        <h3>Jakie kije golfowe na początek?</h3>
-        <p>Artykuł w przygotowaniu...</p>
-      </div>
-      <div class="blog-card-footer">
-        <span class="blog-card-date">Wkrótce</span>
-      </div>
-    </article>
-
-    <article class="blog-card" style="opacity: 0.5;">
-      <span class="blog-card-tag">🎯 Wkrótce</span>
-      <div class="blog-card-content">
-        <h3>Royal Kraków vs Krakow Valley</h3>
-        <p>Artykuł w przygotowaniu...</p>
-      </div>
-      <div class="blog-card-footer">
-        <span class="blog-card-date">Wkrótce</span>
-      </div>
-    </article>
-
+  <!-- Artykuł 2 -->
+  <div class="article-card">
+    <div class="category-tag">Początkujący</div>
+    <h3>Jak zacząć grać w golfa?</h3>
+    <p>Kompletny poradnik dla całkowitych początkujących. Gdzie trenować, co przygotować i jak robić pierwsze kroki w golfie.</p>
+    <a href="02-jak-zaczac-grac-w-golfa.html">Czytaj artykuł →</a>
   </div>
+
+  <!-- Artykuł 3 -->
+  <div class="article-card">
+    <div class="category-tag">Zielona Karta</div>
+    <h3>Zielona Karta PZG — krok po kroku</h3>
+    <p>Jak zdobyć Zieloną Kartę golf? Wymagania, egzamin, przepisy bezpieczeństwa i wszystko co musisz wiedzieć.</p>
+    <a href="03-zielona-karta-pzg-krok-po-kroku.html">Czytaj artykuł →</a>
+  </div>
+
+  <!-- Artykuł 4 -->
+  <div class="article-card">
+    <div class="category-tag">Poradnik</div>
+    <h3>Golf dla początkujących w Krakowie</h3>
+    <p>Czy golf jest dla mnie? 10 błędów które robią początkujący i timeline od zera do gracza w 8 tygodni.</p>
+    <a href="04-golf-dla-poczatkujacych-krakow.html">Czytaj artykuł →</a>
+  </div>
+
+  <!-- Artykuł 5 -->
+  <div class="article-card">
+    <div class="category-tag">Sprzęt</div>
+    <h3>Jakie kije golfowe wybrać na początek?</h3>
+    <p>Czy musisz mieć własne kije? Ile kosztują? Jakie marki polecam? Praktyczny poradnik dla początkujących.</p>
+    <a href="05-jakie-kije-golfowe-na-poczatek.html">Czytaj artykuł →</a>
+  </div>
+
+  <!-- Artykuł 6 -->
+  <div class="article-card">
+    <div class="category-tag">Pola golfowe</div>
+    <h3>Royal Kraków czy Krakow Valley?</h3>
+    <p>Porównanie dwóch profesjonalnych pól golfowych w Krakowie. Gdzie lepiej dla początkujących? Lokalizacja, ceny, infrastruktura.</p>
+    <a href="06-royal-krakow-vs-krakow-valley.html">Czytaj artykuł →</a>
+  </div>
+
+  <!-- Artykuł 7 -->
+  <div class="article-card">
+    <div class="category-tag">Senior</div>
+    <h3>Golf po 40 roku życia</h3>
+    <p>Golf jest sport dla każdego wieku. Dlaczego golfa po 40 to inwestycja w zdrowie? Rzeczywiste historie seniorów.</p>
+    <a href="07-golf-po-40-roku-zycia.html">Czytaj artykuł →</a>
+  </div>
+
+  <!-- Artykuł 8 -->
+  <div class="article-card">
+    <div class="category-tag">Dla kobiet</div>
+    <h3>Golf dla kobiet w Krakowie</h3>
+    <p>Czemu golf jest idealny dla kobiet? Największe mity obalane. Praktyczne porady i rzeczywiste historie.</p>
+    <a href="08-golf-dla-kobiet-krakow.html">Czytaj artykuł →</a>
+  </div>
+
+  <!-- Artykuł 9 -->
+  <div class="article-card">
+    <div class="category-tag">Edukacja</div>
+    <h3>Ile trwa kurs na Zieloną Kartę?</h3>
+    <p>Oficjalnie 8 godzin. Praktycznie 4-6 tygodni. Realny timeline i zmienne które wpływają na czas nauki.</p>
+    <a href="09-ile-trwa-kurs-na-zielona-karte.html">Czytaj artykuł →</a>
+  </div>
+
+  <!-- Artykuł 10 -->
+  <div class="article-card">
+    <div class="category-tag">Event</div>
+    <h3>Golf — event firmowy dla teamu</h3>
+    <p>Idealna integracja dla firm. Lekcje, turnieje, networking. Harmonogram, koszty i jak zarezerwować event.</p>
+    <a href="10-event-golfowy-integracja-firmowa.html">Czytaj artykuł →</a>
+  </div>
+
 </div>
 
-<footer><p>© 2024 Jakub Kulig · Asystent Instruktora Golfa · Licencja PZG | <a href="/" style="color: rgba(255,255,255,0.5); text-decoration: none;">Wróć na główną</a></p></footer>
+</main>
+
+<footer>
+<p>© 2024 Jakub Kulig · Golf Instructor · <a href="/" style="color: inherit; text-decoration: none;">jakubkulig.pl</a></p>
+</footer>
 
 </body>
 </html>
