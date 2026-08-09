@@ -1,4 +1,511 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materiały do nauki na Zieloną Kartę PZG · Jakub Kulig Golf</title>
+<meta name="description" content="Kompletne materiały do nauki przed egzaminem na Zieloną Kartę PZG: etykieta, bezpieczeństwo, tempo gry i podstawowe reguły golfa. Z testem próbnym 30 pytań.">
+<meta name="robots" content="index, follow">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light dark;
+  --page:#f7f4ef; --card:#ffffff; --card-alt:#fbfaf7;
+  --text:#1a1a1a; --muted:#63625d; --hair:#e2ddd2;
+  --green:#2d5a27; --green-light:#4a8c41; --green-deep:#1a3c2e;
+  --headline:#1a3c2e; --h3col:#2d5a27;
+  --accentbg:#eef4ed; --accentbar:#4a8c41;
+  --warnbg:#fdf6e3; --warnbar:#8b6914; --brown:#8b6914;
+  --okbg:#e3f0e0; --oktext:#16351a; --okborder:#2d5a27;
+  --badbg:#fdeceb; --badtext:#8c1d18; --badborder:#b3261e;
+  --gold:#c9a84c; --navbg:#1a3c2e;
+  --display:'Playfair Display',Georgia,serif;
+  --body:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --page:#111613; --card:#1a201d; --card-alt:#212824;
+    --text:#e9e7e1; --muted:#a9a79f; --hair:#2f3833;
+    --headline:#cfe3cb; --h3col:#9ecb96;
+    --accentbg:#1c2a22; --accentbar:#4a8c41;
+    --warnbg:#2b2417; --warnbar:#c9a84c; --brown:#d4b45e;
+    --okbg:#1d3320; --oktext:#bde3b7; --okborder:#5aa64f;
+    --badbg:#33201d; --badtext:#f3aca4; --badborder:#c4544a;
+    --gold:#d9bd6a; --navbg:#0f1a15;
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--text);background:var(--page);line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+
+nav{background:var(--navbg);position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(201,168,76,.28)}
+.nav-in{max-width:860px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.nav-logo{font-family:var(--display);color:#fff;font-size:16px;font-weight:600}
+.nav-logo span{color:var(--gold)}
+.nav-in a{color:var(--gold);text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(201,168,76,.45);padding:7px 14px;border-radius:100px;white-space:nowrap}
+.nav-in a:hover{background:var(--gold);color:#1a3c2e}
+
+header.hero{background:linear-gradient(160deg,#1a3c2e,#0f2219);color:#fff;padding:56px 0 48px}
+.tag{display:inline-block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,.45);padding:5px 12px;border-radius:100px;margin-bottom:18px}
+.hero h1{font-family:var(--display);font-size:clamp(28px,5vw,42px);font-weight:600;line-height:1.15;margin-bottom:14px;color:#fff}
+.hero p{color:rgba(255,255,255,.82);font-weight:300;font-size:16.5px;max-width:60ch}
+.hero .src{margin-top:22px;font-size:13px;color:rgba(255,255,255,.6)}
+.hero .src a{color:var(--gold)}
+
+.toc{background:var(--card);border:1px solid var(--hair);border-radius:14px;padding:22px 26px;margin:-28px auto 0;position:relative;max-width:812px}
+.toc h2{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brown);margin-bottom:12px}
+.toc ol{margin-left:18px;font-size:15px;color:var(--text)}
+.toc li{padding:3px 0}
+.toc a{color:var(--h3col);text-decoration:none}
+.toc a:hover{text-decoration:underline}
+
+section.blk{padding:44px 0 8px}
+h2.sec{font-family:var(--display);font-size:clamp(22px,3.4vw,30px);font-weight:600;color:var(--headline);margin-bottom:8px;scroll-margin-top:70px}
+.lead{color:var(--muted);font-weight:300;margin-bottom:22px;font-size:16px}
+h3{font-family:var(--display);font-size:20px;font-weight:600;color:var(--h3col);margin:26px 0 10px}
+p{margin-bottom:14px;color:var(--text)}
+ul.pts{list-style:none;margin:0 0 18px;color:var(--text)}
+ul.pts li{position:relative;padding-left:22px;margin-bottom:9px}
+ul.pts li::before{content:'';position:absolute;left:0;top:10px;width:7px;height:7px;border-radius:50%;background:var(--green-light)}
+strong{font-weight:700;color:var(--text)}
+a{color:var(--h3col)}
+
+.card{background:var(--card);border:1px solid var(--hair);border-radius:14px;padding:24px 26px;margin-bottom:18px}
+.card h3{margin-top:0}
+.note{background:var(--accentbg);border-left:3px solid var(--accentbar);border-radius:0 10px 10px 0;padding:16px 20px;margin:18px 0;font-size:15px;color:var(--text)}
+.note strong{color:var(--text)}
+.warn{background:var(--warnbg);border-left:3px solid var(--warnbar);border-radius:0 10px 10px 0;padding:16px 20px;margin:18px 0;font-size:15px;color:var(--text)}
+
+table{width:100%;border-collapse:collapse;margin:16px 0 22px;font-size:15px;background:var(--card);border:1px solid var(--hair);border-radius:10px;overflow:hidden}
+th{background:var(--green);color:#fff;text-align:left;padding:11px 14px;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+td{padding:11px 14px;border-top:1px solid var(--hair);vertical-align:top;color:var(--text)}
+tr:nth-child(even) td{background:var(--card-alt)}
+
+.quiz{background:var(--card);border:2px solid var(--green-light);border-radius:16px;padding:26px;margin:22px 0}
+.quiz-head{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.quiz-head h3{margin:0}
+.qcount{font-size:13px;color:var(--muted)}
+.qbar{height:6px;background:var(--accentbg);border-radius:99px;overflow:hidden;margin:14px 0 20px}
+.qbar i{display:block;height:100%;background:var(--green-light);width:0;transition:width .3s}
+.qtext{font-size:17px;font-weight:500;margin-bottom:16px;color:var(--text)}
+.opt{display:block;width:100%;text-align:left;background:var(--card);color:var(--text);border:1.5px solid var(--hair);border-radius:10px;padding:14px 16px;margin-bottom:10px;font:inherit;font-size:15.5px;line-height:1.45;cursor:pointer;transition:border-color .15s,background .15s}
+.opt:hover:not(:disabled){border-color:var(--green-light);background:var(--accentbg)}
+.opt:disabled{cursor:default;opacity:1;color:var(--muted);-webkit-text-fill-color:var(--muted)}
+.opt.ok{border-color:var(--okborder);border-width:2px;background:var(--okbg);color:var(--oktext);-webkit-text-fill-color:var(--oktext);font-weight:700}
+.opt.ok::before{content:'✓';margin-right:9px;font-weight:700}
+.opt.bad{border-color:var(--badborder);border-width:2px;background:var(--badbg);color:var(--badtext);-webkit-text-fill-color:var(--badtext);font-weight:600}
+.opt.bad::before{content:'✗';margin-right:9px;font-weight:700}
+.expl{background:var(--accentbg);border-left:3px solid var(--accentbar);border-radius:0 10px 10px 0;padding:15px 18px;font-size:15px;color:var(--text);margin-top:12px;display:none}
+.expl.show{display:block}
+.expl b{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--brown);margin-bottom:6px}
+.qnav{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.btn{font:inherit;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:12px 22px;border-radius:100px;border:0;cursor:pointer;text-decoration:none;display:inline-block}
+.btn-p{background:var(--green);color:#fff}
+.btn-p:hover{background:var(--green-deep)}
+.btn:disabled{opacity:.45;cursor:default}
+.result{text-align:center;padding:14px 0}
+.result .score{font-family:var(--display);font-size:44px;font-weight:700;color:var(--h3col)}
+.result .verdict{font-size:16px;margin:8px 0 18px;color:var(--text)}
+
+.reslist{display:grid;gap:12px}
+.res{display:block;background:var(--card);border:1px solid var(--hair);border-radius:12px;padding:16px 20px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}
+.res:hover{border-color:var(--green-light);transform:translateY(-2px)}
+.res b{display:block;color:var(--h3col);font-size:16px;margin-bottom:3px}
+.res span{font-size:14px;color:var(--muted);font-weight:300}
+
+footer{background:var(--navbg);color:rgba(255,255,255,.7);padding:34px 0;margin-top:50px;font-size:14px;text-align:center}
+footer a{color:var(--gold);text-decoration:none}
+footer p{color:rgba(255,255,255,.7)}
+@media(max-width:600px){
+  .toc{margin-top:-20px;padding:18px 20px}
+  .quiz{padding:20px 18px}
+  table{font-size:13.5px}
+  th,td{padding:9px 10px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <div class="nav-logo">Jakub Kulig <span>Golf</span></div>
+    <a href="/zielona-karta/">Kurs Zielonej Karty</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="tag">Materiały dla kursantów</span>
+    <h1>Zielona Karta PZG — wszystko, czego musisz się nauczyć</h1>
+    <p>Ta strona pokrywa dokładnie ten zakres, który obowiązuje na egzaminie. Przeczytaj ją przed kursem albo wróć do niej w tygodniu przed egzaminem — na końcu znajdziesz test próbny z 30 pytaniami, czyli tyle samo, ile ma część teoretyczna.</p>
+    <p class="src">Zakres opracowany na podstawie oficjalnych wymagań <a href="https://polski.golf/jak-zaczac/zielona-karta-pzg/" target="_blank" rel="noopener">Polskiego Związku Golfa</a>.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="toc">
+    <h2>Spis treści</h2>
+    <ol>
+      <li><a href="#czym">Czym jest Zielona Karta i co daje</a></li>
+      <li><a href="#egzamin">Jak wygląda egzamin</a></li>
+      <li><a href="#bezpieczenstwo">Bezpieczeństwo na polu</a></li>
+      <li><a href="#etykieta">Etykieta — uprzejmość wobec graczy</a></li>
+      <li><a href="#pole">Dbałość o pole</a></li>
+      <li><a href="#tempo">Tempo gry i Ready Golf</a></li>
+      <li><a href="#reguly">Podstawowe reguły gry</a></li>
+      <li><a href="#slownik">Słowniczek pojęć</a></li>
+      <li><a href="#test">Test próbny — 30 pytań</a></li>
+      <li><a href="#zrodla">Oficjalne źródła i materiały</a></li>
+    </ol>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section class="blk">
+  <h2 class="sec" id="czym">1. Czym jest Zielona Karta i co daje</h2>
+  <p class="lead">Zacznijmy od tego, po co w ogóle to robisz.</p>
+
+  <p>Zielona Karta to imienny dokument wydawany przez Polski Związek Golfa. Potwierdza, że przeszedłeś podstawowe szkolenie i umiesz poruszać się po polu golfowym samodzielnie — bezpiecznie, sprawnie i zgodnie z etykietą. PZG ma wyłączne prawo do jej wydawania na terenie Polski, a egzamin może przeprowadzić wyłącznie trener z uprawnieniami PGA Polska.</p>
+
+  <div class="note">
+    <strong>Najważniejsze rozróżnienie:</strong> Zielona Karta pozwala grać rekreacyjnie na polach, ale <em>nie</em> uprawnia do startu w turniejach. Do tego potrzebna jest Karta HCP (licencja zawodnicza), którą uzyskuje się przez klub należący do PZG. Zielona Karta jest pierwszym krokiem — HCP drugim.
+  </div>
+
+  <h3>Co potrafi posiadacz Zielonej Karty</h3>
+  <ul class="pts">
+    <li>Porusza się bezpiecznie po polu golfowym</li>
+    <li>Gra sprawnie i utrzymuje odpowiednie tempo</li>
+    <li>Dba o pole — naprawia to, co zniszczy</li>
+    <li>Zachowuje się zgodnie z zasadami etykiety</li>
+  </ul>
+
+  <h3>Czego wiedzieć nie musisz</h3>
+  <p>To ważne, żeby się niepotrzebnie nie stresować. Na tym poziomie <strong>nie</strong> musisz znać szczegółowych przepisów turniejowych, zdawać zaawansowanych testów umiejętności ani rozumieć systemu handicapowego. Egzamin sprawdza, czy jesteś bezpiecznym i kulturalnym partnerem do gry — nie czy jesteś dobrym graczem.</p>
+</section>
+
+<section class="blk">
+  <h2 class="sec" id="egzamin">2. Jak wygląda egzamin</h2>
+  <p class="lead">Dwie części, obie trzeba zaliczyć.</p>
+
+  <div class="card">
+    <h3>Część I — teoria</h3>
+    <p>Test składający się z <strong>30 pytań</strong> dotyczących etykiety gry, zachowania na polu i podstawowych reguł golfa. Może zostać przeprowadzony pisemnie, jako test online albo ustnie — o formie decyduje prowadzący.</p>
+  </div>
+
+  <div class="card">
+    <h3>Część II — praktyka</h3>
+    <p>Rozgrywasz dołki na polu golfowym w czasie wyznaczonym przez trenera, zachowując zasady bezpieczeństwa i etykiety. Gra się z tee dobranych do Twoich umiejętności (skróconych) i z uwzględnieniem uproszczonych reguł, które pozwalają grać sprawnie.</p>
+    <p>Egzamin praktyczny nie sprawdza, jak daleko uderzasz. Sprawdza, czy potrafisz przejść pole bezpiecznie, w rozsądnym tempie i nie przeszkadzając innym.</p>
+  </div>
+
+  <div class="warn">
+    <strong>Na egzamin zabierz:</strong> kije, kilka piłek, dokument tożsamości i dokumenty egzaminacyjne, które dostaniesz ode mnie wcześniej. Ubierz się w strój golfowy i buty odpowiednie na pole.
+  </div>
+</section>
+
+<section class="blk">
+  <h2 class="sec" id="bezpieczenstwo">3. Bezpieczeństwo na polu</h2>
+  <p class="lead">Jeśli miałbyś zapamiętać tylko jeden rozdział, niech to będzie ten. Kij golfowy w rękach początkującego to realne zagrożenie, a piłka leci z prędkością przekraczającą 200 km/h.</p>
+
+  <h3>Zanim uderzysz</h3>
+  <ul class="pts">
+    <li><strong>Sprawdź, czy grupa przed Tobą jest poza zasięgiem.</strong> Nie „prawdopodobnie poza zasięgiem" — poza zasięgiem. Nawet jeśli normalnie nie dobijasz tak daleko, może się zdarzyć uderzenie życia.</li>
+    <li><strong>Zobacz, gdzie stoją Twoi współgracze.</strong> Nikt nie powinien stać przed Tobą ani w linii uderzenia.</li>
+    <li><strong>Uważaj z próbnymi zamachami.</strong> Nigdy nie machaj kijem w kierunku innej osoby i upewnij się, że masz wolną przestrzeń wokół siebie.</li>
+  </ul>
+
+  <h3>Okrzyk FORE!</h3>
+  <p>Jeśli Twoja piłka leci w stronę ludzi — krzycz <strong>FORE!</strong> głośno i natychmiast. Nie zastanawiaj się, czy to nie przesada. Lepiej krzyknąć niepotrzebnie sto razy niż raz za późno.</p>
+  <p>Gdy usłyszysz FORE! od kogoś innego: <strong>osłoń głowę rękami i schowaj się</strong>, najlepiej odwracając się plecami do kierunku, z którego może nadlecieć piłka. Nie rozglądaj się, żeby zobaczyć, gdzie ona jest — to najczęstsza przyczyna urazów twarzy.</p>
+  <p>FORE! krzyczy się też przy grze „na ślepo", czyli gdy uderzasz w miejsce, którego nie widzisz — na przykład zza pagórka.</p>
+
+  <div class="warn">
+    <strong>Burza — zasada bez wyjątków.</strong> Podczas burzy gry się nie kontynuuje. Kij golfowy to metalowy pręt trzymany w wyciągniętych rękach na otwartej przestrzeni. Schodzisz z pola natychmiast, nie chowasz się pod drzewem i nie czekasz na sygnał od nikogo.
+  </div>
+</section>
+
+<section class="blk">
+  <h2 class="sec" id="etykieta">4. Etykieta — uprzejmość wobec innych graczy</h2>
+  <p class="lead">Golf jest jedynym sportem, w którym sędziujesz sam sobie. Cała kultura tej gry opiera się na założeniu, że nikt nie musi Cię pilnować.</p>
+
+  <ul class="pts">
+    <li><strong>Cisza w momencie uderzenia.</strong> Nie rozmawiaj, nie ruszaj się, nie brzęcz sprzętem, gdy ktoś przygotowuje się do uderzenia. Stój nieruchomo poza polem jego widzenia.</li>
+    <li><strong>Nie komentuj cudzej gry.</strong> Ani pochlebnie, ani krytycznie. „Ale pojechało" po nieudanym uderzeniu jest gorsze, niż myślisz.</li>
+    <li><strong>Nie udzielaj porad.</strong> To nie tylko kwestia kultury — w grze turniejowej doradzanie jest karane. Wyjątkiem jest Twój partner w grze drużynowej i oczywiście trener podczas lekcji.</li>
+    <li><strong>Uważaj na słownictwo.</strong> Golf bywa frustrujący. Klątwy, rzucanie kijem i wybuchy złości są źle widziane wszędzie, a na polu klubowym mogą skończyć się rozmową z zarządem.</li>
+    <li><strong>Nie rzucaj cienia na linię puttu.</strong> Drobiazg, o którym początkujący nie wiedzą, a doświadczeni gracze zauważają natychmiast.</li>
+    <li><strong>Wyłącz dźwięki w telefonie.</strong> Rozmowy prowadź poza zasięgiem słuchu grających.</li>
+  </ul>
+</section>
+
+<section class="blk">
+  <h2 class="sec" id="pole">5. Dbałość o pole</h2>
+  <p class="lead">Zasada jest prosta: zostawiasz pole w lepszym stanie, niż je zastałeś.</p>
+
+  <table>
+    <tr><th>Co zniszczyłeś</th><th>Co robisz</th></tr>
+    <tr><td><strong>Divot</strong> — wyrwany płat darni po uderzeniu</td><td>Wkładasz go z powrotem i dociskasz butem. Na niektórych polach zamiast tego zasypuje się dołek mieszanką piasku z workaczka przy wózku.</td></tr>
+    <tr><td><strong>Pitchmark</strong> — wgniecenie po piłce lądującej na greenie</td><td>Naprawiasz widelcem: wbijasz go z boków i podważasz darń do środka, potem wygładzasz puttrem. Nie podważaj od dołu — to zrywa korzenie.</td></tr>
+    <tr><td><strong>Ślady w bunkrze</strong></td><td>Grabisz po sobie — swoje ślady stóp i ślad po uderzeniu. Wchodzisz i wychodzisz z najniższej strony, grabie odkładasz zgodnie ze zwyczajem klubu.</td></tr>
+    <tr><td><strong>Ślady na greenie</strong></td><td>Nie wbijasz obcasów, nie przeciągasz nóg, nie kładziesz torby na greenie i nie wjeżdżasz na niego wózkiem.</td></tr>
+  </table>
+
+  <p>Osobna sprawa: staraj się robić <strong>jak najmniej divotów podczas treningu</strong>. Na driving range uderzaj kolejne piłki obok siebie, tworząc równy pas, zamiast rozkopywać całe stanowisko.</p>
+</section>
+
+<section class="blk">
+  <h2 class="sec" id="tempo">6. Tempo gry i Ready Golf</h2>
+  <p class="lead">Wolna gra to najczęstszy powód irytacji na polu — i najczęstszy powód, dla którego kluby wymagają Zielonej Karty.</p>
+
+  <h3>Ready Golf — graj, gdy jesteś gotowy</h3>
+  <p>Klasyczna reguła mówi, że pierwszy uderza gracz najdalej od dołka. <strong>Ready Golf</strong> odwraca to podejście: uderza ten, kto jest gotowy, o ile jest to bezpieczne. To dziś standard w grze rekreacyjnej i jedna z rzeczy, które musisz znać na egzaminie.</p>
+  <p>W praktyce oznacza to: idziesz do swojej piłki, po drodze oceniasz odległość i wybierasz kij, a gdy przychodzi Twoja kolej — po prostu uderzasz, zamiast dopiero zaczynać przygotowania.</p>
+
+  <h3>Konkretne liczby do zapamiętania</h3>
+  <ul class="pts">
+    <li><strong>Maksymalnie 3 minuty</strong> na szukanie zgubionej piłki. Po tym czasie piłka jest uznana za zgubioną. (Do 2019 roku było 5 minut — na starszych materiałach możesz trafić na tę wartość.)</li>
+    <li><strong>Około 40 sekund</strong> na wykonanie uderzenia od momentu, gdy przychodzi Twoja kolej. To rekomendacja R&amp;A dotycząca tempa gry.</li>
+  </ul>
+
+  <h3>Reszta dobrych nawyków</h3>
+  <ul class="pts">
+    <li><strong>Zostaw sprzęt po właściwej stronie greena</strong> — od strony następnego tee. Dzięki temu nie wracasz po torbę.</li>
+    <li><strong>Wyniki zapisujcie po zejściu z greena</strong>, przy następnym tee — nie stojąc na greenie, gdy grupa za Wami czeka.</li>
+    <li><strong>Przepuść szybszą grupę</strong>, jeśli szukacie piłki albo widzicie, że za Wami się gromadzą. To nie wstyd, to standard.</li>
+    <li><strong>Zagraj piłkę prowizoryczną</strong>, jeśli podejrzewasz, że Twoja mogła wypaść poza pole lub zginąć. Oszczędza to długi powrót na poprzednie miejsce.</li>
+  </ul>
+</section>
+
+<section class="blk">
+  <h2 class="sec" id="reguly">7. Podstawowe reguły gry</h2>
+  <p class="lead">Na egzaminie obowiązuje zakres z „Krótkiego Przewodnika do Reguł Gry w Golfa" — nie pełna księga reguł.</p>
+
+  <h3>Zasada nadrzędna</h3>
+  <p><strong>Grasz piłkę tam, gdzie leży, i pole takie, jakie zastałeś.</strong> Nie poprawiasz sobie pozycji piłki, nie odginasz gałęzi, nie udeptujesz trawy za piłką. Prawie wszystkie reguły to rozwinięcia albo wyjątki od tej jednej zasady.</p>
+
+  <h3>Sprzęt i start</h3>
+  <ul class="pts">
+    <li>W torbie możesz mieć <strong>maksymalnie 14 kijów</strong>.</li>
+    <li>Piłkę na tee ustawiasz <strong>między znacznikami</strong> i nie dalej niż dwie długości kija za nimi. Możesz stać poza obszarem tee.</li>
+    <li>Zawsze <strong>oznacz swoją piłkę</strong> — markerem, kropką, czymkolwiek. Zagranie cudzej piłki to kara.</li>
+  </ul>
+
+  <h3>Kiedy coś pójdzie nie tak</h3>
+  <table>
+    <tr><th>Sytuacja</th><th>Co robisz</th></tr>
+    <tr><td><strong>Piłka poza polem</strong> (out of bounds, białe paliki)</td><td>Kara uderzenia i odległości: wracasz i grasz z poprzedniego miejsca, doliczając 1 karne uderzenie.</td></tr>
+    <tr><td><strong>Piłka zgubiona</strong> (nie znaleziona w 3 minuty)</td><td>Tak samo jak poza polem — uderzenie i odległość.</td></tr>
+    <tr><td><strong>Obszar kary</strong> (penalty area, paliki żółte lub czerwone)</td><td>Za 1 karne uderzenie dropujesz poza obszarem, zgodnie z opcjami dla danego koloru palików. Możesz też zagrać piłkę z wody, jeśli dasz radę.</td></tr>
+    <tr><td><strong>Piłka niegrywalna</strong></td><td>Sam decydujesz, że nie da się nią zagrać. Za 1 karne uderzenie masz trzy opcje ulgi, w tym drop w promieniu dwóch długości kija.</td></tr>
+    <tr><td><strong>Piłka w bunkrze</strong></td><td>Grasz normalnie, ale <strong>nie dotykasz piasku kijem</strong> przed uderzeniem — ani przy ustawianiu, ani próbnym zamachem.</td></tr>
+  </table>
+
+  <div class="note">
+    <strong>Drop wykonuje się z wysokości kolana</strong> — nie z wysokości ramienia. To zmiana z 2019 roku, a jedno z częstszych pytań na egzaminie.
+  </div>
+
+  <h3>Na greenie</h3>
+  <ul class="pts">
+    <li>Możesz <strong>podnieść i oczyścić piłkę</strong>, ale najpierw zaznacz jej pozycję markerem.</li>
+    <li>Możesz <strong>naprawiać wszelkie uszkodzenia</strong> greena — pitchmarki, ślady po butach, stare wgniecenia po dołku.</li>
+    <li><strong>Flagę możesz zostawić w dołku</strong> podczas puttowania. To również zmiana z 2019 roku; wcześniej groziła za to kara.</li>
+    <li>Nie dotykaj linii puttu przy jej wskazywaniu i nie stawaj na cudzej linii.</li>
+  </ul>
+
+  <h3>Rzeczy dozwolone, o które ludzie często pytają</h3>
+  <ul class="pts">
+    <li><strong>Dalmierze</strong> i urządzenia mierzące odległość są dozwolone (o ile nie mierzą np. nachylenia terenu).</li>
+    <li><strong>Luźne przeszkody naturalne</strong> — kamienie, liście, gałązki — możesz usuwać wszędzie, także w bunkrze. Uważaj tylko, żeby piłka się przy tym nie poruszyła.</li>
+    <li><strong>Ulga bez kary</strong> przysługuje m.in. od terenu w naprawie, dróg utwardzonych i urządzeń sztucznych.</li>
+  </ul>
+</section>
+
+<section class="blk">
+  <h2 class="sec" id="slownik">8. Słowniczek pojęć</h2>
+  <p class="lead">Terminy, które padną na kursie i na egzaminie.</p>
+  <table>
+    <tr><th>Pojęcie</th><th>Znaczenie</th></tr>
+    <tr><td>Tee / tee box</td><td>Obszar startowy dołka. „Tee" to też kołeczek pod piłkę.</td></tr>
+    <tr><td>Fairway</td><td>Nisko koszony pas trawy między tee a greenem.</td></tr>
+    <tr><td>Rough</td><td>Wyższa trawa po bokach fairwaya.</td></tr>
+    <tr><td>Green</td><td>Bardzo nisko koszona powierzchnia z dołkiem.</td></tr>
+    <tr><td>Bunkier</td><td>Zagłębienie wypełnione piaskiem.</td></tr>
+    <tr><td>Par</td><td>Zakładana liczba uderzeń na dołku dla dobrego gracza.</td></tr>
+    <tr><td>Birdie / bogey</td><td>Jedno uderzenie poniżej / powyżej par.</td></tr>
+    <tr><td>Drive</td><td>Długie uderzenie z tee, zwykle driverem.</td></tr>
+    <tr><td>Putt</td><td>Uderzenie po greenie, wykonywane puttrem.</td></tr>
+    <tr><td>Chip / pitch</td><td>Krótkie uderzenia w okolicy greena.</td></tr>
+    <tr><td>Divot</td><td>Wyrwany płat darni po uderzeniu.</td></tr>
+    <tr><td>Pitchmark</td><td>Wgniecenie na greenie po lądującej piłce.</td></tr>
+    <tr><td>Flight</td><td>Grupa graczy przechodząca pole razem.</td></tr>
+    <tr><td>Green fee</td><td>Opłata za wejście na pole.</td></tr>
+    <tr><td>Handicap (HCP)</td><td>Wskaźnik poziomu gracza, pozwalający porównywać wyniki.</td></tr>
+  </table>
+</section>
+
+<section class="blk">
+  <h2 class="sec" id="test">9. Test próbny — 30 pytań</h2>
+  <p class="lead">Tyle samo pytań, ile na prawdziwym egzaminie. Po każdej odpowiedzi zobaczysz wyjaśnienie.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="quiz-head">
+      <h3 id="qtitle">Pytanie 1</h3>
+      <span class="qcount" id="qcount">1 / 30 · poprawnych: 0</span>
+    </div>
+    <div class="qbar"><i id="qbar"></i></div>
+    <div id="qbody">
+      <p class="qtext" id="qtext"></p>
+      <div id="qopts"></div>
+      <div class="expl" id="qexpl"></div>
+      <div class="qnav">
+        <button class="btn btn-p" id="qnext" disabled>Następne pytanie</button>
+      </div>
+    </div>
+    <div id="qresult" style="display:none"></div>
+  </div>
+</section>
+
+<section class="blk">
+  <h2 class="sec" id="zrodla">10. Oficjalne źródła i materiały</h2>
+  <p class="lead">Wszystko poniżej jest darmowe i pochodzi od PZG albo R&amp;A — organizacji tworzącej reguły golfa.</p>
+
+  <div class="reslist">
+    <a class="res" href="https://polski.golf/jak-zaczac/zielona-karta-pzg/" target="_blank" rel="noopener">
+      <b>Zielona Karta PZG — wymagania egzaminacyjne</b>
+      <span>Oficjalny zakres kursu i egzaminu. Źródło, na którym oparta jest ta strona.</span>
+    </a>
+    <a class="res" href="https://polski.golf/reguly-gry-w-golfa/" target="_blank" rel="noopener">
+      <b>Reguły gry w golfa — PZG</b>
+      <span>Aktualne reguły po polsku, wraz z materiałami wyjaśniającymi.</span>
+    </a>
+    <a class="res" href="https://polski.golf/reguly-gry-w-golfa/quiz/" target="_blank" rel="noopener">
+      <b>Quiz z reguł — PZG</b>
+      <span>Oficjalny quiz Związku. Dobre uzupełnienie testu powyżej.</span>
+    </a>
+    <a class="res" href="https://polski.golf/reguly-gry-w-golfa/wideo/" target="_blank" rel="noopener">
+      <b>Reguły na wideo — PZG</b>
+      <span>Krótkie filmy tłumaczące sytuacje, które trudno opisać słowami.</span>
+    </a>
+    <a class="res" href="https://www.randa.org/pl-PL/rules/rules-of-golf-home" target="_blank" rel="noopener">
+      <b>R&amp;A — Reguły gry w golfa po polsku</b>
+      <span>Źródło pierwotne. Jest też darmowa aplikacja mobilna z wyszukiwarką sytuacji.</span>
+    </a>
+    <a class="res" href="https://polski.golf/jak-zaczac/karta-hcp-pzg-licencja-zawodnicza/" target="_blank" rel="noopener">
+      <b>Karta HCP — następny krok po Zielonej Karcie</b>
+      <span>Co daje licencja zawodnicza i jak ją uzyskać przez klub.</span>
+    </a>
+  </div>
+
+  <div class="note" style="margin-top:26px">
+    <strong>Masz pytanie do materiału?</strong> Napisz albo zadzwoń — <a href="tel:510655432" style="color:var(--green-deep)">510 655 432</a>. Lepiej wyjaśnić wątpliwość przed egzaminem niż zgadywać na teście.
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <p>Jakub Kulig · Asystent Instruktora PGA Polska · Kraków</p>
+    <p style="margin-top:8px"><a href="tel:510655432">510 655 432</a> &nbsp;·&nbsp; <a href="/">jakubkulig.pl</a> &nbsp;·&nbsp; <a href="https://instagram.com/kuligjakub" target="_blank" rel="noopener">@kuligjakub</a></p>
+  </div>
+</footer>
+
+<script>
+const Q=[
+{q:"Ile masz maksymalnie czasu na szukanie zgubionej piłki?",o:["1 minutę","3 minuty","5 minut","Bez limitu"],a:1,e:"Od 2019 roku obowiązują 3 minuty. Wcześniej było 5 i na starszych materiałach wciąż można trafić na tę wartość."},
+{q:"Co robisz, gdy usłyszysz okrzyk FORE!?",o:["Rozglądasz się, żeby zobaczyć piłkę","Osłaniasz głowę i chowasz się","Biegniesz do przodu","Podnosisz kij nad głowę"],a:1,e:"Osłaniasz głowę rękami i odwracasz się plecami. Rozglądanie się to najczęstsza przyczyna urazów twarzy."},
+{q:"Ile kijów możesz mieć w torbie podczas rundy?",o:["10","12","14","Bez ograniczeń"],a:2,e:"Maksymalnie 14 kijów. Możesz mieć mniej, ale nie więcej."},
+{q:"Co robisz, gdy zaczyna się burza?",o:["Kończysz dołek i schodzisz","Chowasz się pod drzewem","Schodzisz z pola natychmiast","Czekasz na sygnał z klubu"],a:2,e:"Natychmiast schodzisz z pola. Kij golfowy to metalowy pręt na otwartej przestrzeni, a drzewo jest jednym z najgorszych możliwych schronień."},
+{q:"Czym jest pitchmark?",o:["Wyrwany płat darni po uderzeniu","Wgniecenie na greenie po lądującej piłce","Znacznik pozycji piłki","Ślad po grabiach w bunkrze"],a:1,e:"Pitchmark to wgniecenie po piłce spadającej na green. Divot to wyrwany płat darni po uderzeniu."},
+{q:"Na czym polega Ready Golf?",o:["Uderza gracz najdalej od dołka","Uderza ten, kto jest gotowy, o ile to bezpieczne","Wszyscy uderzają jednocześnie","Uderza zwycięzca poprzedniego dołka"],a:1,e:"Ready Golf przyspiesza grę: uderza ten, kto jest przygotowany, zamiast czekać na klasyczną kolejność."},
+{q:"Z jakiej wysokości wykonuje się drop?",o:["Z wysokości ramienia","Z wysokości kolana","Z wysokości biodra","Kładzie się piłkę na ziemi"],a:1,e:"Z wysokości kolana. To zmiana z 2019 roku — wcześniej dropowało się z wysokości ramienia."},
+{q:"Czy podczas puttowania flaga może zostać w dołku?",o:["Tak, zawsze","Nie, zawsze trzeba ją wyjąć","Tylko na krótkich puttach","Tylko za zgodą współgraczy"],a:0,e:"Od 2019 roku flagę można zostawić w dołku. Wcześniej trafienie w nią oznaczało karę."},
+{q:"Czego nie wolno robić w bunkrze przed uderzeniem?",o:["Usuwać liści","Dotykać piasku kijem","Wchodzić od najniższej strony","Robić próbnego zamachu w powietrzu"],a:1,e:"Nie wolno dotykać piasku kijem — ani przy ustawianiu, ani próbnym zamachem. Luźne przeszkody naturalne można od 2019 roku usuwać."},
+{q:"Piłka wypadła poza pole (białe paliki). Co robisz?",o:["Dropujesz w miejscu wyjścia bez kary","Grasz ponownie z poprzedniego miejsca z 1 karnym uderzeniem","Dropujesz przy paliku z 1 karnym uderzeniem","Kontynuujesz grę tą samą piłką"],a:1,e:"Obowiązuje kara uderzenia i odległości: wracasz na poprzednie miejsce i doliczasz 1 karne uderzenie."},
+{q:"Ile pytań ma część teoretyczna egzaminu na Zieloną Kartę?",o:["15","20","30","50"],a:2,e:"30 pytań dotyczących etykiety, zachowania na polu i podstawowych reguł."},
+{q:"Zielona Karta uprawnia do:",o:["Startu w turniejach mistrzowskich","Samodzielnej gry rekreacyjnej na polach","Prowadzenia lekcji golfa","Sędziowania zawodów"],a:1,e:"Do gry rekreacyjnej. Do turniejów potrzebna jest Karta HCP, czyli licencja zawodnicza PZG."},
+{q:"Kto może przeprowadzić egzamin na Zieloną Kartę?",o:["Dowolny gracz z handicapem","Trener z uprawnieniami PGA Polska","Zarząd klubu golfowego","Sędzia turniejowy"],a:1,e:"Wyłącznie trener posiadający uprawnienia PGA Polska. Samą kartę wydaje Polski Związek Golfa."},
+{q:"Gdzie powinieneś zostawić torbę, podchodząc do greena?",o:["Na greenie, przy dołku","Od strony następnego tee","Przed greenem, po drodze","Gdziekolwiek, to bez znaczenia"],a:1,e:"Od strony następnego tee — dzięki temu nie musisz wracać, co spowalnia całą grupę. Na green torby się nie wnosi."},
+{q:"Kiedy zapisujecie wyniki?",o:["Stojąc na greenie, zaraz po ostatnim putcie","Po zejściu z greena, przy następnym tee","Na koniec całej rundy z pamięci","W trakcie gry innego gracza"],a:1,e:"Po zejściu z greena. Stanie na greenie i liczenie punktów blokuje grupę za Wami."},
+{q:"Jak naprawia się pitchmark?",o:["Podważa się darń od dołu i unosi","Wbija się widelec z boków i podważa do środka","Zasypuje się piaskiem","Zostawia się — sam zarośnie"],a:1,e:"Wbijasz widelec z boków i podważasz darń do środka, potem wygładzasz puttrem. Podważanie od dołu zrywa korzenie i green goi się tygodniami."},
+{q:"Czy podczas gry wolno udzielać rad współgraczom?",o:["Tak, to przejaw uprzejmości","Nie — to niezgodne z etykietą, a w turnieju karane","Tylko początkującym","Tylko na greenie"],a:1,e:"Nie. Poza wyjątkami takimi jak partner w grze drużynowej czy trener podczas lekcji, doradzanie jest niezgodne z etykietą, a w grze turniejowej karane."},
+{q:"Skąd ustawiasz piłkę na tee?",o:["Dokładnie na linii między znacznikami","Między znacznikami, do dwóch długości kija za nimi","Gdziekolwiek na obszarze tee","Zawsze przed znacznikami"],a:1,e:"Piłka musi być między znacznikami i nie dalej niż dwie długości kija za nimi. Ty sam możesz stać poza tym obszarem."},
+{q:"Co oznacza zasada „graj piłkę tam, gdzie leży”?",o:["Można poprawić pozycję piłki na fairwayu","Nie poprawiasz pozycji piłki ani terenu wokół niej","Można odgiąć gałęzie utrudniające zamach","Można udeptać trawę za piłką"],a:1,e:"To zasada nadrzędna golfa. Nie poprawiasz ani pozycji piłki, ani warunków wokół niej."},
+{q:"Kiedy krzyczysz FORE!?",o:["Zawsze po każdym uderzeniu","Gdy piłka leci w stronę ludzi lub grasz „na ślepo”","Tylko na turniejach","Gdy zgubisz piłkę"],a:1,e:"Gdy piłka może zagrozić komukolwiek oraz przy grze w miejsce, którego nie widzisz. Lepiej krzyknąć niepotrzebnie niż za późno."},
+{q:"Co zrobisz, gdy Wasza grupa szuka piłki, a za Wami czeka inna?",o:["Szukacie dalej, macie prawo do 3 minut","Przepuszczacie grupę za sobą","Prosicie ich o pomoc w szukaniu","Gracie szybciej następne dołki"],a:1,e:"Przepuszczenie szybszej grupy to standard, nie uprzejmość ponadprogramowa. Prawo do 3 minut nie znosi obowiązku dbania o tempo gry."},
+{q:"Czy dalmierze są dozwolone?",o:["Nie, nigdy","Tak, o ile nie mierzą dodatkowych parametrów jak nachylenie","Tylko w grze rekreacyjnej","Tylko dla graczy z handicapem"],a:1,e:"Urządzenia mierzące odległość są dozwolone. Funkcje wykraczające poza pomiar odległości, np. nachylenie terenu, mogą być zabronione."},
+{q:"Piłka jest niegrywalna. Ile karnych uderzeń doliczasz?",o:["Bez kary","1","2","3"],a:1,e:"Jedno karne uderzenie. Sam decydujesz, że piłka jest niegrywalna, i masz do wyboru trzy opcje ulgi."},
+{q:"Dlaczego oznacza się swoją piłkę?",o:["Ze względów estetycznych","Żeby nie zagrać cudzej piłki, co jest karane","Bo wymaga tego klub","Żeby lepiej ją widzieć w rough"],a:1,e:"Zagranie cudzej piłki wiąże się z karą. Własne oznaczenie usuwa wszelkie wątpliwości."},
+{q:"Co robisz z divotem?",o:["Zostawiasz, greenkeeper naprawi","Wkładasz z powrotem i dociskasz butem","Wyrzucasz poza fairway","Zasypujesz piaskiem z bunkra"],a:1,e:"Wkładasz go z powrotem i dociskasz. Na niektórych polach zamiast tego zasypuje się ubytek mieszanką z pojemnika przy wózku."},
+{q:"Czego posiadacz Zielonej Karty NIE musi znać?",o:["Zasad bezpieczeństwa","Etykiety golfowej","Szczegółowych przepisów turniejowych","Zasad Ready Golf"],a:2,e:"Zakres Zielonej Karty to bezpieczeństwo, etykieta, tempo gry i podstawowe reguły. Przepisy turniejowe i system handicapowy są poza nim."},
+{q:"Ile mniej więcej czasu powinieneś zająć na wykonanie uderzenia, gdy przyjdzie Twoja kolej?",o:["Około 10 sekund","Około 40 sekund","Około 2 minut","Bez znaczenia"],a:1,e:"Rekomendacja R&A to około 40 sekund. Przygotowania — ocena odległości, wybór kija — robisz wcześniej, podchodząc do piłki."},
+{q:"Czy na greenie możesz naprawić ślad po butach?",o:["Nie, tylko pitchmarki","Tak, wolno naprawiać wszelkie uszkodzenia greena","Tylko za zgodą współgraczy","Tylko po skończeniu dołka"],a:1,e:"Od 2019 roku wolno naprawiać praktycznie każde uszkodzenie greena, w tym ślady po butach i stare wgniecenia po dołku."},
+{q:"Kiedy warto zagrać piłkę prowizoryczną?",o:["Zawsze przy uderzeniu z tee","Gdy podejrzewasz, że piłka wypadła poza pole lub zginęła","Gdy piłka wpadła do bunkra","Gdy nie podoba Ci się uderzenie"],a:1,e:"Piłka prowizoryczna oszczędza długi powrót na poprzednie miejsce, jeśli okaże się, że pierwotna piłka jest poza polem lub zgubiona."},
+{q:"Co potwierdza Zielona Karta?",o:["Że jesteś dobrym graczem","Że umiesz grać bezpiecznie, sprawnie i zgodnie z etykietą","Że należysz do klubu golfowego","Że masz oficjalny handicap"],a:1,e:"Nie sprawdza poziomu gry, tylko to, czy jesteś bezpiecznym i kulturalnym partnerem na polu."}
+];
+let i=0,score=0,answered=false;
+const $=id=>document.getElementById(id);
+function render(){
+  answered=false;
+  const q=Q[i];
+  $('qtitle').textContent='Pytanie '+(i+1);
+  $('qcount').textContent=(i+1)+' / '+Q.length+' · poprawnych: '+score;
+  $('qbar').style.width=((i)/Q.length*100)+'%';
+  $('qtext').textContent=q.q;
+  const box=$('qopts'); box.innerHTML='';
+  q.o.forEach((opt,idx)=>{
+    const b=document.createElement('button');
+    b.className='opt'; b.textContent=opt;
+    b.onclick=()=>choose(idx,b);
+    box.appendChild(b);
+  });
+  const ex=$('qexpl'); ex.className='expl'; ex.innerHTML='';
+  const n=$('qnext'); n.disabled=true;
+  n.textContent = i===Q.length-1 ? 'Zobacz wynik' : 'Następne pytanie';
+}
+function choose(idx,btn){
+  if(answered) return; answered=true;
+  const q=Q[i];
+  const btns=[...$('qopts').children];
+  btns.forEach(b=>b.disabled=true);
+  btns[q.a].classList.add('ok');
+  if(idx===q.a){score++;} else {btn.classList.add('bad');}
+  const ex=$('qexpl'); ex.innerHTML='<b>Wyjaśnienie</b>'+q.e; ex.className='expl show';
+  $('qcount').textContent=(i+1)+' / '+Q.length+' · poprawnych: '+score;
+  $('qnext').disabled=false;
+}
+$('qnext').onclick=()=>{
+  if(i===Q.length-1){ finish(); } else { i++; render(); }
+};
+function finish(){
+  $('qbody').style.display='none';
+  $('qtitle').textContent='Wynik testu';
+  $('qcount').textContent='';
+  $('qbar').style.width='100%';
+  const pct=Math.round(score/Q.length*100);
+  let verdict;
+  if(pct>=90) verdict='Rewelacyjnie. Materiał masz opanowany — na egzaminie skup się na spokojnym czytaniu pytań.';
+  else if(pct>=75) verdict='Dobry wynik. Przejrzyj wyjaśnienia przy pytaniach, w których się pomyliłeś, i powtórz test.';
+  else if(pct>=50) verdict='Podstawy są, ale warto wrócić do materiału — zwłaszcza do rozdziałów o bezpieczeństwie i tempie gry.';
+  else verdict='Przeczytaj materiał jeszcze raz od początku i wróć do testu. Bez pośpiechu — od tego jest kurs.';
+  $('qresult').style.display='block';
+  $('qresult').innerHTML='<div class="result"><div class="score">'+score+' / '+Q.length+'</div>'+
+    '<p class="verdict">'+verdict+'</p>'+
+    '<button class="btn btn-p" onclick="restart()">Spróbuj ponownie</button></div>';
+}
+function restart(){
+  i=0;score=0;
+  $('qresult').style.display='none';
+  $('qbody').style.display='block';
+  render();
+}
+render();
+</script>
+
+</body>
+</html>
