@@ -340,7 +340,7 @@ body { padding-top: 56px; }
               <li>2h praktycznej nauki</li>
               <li>Sprzęt golfowy</li>
               <li>Piłki treningowe</li>
-              <li>Udzerzenia na driving range</li>
+              <li>Uderzenia na driving range</li>
             </ul>
           </div>
         </div>
@@ -358,7 +358,7 @@ body { padding-top: 56px; }
 
         <div class="voucher-info-row">
           <div class="voucher-info-item"><span>📍</span><div><strong>Lokalizacja</strong>Krakow Valley G&CC · Royal Kraków G&CC</div></div>
-          <div class="voucher-info-item"><span>📅</span><div><strong>Sezon</strong>Kwiecień – Październik</div></div>
+          <div class="voucher-info-item"><span>📅</span><div><strong>Sezon</strong>Kwiecień – Listopad</div></div>
           <div class="voucher-info-item"><span>👥</span><div><strong>Dla kogo</strong>1–4 osoby</div></div>
         </div>
         <div style="background:var(--green-pale);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1rem;border:1px solid rgba(45,90,39,0.12);text-align:center;">
@@ -395,6 +395,17 @@ body { padding-top: 56px; }
                 <h3 class="vf-modal-title">Lekcja Pierwszego Kontaktu</h3>
               </div>
               <button class="vf-close" onclick="document.getElementById('vf-modal-overlay').style.display='none'">✕</button>
+            </div>
+            <div style="display:flex;gap:1rem;align-items:flex-start;background:#f7f6f2;border-radius:12px;padding:1rem;margin-bottom:1.5rem;">
+              <img src="voucher-podglad.svg" alt="Podglad vouchera podarunkowego" loading="lazy" onclick="document.getElementById('vp-full').style.display='flex'" style="width:92px;flex-shrink:0;border:1px solid rgba(45,90,39,0.2);border-radius:4px;cursor:zoom-in;display:block;">
+              <div>
+                <p style="font-size:0.85rem;font-weight:700;color:var(--green);margin-bottom:0.3rem;">Tak wygląda voucher</p>
+                <p style="font-size:0.78rem;color:#666;line-height:1.5;margin-bottom:0.4rem;">Elegancki dokument A4 do wydruku, z miejscem na imię osoby obdarowanej. Wysyłam go mailem jako PDF razem z instrukcją składania.</p>
+                <button type="button" onclick="document.getElementById('vp-full').style.display='flex'" style="background:none;border:0;padding:0;font:inherit;font-size:0.78rem;font-weight:700;color:var(--green);text-decoration:underline;cursor:pointer;">Zobacz w pełnym rozmiarze →</button>
+              </div>
+            </div>
+            <div id="vp-full" onclick="this.style.display='none'" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:1100;align-items:center;justify-content:center;padding:1.5rem;cursor:zoom-out;">
+              <img src="voucher-podglad.svg" alt="Voucher podarunkowy — pełny podgląd" style="max-width:100%;max-height:92vh;background:#fff;border-radius:4px;">
             </div>
             <form action="https://formspree.io/f/xwvzzwld" method="POST" class="voucher-form" id="voucher-form">
               <input type="hidden" name="_subject" value="Nowe zamówienie vouchera — Lekcja Pierwszego Kontaktu 250 zł — jakubkulig.pl">
